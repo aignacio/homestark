@@ -1,0 +1,47 @@
+.TH "connect_packet_t" 3 "Sábado, 3 de Setembro de 2016" "Version 1.0" "MQTT-SNContiki" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+connect_packet_t \- 
+.PP
+Estrutura de pacotes MQTT-SN do tipo CONNECT\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sabado_list_old\&.h>\fP
+.SS "Campos de Dados"
+
+.in +1c
+.ti -1c
+.RI "uint8_t \fBlength\fP"
+.br
+.RI "\fIComprimento total do pacote MQTT-SN\&. \fP"
+.ti -1c
+.RI "uint8_t \fBtype\fP"
+.br
+.RI "\fIDescreve o tipo de mensagem que será enviado ao broker\&. \fP"
+.ti -1c
+.RI "uint8_t \fBflags\fP"
+.br
+.RI "\fIContém os parâmetros de flag que serão enviados como (DUP,QoS,Retain,Will, CleanSession, TopicType) \fP"
+.ti -1c
+.RI "uint8_t \fBprotocol_id\fP"
+.br
+.RI "\fIPresente somente no CONNECT indicando versão do protocolo e o nome\&. \fP"
+.ti -1c
+.RI "uint16_t \fBduration\fP"
+.br
+.RI "\fIIndica a duração de um período em segundos podendo ser de até 18 Horas\&. \fP"
+.ti -1c
+.RI "char \fBclient_id\fP [23]"
+.br
+.in -1c
+.SH "Descrição detalhada"
+.PP 
+Estrutura de pacotes MQTT-SN do tipo CONNECT\&. 
+
+.SH "Autor"
+.PP 
+Gerado automaticamente por Doxygen para MQTT-SNContiki a partir do código fonte\&.

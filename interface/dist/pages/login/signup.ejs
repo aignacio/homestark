@@ -1,0 +1,32 @@
+<!doctype html><html><head><title>HomeStark - Registro</title><link rel=stylesheet type=text/css href=lib/css/components.min.css><link rel=icon type=image/png href=/img/favicon.jpg><script type=text/javascript src=lib/js/components.min.js></script><script type=text/javascript>
+      $(document).ready(function() {
+        var $form = $('#registro');
+
+        var $submit = $form.find('submit');
+
+        var checkValid = function(){
+         if( $form.parsley('isValid') ) {
+            $submit.removeAttr("disabled");
+         } else {
+            $submit.attr("disabled", "disabled");
+         }
+        }
+        checkValid();
+
+        $form.parsley( 'addListener', {
+         onFieldSuccess: function ( elem ) {
+            checkValid();
+         }
+         , onFieldError: function ( elem ) {
+            checkValid();
+         }
+        } );
+      });
+    </script><style>
+        body        { padding-top:80px; }
+        .parsley-type,
+        .parsley-minlength,
+        .parsley-required{
+          color: red;
+        }
+    </style></head><body><div class=container><div class="col-sm-6 col-sm-offset-3"><h1><span class="fa fa-sign-in"></span> Registrar</h1><% if (message.length>0) { %><div class="alert alert-danger"><%= message %></%=></div><% } %><form action=/signup id=registro method=post data-parsley-validate><label for=firstname>Primeiro Nome:</label> <input type=text class=form-control name=firstname data-parsley-minlength=3 data-parsley-trigger=change required> <label for=lastname>Sobrenome:</label> <input type=text class=form-control name=lastname data-parsley-minlength=3 data-parsley-trigger=change required> <label for=email>E-mail:</label> <input type=email class=form-control name=email data-parsley-trigger=change required><br><label><input type=hidden name=admin value=0> <input type=checkbox value=1 name=admin>Administrador</label><br><br><label for=username>Nome de usuário:</label> <input type=text class=form-control name=username data-parsley-minlength=4 data-parsley-trigger=change required> <label for=fullname>Senha:</label> <input type=password class=form-control name=password data-parsley-type=alphanum data-parsley-minlength=5 data-parsley-trigger=change required><br><input type=submit class="btn btn-default btn-lg" value=Cadastrar></form><br><p>Já está registrado?<a href=/login>Login</a></p><p>Voltar para <a href="/">homepage</a>.</p></%></%></div></div></body></html>

@@ -1,0 +1,306 @@
+.TH "snmpd/mibii.h" 3 "Quinta, 29 de Setembro de 2016" "Version 1.0" "HomeStark_6LoWPAN_Device" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+snmpd/mibii.h \- 
+.PP
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+
+.SS "Estruturas de Dados"
+
+.in +1c
+.ti -1c
+.RI "struct \fBoid_data\fP"
+.br
+.RI "\fIStruct of OID data in MIB Implementation\&. \fP"
+.in -1c
+.SS "Funções"
+
+.in +1c
+.ti -1c
+.RI "\fBresp_con_t\fP \fBmib_ii_check_oid\fP (uint8_t *mib_oid, uint8_t *index)"
+.br
+.RI "\fICheck if exist OID\&. \fP"
+.ti -1c
+.RI "\fBresp_con_t\fP \fBmib_ii_get_oid\fP (uint8_t *oid, uint8_t *oid_string)"
+.br
+.RI "\fIGet OID Value in the MIB tree\&. \fP"
+.ti -1c
+.RI "\fBresp_con_t\fP \fBmib_ii_update_list\fP (uint8_t *tree, char *value)"
+.br
+.RI "\fIUpdate the MIB OID Tree\&. \fP"
+.ti -1c
+.RI "\fBresp_con_t\fP \fBmib_ii_fill_list\fP (uint8_t *oid_tree_var, const char *value)"
+.br
+.RI "\fIInit the MIB OID implementation\&. \fP"
+.ti -1c
+.RI "\fBresp_con_t\fP \fBmib_ii_show\fP (void)"
+.br
+.RI "\fIList MIB OID values\&. \fP"
+.in -1c
+.SH "Descrição detalhada"
+.PP 
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements\&. 
+
+See the NOTICE file distributed with this work for additional information regarding copyright ownership\&. The ASF licenses this file to you under the Apache License, Version 2\&.0 (the 'License'); you may not use this file except in compliance with the License\&. You may obtain a copy of the License at
+.PP
+http://www.apache.org/licenses/LICENSE-2.0
+.PP
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\&. See the License for the specific language governing permissions and limitations under the License\&.
+.PP
+This project is under APACHE 2\&.0 license\&.
+.PP
+MIB II Headers and definitions 
+.PP
+\fBAutor:\fP
+.RS 4
+Ânderson Ignácio da Silva 
+.RE
+.PP
+\fBData:\fP
+.RS 4
+19 Sept 2016 
+.RE
+.PP
+\fBVeja também:\fP
+.RS 4
+http://www.aignacio.com 
+.RE
+.PP
+
+.SH "Documentação das funções"
+.PP 
+.SS "\fBresp_con_t\fP mib_ii_check_oid (uint8_t *mib_oid, uint8_t *index)"
+
+.PP
+Check if exist OID\&. Run in the MIB Structure to find OID available\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fImib_oid\fP OID MIB tree string 
+.br
+\fIindex\fP Index of the position of the MIB searched
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success to find OID value 
+.br
+\fIFAIL_CON\fP Fail to find OID value 
+.RE
+.PP
+
+.PP
+.nf
+36                                                              {
+37   uint8_t i,
+38           mib_s[4];
+39   // A correct oid for this implementation must be iso\&.3\&.6\&.1\&.2\&.1\&.x\&.x\&.0
+40   mib_s[0] = *(mib_oid);
+41   mib_s[1] = *(mib_oid+1),
+42   mib_s[2] = *(mib_oid+2),
+43   mib_s[3] = *(mib_oid+3);
+44 
+45   #ifdef DEBUG_SNMP_DECODING
+46   debug_snmp("MIB to search: iso\&.3\&.6\&.1\&.2\&.1\&.[%d]\&.[%d]\&.[%d]\&.[%d]",mib_s[0],mib_s[1],mib_s[2],mib_s[3]);
+47   #endif
+48 
+49   if (mib_s[2] != 0 || mib_s[3] != 0)
+50     return FAIL_CON;
+51 
+52   for (i = 0; i < MAX_OIDS; i++){
+53     if (oid_list[i]\&.oid_tree[0] == mib_s[0] && oid_list[i]\&.oid_tree[1] == mib_s[1]){
+54       *index = i;
+55       return SUCCESS_CON;
+56     }
+57     // debug_snmp("%s",mibii_tree[i]);
+58   }
+59   #ifdef DEBUG_SNMP_DECODING
+60   debug_snmp("MIB2 - There isn't OID mapped!");
+61   #endif
+62   return FAIL_CON;
+63 }
+.fi
+.SS "\fBresp_con_t\fP mib_ii_fill_list (uint8_t *oid_tree_var, const char *value)"
+
+.PP
+Init the MIB OID implementation\&. Initialize the MIB OID implementation structure
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIoid_tree_var\fP OID MIB tree string 
+.br
+\fIvalue\fP Value to insert into OID data
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success insert in the OID MIB tree 
+.br
+\fIFAIL_CON\fP Fail to insert in the OID tree 
+.RE
+.PP
+
+.PP
+.nf
+125                                                                      {
+126   if (global_index == MAX_OIDS) return FAIL_CON;
+127   uint8_t index = global_index++;
+128 
+129   oid_list[index]\&.oid_tree[0]  = *oid_tree_var;
+130   oid_list[index]\&.oid_tree[1]  = *(oid_tree_var+1);
+131   strcpy(oid_list[index]\&.oid_value,value);
+132 
+133 
+134   return SUCCESS_CON;
+135 }
+.fi
+.SS "\fBresp_con_t\fP mib_ii_get_oid (uint8_t *oid, uint8_t *oid_string)"
+
+.PP
+Get OID Value in the MIB tree\&. Search for OID data in the MIB tree of the OID passed\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIoid\fP OID MIB tree string 
+.br
+\fIoid_string\fP String of the data in the OID-MIB
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success to get the OID Value 
+.br
+\fIFAIL_CON\fP Fail to get the OID Value 
+.RE
+.PP
+
+.PP
+.nf
+65                                                             {
+66   #if CONTIKI_TARGET_SRF06_CC26XX
+67     uint8_t index;
+68     if (!mib_ii_check_oid(oid+7,&index)) return FAIL_CON;
+69 
+70     char data[MAX_STRINGS_LENGTH];
+71     strcpy(data,oid_list[index]\&.oid_value);
+72 
+73     uint8_t len = strlen(data),
+74             index2 = 0;
+75     while (index2 <= len) {
+76       *(oid_string+index2) = data[index2];
+77       index2++;
+78     }
+79     *(oid_string+index2) = '\0';
+80 
+81     #ifdef DEBUG_SNMP_DECODING
+82     debug_snmp("MIB2 Decode OID received:%s",data);
+83     #endif
+84     return SUCCESS_CON;
+85   #else
+86     uint8_t data[] = "z1_snmp\0";
+87     uint8_t len = 8,
+88             index2 = 0;
+89     while (index2 <= len) {
+90       *(oid_string+index2) = data[index2];
+91       index2++;
+92     }
+93     *(oid_string+index2) = '\0';
+94     #ifdef DEBUG_SNMP_DECODING
+95     debug_snmp("MIB2 Decode OID received:%s",(char *)oid_string);
+96     #endif
+97     return SUCCESS_CON;
+98   #endif
+99 }
+.fi
+.SS "\fBresp_con_t\fP mib_ii_show (void)"
+
+.PP
+List MIB OID values\&. List all MIB Implementation with OID tree and data
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIvoid\fP Without argument
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success to list OID tree 
+.br
+\fIFAIL_CON\fP Fail to list OID tree 
+.RE
+.PP
+
+.PP
+.nf
+137                             {
+138   #ifdef DEBUG_SNMP_DECODING
+139   size_t i = 0;
+140     for (i=0; i < global_index; i++) {
+141       debug_snmp("Index:%d",i);
+142       debug_snmp("OID Tree: iso\&.3\&.6\&.1\&.2\&.1\&.%d\&.%d\&.0",oid_list[i]\&.oid_tree[0],oid_list[i]\&.oid_tree[1]);
+143       debug_snmp("OID Value:%s",oid_list[i]\&.oid_value);
+144     }
+145   #endif
+146   return SUCCESS_CON;
+147 }
+.fi
+.SS "\fBresp_con_t\fP mib_ii_update_list (uint8_t *tree, char *value)"
+
+.PP
+Update the MIB OID Tree\&. Search for OID initialized and update the data in the tree, we need to fill the OID first
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIoid\fP OID MIB tree string 
+.br
+\fIoid_string\fP String of the data in the OID-MIB
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success update the OID MIB tree 
+.br
+\fIFAIL_CON\fP Fail to update the OID tree 
+.RE
+.PP
+
+.PP
+.nf
+101                                                          {
+102   uint8_t index_list;
+103   uint8_t tree_format[4];
+104   uint8_t mib1 = *tree;
+105   uint8_t mib2 = *(tree+1);
+106 
+107   tree_format[0] = mib1;
+108   tree_format[1] = mib2;
+109   tree_format[2] = 0;
+110   tree_format[3] = 0;
+111 
+112   // sprintf((void *)tree_format,"%c%c%c%c",mib1,mib2,mib3-0x30,mib4-0x30);
+113   if (!mib_ii_check_oid(tree_format, &index_list)) return FAIL_CON;
+114   sprintf(oid_list[index_list]\&.oid_value,"%s",value);
+115 
+116 
+117   #ifdef DEBUG_SNMP_DECODING
+118   debug_snmp("Update MIB2 Indice:%d",index_list);
+119   debug_snmp("OID Tree: iso\&.3\&.6\&.1\&.2\&.1\&.%d\&.%d\&.0",oid_list[index_list]\&.oid_tree[0],oid_list[index_list]\&.oid_tree[1]);
+120   debug_snmp("OID Value:%s",oid_list[index_list]\&.oid_value);
+121   #endif
+122   return SUCCESS_CON;
+123 }
+.fi
+.SH "Autor"
+.PP 
+Gerado automaticamente por Doxygen para HomeStark_6LoWPAN_Device a partir do código fonte\&.

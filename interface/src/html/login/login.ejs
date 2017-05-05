@@ -1,0 +1,77 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html lang="en" ng-app="superhero">
+<head>
+    <title>HomeStark Login</title>
+    <link rel="stylesheet" type="text/css" href="lib/css/components.min.css">
+    <link rel="icon" type="image/png" href="/img/favicon.jpg">
+    <script type="text/javascript" src="lib/js/components.min.js"></script>
+    <script type="text/javascript" src="js/homestark.min.js"></script>
+    <style>
+      .vertical-center {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        font-size: large;
+        font-weight: bold;
+      }
+      .alpha_box{
+        opacity: 0.3;
+        filter: alpha(opacity=30);
+      }
+      html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+</head>
+<body>
+<div id="mainSection" style="position: initial;">
+  <script type="text/javascript">
+    $('body').vide({
+      mp4: 'video/fumaca.mp4'
+    }, {
+      volume: 1,
+      playbackRate: 1,
+      muted: true,
+      loop: true,
+      autoplay: true,
+      position: '50% 50%', // Similar to the CSS `background-position` property.
+      posterType: 'none', // Poster image type. "detect" — auto-detection; "none" — no poster; "jpg", "png", "gif",... - extensions.
+      resizing: true, // Auto-resizing, read: https://github.com/VodkaBears/Vide#resizing
+      bgColor: 'transparent' // Allow custom background-color for Vide div,
+    });
+  </script>
+  <p align="right"><a href="/signup" style="color:white;"><b>Sem cadastro?</b></a></p>
+  <div class="vertical-center text-center" style="margin-top:20%;" ng-controller="loginCtrl">
+      <div class="row" style="margin:0 auto; width: 30%;">
+          <img width="64" src="img/logo_symbol.png" alt="Logotipo Oficial" />
+          </br>
+          <span style="margin-top:5%; color:white;">HomeStark</span>
+      </div>
+      <div class="row" style="margin:0 auto; width: 15%">
+        <form action="/login" method="post">
+            <div style="margin-top:3%;"class="ui icon input">
+              <input type="text" class="form-control alpha_box" name="username" placeholder="username">
+              <i class="black user icon"></i>
+            </div>
+            <div style="margin-top:3%;" class="ui icon input">
+              <input type="password" class="form-control alpha_box" name="password" placeholder="senha">
+              <i class="black privacy icon"></i>
+            </div>
+            <button type="submit" style="margin-top:5%;" ng-class="class" ng-click="loadLogin()" ng-init="login = false" class="ui secondary button">Entrar</button>
+        </form>
+      </div>
+      <div style="margin-top:1%;">
+        <% if (message.length > 0) { %>
+          <div style="font-size:initial; opacitiy:0.7; width:10%; margin:0 auto; color:red;"><%= message %></div>
+          <% } %>
+      </div>
+    </div>
+</div>
+</body>
+</html>

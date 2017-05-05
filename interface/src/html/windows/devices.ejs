@@ -1,0 +1,42 @@
+<div class="row">
+	<h2 style="text-align:center;"><span class="fa fa-bar-chart"></span> Lista de dispositivos:</h2>
+	<br>
+	<div ng-controller="devicesCtrl">
+		<table st-table="rowCollection" class="table table-striped">
+			<thead>
+			<tr>
+				<th class="table_center">id</th>
+				<th class="table_center">Hardware</th>
+				<th class="table_center">IPv6 local</th>
+				<th class="table_center">IPv6 global</th>
+				<th class="table_center">ETX</th>
+				<th class="table_center">Rank RPL</th>
+				<th class="table_center">Rota pref.</th>
+				<th class="table_center">RSSI (dBm)</th>
+				<th class="table_center">Status</th>
+				<th class="table_center">Atualizado em</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="row in rowCollection">
+				<td class="table_center">{{row._id | limitTo : 4 : 20}}</td>
+				<td class="table_center">{{row.hw_address}}</td>
+				<td class="table_center">{{row.ipv6_local}}</td>
+				<td class="table_center">{{row.ipv6_global}}</td>
+				<td class="table_center">{{row.link_metric}}</td>
+				<td class="table_center">{{row.rank_rpl}}</td>
+				<td class="table_center">{{row.rota_pref}}</td>
+				<td class="table_center" ng-class="{
+				'color-blue': row.rssi_value*(-1) < 30,
+				'color-green': row.rssi_value*(-1) >= 30 && row.rssi_value*(-1) < 67,
+				'color-orange': row.rssi_value*(-1) >= 67 && row.rssi_value*(-1) < 70,
+				'color-red': row.rssi_value*(-1) >= 70 && row.rssi_value*(-1) <= 100}">{{row.rssi_value}}</td>
+				<td class="table_center" ng-class="{
+        'color-green': row.active === 'Ativo',
+        'color-red': row.active === 'Inativo'}">{{row.active}}</td>
+				<td class="table_center">{{row.updated | date: "dd/MM/yyyy H:mm:ss a"}}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

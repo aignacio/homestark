@@ -1,0 +1,246 @@
+/*******************************  SIDEBAR LEFT  *******************************/
+.nav, .pagination, .carousel, .panel-title a {
+   cursor: pointer;
+}
+
+.underline-on-hover:hover {
+		text-decoration: underline;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/index.eot);
+  src: local('Montserrat-Regular'),
+  url(../fonts/index.eot) format('embedded-opentype'),
+  url(../fonts/index.woff)
+  format('woff');
+}
+
+.color-green {
+  color: green;
+}
+
+.color-blue {
+  color: blue;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-yellow {
+  color: yellow;
+}
+
+.color-orange {
+  color: orange;
+}
+/******************** Left - user and sidebar ********************/
+/*index.ejs*/
+.sid_ido {
+  width: 20px;
+  height: auto;
+  margin-bottom: 32px;
+}
+
+#sidebar-wrapper .menu-icon{
+  width: 30px;
+  height: 20px;
+  float: left;
+  margin-right: 5%;
+  margin-top: 5%;
+  margin-left: -5px;
+  text-align:  center;
+}
+
+#user-wrapper{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+}
+
+#wrapper.toggled #user-wrapper{
+    display: none;
+}
+
+.untoggled{
+  text-align: left;
+}
+
+/******************** Top - Page Indicator ********************/
+/*sidebar and top bar from index.ejs*/
+#pageIndicator{
+  height:30px;
+}
+
+#controlBar .user{
+  width:  50px;
+  height: auto;
+}
+
+/*pagination.ejs */
+#top-menu .pagination>.active>a{
+  border-color:black;
+  color:white;
+  background-color: black;
+}
+
+#top-menu a{
+  background-color: white;
+  color: black;
+  font-weight:bold;
+
+}
+
+#top-menu a:active{
+  border-color:black;
+}
+
+#top-menu a:focus
+{
+    color: white;
+    border-color:black;
+
+}
+
+#top-menu a:hover{
+    color: black;
+    border-color:black;
+
+}
+/******************** Center - Main Window ********************/
+/*dash.ejs*/
+.switch.checked {
+  color: black;
+  background-color: black;
+}
+
+#mainWindow{
+  /*background-color: orange;*/
+}
+
+/*time.ejs*/
+.btn-link {
+  color: black;
+}
+
+canvas.chart{
+    width: 100% !important;
+    /*height: auto !important;*/
+}
+
+.highcharts-container{width:100% !important; height:100% !important;}
+
+/*dash.ejs - Main screen  css for widgets*/
+.groups{
+  height: 330px;
+}
+
+.widget{
+  height: 300px;
+  /*background-color: red;*/
+  text-align: center;
+  /*border: 1px solid rgba(207,207,207,0.61);*/
+  /*border-radius: 6px;*/
+}
+
+#slider .slider-tick{
+	background: #014A94;
+}
+
+#slider .in-selection{
+	background: #D28800;
+}
+
+#slider .slider-handle {
+	background: #D28800;
+}
+
+#slider .slider-selection {
+	background: #F9B333;
+}
+
+.row{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/*power.ejs*/
+.iconGroup{
+  color: black;
+  text-decoration: none;
+}
+
+.sample-show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+
+.sample-show-hide {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity:0;
+}
+
+.table_center{
+  text-align: center;
+}
+
+
+/********************************** DASHBOARD *********************************/
+body {
+    /*font-family: 'Helvetica Neue', Arial, sans-serif;*/
+    /*background: #004756;*/
+    /*color: #fff;*/
+}
+.gridster .gridster-item {
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    color: black;
+    /*background: #ffffff;*/
+    padding: 10px;
+    min-width: 278px;
+    min-height: 262px;
+}
+
+.vertical_align{
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* Transição do spinner na dashboard*/
+.ng-hide-add-active {
+  display: block!important;
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+.ng-hide-remove-active {
+  display: block!important;
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+.ng-hide {
+  opacity: 0;
+}
+
+/* Transição do spinner na dashboard*/
+
+.inative_node{
+  opacity: 0.25;
+}
+/*.gridster-item.gridster-preview-holder.ng-scope {
+background-color: grey;
+opacity: 0.6;
+}*/

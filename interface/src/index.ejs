@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" ng-app="superhero">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/favicon.jpg">
+
+    <title>HomeStark Interface</title>
+    <!-- STYLES -->
+    <!-- build:css lib/css/components.min.css -->
+    <link rel="stylesheet" type="text/css" href="components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="components/parsleyjs/src/parsley.css"/>
+    <link rel="stylesheet" type="text/css" href="components/semantic/dist/semantic.min.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="components/angular-video-background/src/video-background.css"/> -->
+    <link rel="stylesheet" type="text/css" href="components/angular-gridster/dist/angular-gridster.css"/>
+    <link rel="stylesheet" type="text/css" href="components/angular-ui-switch/angular-ui-switch.min.css"/>
+    <link rel="stylesheet" type="text/css" href="components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="components/angular-theme-spinner/dist/angular-theme-spinner.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="components/vis/dist/vis.css" rel="stylesheet" />
+    <!-- endbuild -->
+
+    <!-- build:css lib/css/custom_css.min.css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/simple-sidebar.css"/>
+    <!-- endbuild -->
+
+    <!-- SCRIPTS -->
+    <!-- build:js lib/js/components.min.js -->
+    <script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script type="text/javascript" src="components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="custom-components/custom-js/parsley.js"></script>
+    <script type="text/javascript" src="components/semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="components/vide/dist/jquery.vide.min.js"></script>
+    <!-- <script type="text/javascript" src="components/ngDraggable/ngDraggable.js"></script> -->
+    <script type="text/javascript" src="components/javascript-detect-element-resize/jquery.resize.js"></script>
+    <script type="text/javascript" src="components/angular-gridster/dist/angular-gridster.min.js"></script>
+    <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="components/d3/d3.min.js"></script>
+    <script type="text/javascript" src="components/d3-liquid-fill-gauge/liquidFillGauge.js"></script>
+    <script type="text/javascript" src="components/ng-knob/dist/ng-knob.min.js"></script>
+    <script type="text/javascript" src="components/angular-ui-switch/angular-ui-switch.min.js"></script>
+    <script type="text/javascript" src="components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script type="text/javascript" src="components/angular-theme-spinner/dist/angular-theme-spinner.min.js"></script>
+    <script type="text/javascript" src="components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="components/vis/dist/vis.js"></script>
+    <!-- <script type="text/javascript" src="components/angular-visjs/angular-vis.js"></script> -->
+    <!-- endbuild -->
+
+    <!-- Custom Scripts -->
+    <script type="text/javascript" src="js/homestark.min.js"></script>
+    </script>
+</head>
+<body style="font-family: Montserrat;">
+  <div id="wrapper" class="toggled">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#"><span class="menu-icon"><img src="/img/logo_symbol.ico" alt="logo" class="sid_ido"/></span>HomeStark</a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/dash"><span class="menu-icon fa fa-cubes"></span>Dashboard</a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/devices"><span class="menu-icon fa fa-bar-chart"></span>Dispositivos</a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/node_map"><span class="menu-icon fa fa-code-fork"></span>Rede</a>
+        </li>
+        <li class="sidebar-list">
+          <a href="#/about"><span class="menu-icon fa fa-cog"></span>Sobre</a>
+        </li>
+      </ul>
+      <!-- User Wrapper -->
+      <div id="user-wrapper ">
+          <h5 style="color:#848484; text-decoration:none;">
+            Bem vindo,
+          </h5>
+          <h4 style="color:#848484; text-decoration:none;">
+            <%= user.profile.firstname %>
+            <script type="text/javascript">
+              var loginUser= "<%= user.profile.username %>";
+            </script>
+          </h4>
+          <a href="/logout" style="color: white; text-decoration:none;">
+            Logout
+          </a>
+          <br>
+          <a href="#/pass" id="8" onclick="pageInd(this.id)" style="color: white; text-decoration:none;">
+            Alterar a senha
+          </a>
+      </div>
+    </div>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <!-- Page bar -->
+            <div class="col-lg-12">
+              <div class="row">
+                <div id="pageIndicator"></div>
+              </div>
+            </div>
+            </div>
+            <!-- Main Content -->
+            <div id="mainWindow" class="row">
+              <div ng-view></div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+</body>
+</html>

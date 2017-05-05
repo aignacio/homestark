@@ -1,0 +1,4 @@
+<map id="mqtt_sn_connection" name="mqtt_sn_connection">
+<area shape="rect" id="node2" href="$structmqtt__sn__callbacks.html" title="mqtt_sn_callbacks" alt="" coords="5,5,136,32"/>
+<area shape="rect" id="node3" href="$structconnack__packet__t.html" title="connack_packet_t" alt="" coords="160,5,288,32"/>
+</map>

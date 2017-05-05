@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>HomeStark_6LoWPAN_Device: Referência ao ficheiro snmpd/mibii.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_symbol.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HomeStark_6LoWPAN_Device
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Código fonte do dispositivo 6LoWPAN da rede HomeStark</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tudo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estruturas de dados</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Ficheiros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerações</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valores da enumeração</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bc83ca815ba75edffbc2ec0c3eb5f066.html">snmpd</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro mibii.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="snmp_8h_source.html">snmp.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mibii_8h_source.html">mibii.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Diagrama de dependências de inclusão para mibii.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="mibii_8c__incl.png" border="0" usemap="#snmpd_2mibii_8c" alt=""/></div>
+<map name="snmpd_2mibii_8c" id="snmpd_2mibii_8c">
+<area shape="rect" id="node5" href="snmp_8h.html" title="Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements..." alt="" coords="625,80,690,107"/><area shape="rect" id="node15" href="mibii_8h.html" title="Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements..." alt="" coords="125,80,185,107"/><area shape="rect" id="node14" href="homestark_8h.html" title="Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements..." alt="" coords="1106,155,1201,181"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:aeae05bfda8520c157c4436bc5cf8648b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mibii_8c.html#aeae05bfda8520c157c4436bc5cf8648b">mib_ii_check_oid</a> (uint8_t *mib_oid, uint8_t *index)</td></tr>
+<tr class="memdesc:aeae05bfda8520c157c4436bc5cf8648b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if exist OID.  <a href="#aeae05bfda8520c157c4436bc5cf8648b">Mais...</a><br /></td></tr>
+<tr class="separator:aeae05bfda8520c157c4436bc5cf8648b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0bb802c0b80aaab6218e5a7753f8e28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mibii_8c.html#aa0bb802c0b80aaab6218e5a7753f8e28">mib_ii_get_oid</a> (uint8_t *oid, uint8_t *oid_string)</td></tr>
+<tr class="memdesc:aa0bb802c0b80aaab6218e5a7753f8e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get OID Value in the MIB tree.  <a href="#aa0bb802c0b80aaab6218e5a7753f8e28">Mais...</a><br /></td></tr>
+<tr class="separator:aa0bb802c0b80aaab6218e5a7753f8e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af534ed1c73b20f10d822d43da1ccc78e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a> (uint8_t *tree, char *value)</td></tr>
+<tr class="memdesc:af534ed1c73b20f10d822d43da1ccc78e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the MIB OID Tree.  <a href="#af534ed1c73b20f10d822d43da1ccc78e">Mais...</a><br /></td></tr>
+<tr class="separator:af534ed1c73b20f10d822d43da1ccc78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f7eaae8f191a87c287fc4896e3524e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mibii_8c.html#a87f7eaae8f191a87c287fc4896e3524e">mib_ii_fill_list</a> (uint8_t *oid_tree_var, const char *value)</td></tr>
+<tr class="memdesc:a87f7eaae8f191a87c287fc4896e3524e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init the MIB OID implementation.  <a href="#a87f7eaae8f191a87c287fc4896e3524e">Mais...</a><br /></td></tr>
+<tr class="separator:a87f7eaae8f191a87c287fc4896e3524e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40c075666913ad4f73559ef972049d16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mibii_8c.html#a40c075666913ad4f73559ef972049d16">mib_ii_show</a> (void)</td></tr>
+<tr class="memdesc:a40c075666913ad4f73559ef972049d16"><td class="mdescLeft">&#160;</td><td class="mdescRight">List MIB OID values.  <a href="#a40c075666913ad4f73559ef972049d16">Mais...</a><br /></td></tr>
+<tr class="separator:a40c075666913ad4f73559ef972049d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:a4d9874368b0a756022a37de20575c884"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d9874368b0a756022a37de20575c884"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>global_index</b> = 0</td></tr>
+<tr class="separator:a4d9874368b0a756022a37de20575c884"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe722bc2441f81a00d11912cf29126f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fe722bc2441f81a00d11912cf29126f"></a>
+<a class="el" href="structoid__data.html">oid_data</a>&#160;</td><td class="memItemRight" valign="bottom"><b>oid_list</b> [MAX_OIDS]</td></tr>
+<tr class="separator:a8fe722bc2441f81a00d11912cf29126f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. </p>
+<p>See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p>This project is under APACHE 2.0 license.</p>
+<p>MIB II Implementation of homestark network </p><dl class="section author"><dt>Autor</dt><dd>Ânderson Ignácio da Silva </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>19 Sept 2016 </dd></dl>
+<dl class="section see"><dt>Veja também</dt><dd><a href="http://www.aignacio.com">http://www.aignacio.com</a> </dd></dl>
+</div><h2 class="groupheader">Documentação das funções</h2>
+<a class="anchor" id="aeae05bfda8520c157c4436bc5cf8648b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> mib_ii_check_oid </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>mib_oid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if exist OID. </p>
+<p>Run in the MIB Structure to find OID available.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">mib_oid</td><td>OID MIB tree string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>Index of the position of the MIB searched</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">SUCCESS_CON</td><td>Success to find OID value </td></tr>
+    <tr><td class="paramname">FAIL_CON</td><td>Fail to find OID value </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                             {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  uint8_t i,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;          mib_s[4];</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">// A correct oid for this implementation must be iso.3.6.1.2.1.x.x.0</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  mib_s[0] = *(mib_oid);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  mib_s[1] = *(mib_oid+1),</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  mib_s[2] = *(mib_oid+2),</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  mib_s[3] = *(mib_oid+3);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">  #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  debug_snmp(<span class="stringliteral">&quot;MIB to search: iso.3.6.1.2.1.[%d].[%d].[%d].[%d]&quot;</span>,mib_s[0],mib_s[1],mib_s[2],mib_s[3]);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">if</span> (mib_s[2] != 0 || mib_s[3] != 0)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">for</span> (i = 0; i &lt; MAX_OIDS; i++){</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (oid_list[i].oid_tree[0] == mib_s[0] &amp;&amp; oid_list[i].oid_tree[1] == mib_s[1]){</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      *index = i;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// debug_snmp(&quot;%s&quot;,mibii_tree[i]);</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">  #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  debug_snmp(<span class="stringliteral">&quot;MIB2 - There isn&#39;t OID mapped!&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a></div><div class="ttdoc">Error to to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:143</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a></div><div class="ttdoc">Sucess to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:144</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a87f7eaae8f191a87c287fc4896e3524e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> mib_ii_fill_list </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>oid_tree_var</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Init the MIB OID implementation. </p>
+<p>Initialize the MIB OID implementation structure</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">oid_tree_var</td><td>OID MIB tree string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Value to insert into OID data</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">SUCCESS_CON</td><td>Success insert in the OID MIB tree </td></tr>
+    <tr><td class="paramname">FAIL_CON</td><td>Fail to insert in the OID tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                                                     {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">if</span> (global_index == MAX_OIDS) <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  uint8_t index = global_index++;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  oid_list[index].<a class="code" href="structoid__data.html#a2675b7bf5cd84760d8e230b3f689d57d">oid_tree</a>[0]  = *oid_tree_var;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  oid_list[index].<a class="code" href="structoid__data.html#a2675b7bf5cd84760d8e230b3f689d57d">oid_tree</a>[1]  = *(oid_tree_var+1);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  strcpy(oid_list[index].oid_value,value);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="ttc" id="structoid__data_html_a2675b7bf5cd84760d8e230b3f689d57d"><div class="ttname"><a href="structoid__data.html#a2675b7bf5cd84760d8e230b3f689d57d">oid_data::oid_tree</a></div><div class="ttdeci">uint8_t oid_tree[2]</div><div class="ttdoc">OID tree value in the MIB. </div><div class="ttdef"><b>Definition:</b> mibii.h:43</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a></div><div class="ttdoc">Error to to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:143</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a></div><div class="ttdoc">Sucess to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:144</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aa0bb802c0b80aaab6218e5a7753f8e28"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> mib_ii_get_oid </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>oid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>oid_string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get OID Value in the MIB tree. </p>
+<p>Search for OID data in the MIB tree of the OID passed.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">oid</td><td>OID MIB tree string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">oid_string</td><td>String of the data in the OID-MIB</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">SUCCESS_CON</td><td>Success to get the OID Value </td></tr>
+    <tr><td class="paramname">FAIL_CON</td><td>Fail to get the OID Value </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">  #if CONTIKI_TARGET_SRF06_CC26XX</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    uint8_t index;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="mibii_8c.html#aeae05bfda8520c157c4436bc5cf8648b">mib_ii_check_oid</a>(oid+7,&amp;index)) <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">char</span> data[MAX_STRINGS_LENGTH];</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    strcpy(data,oid_list[index].oid_value);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    uint8_t len = strlen(data),</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            index2 = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">while</span> (index2 &lt;= len) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      *(oid_string+index2) = data[index2];</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      index2++;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    *(oid_string+index2) = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">    #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    debug_snmp(<span class="stringliteral">&quot;MIB2 Decode OID received:%s&quot;</span>,data);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">  #else</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    uint8_t data[] = <span class="stringliteral">&quot;z1_snmp\0&quot;</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    uint8_t len = 8,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            index2 = 0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">while</span> (index2 &lt;= len) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      *(oid_string+index2) = data[index2];</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      index2++;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    *(oid_string+index2) = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">    #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    debug_snmp(<span class="stringliteral">&quot;MIB2 Decode OID received:%s&quot;</span>,(<span class="keywordtype">char</span> *)oid_string);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a></div><div class="ttdoc">Error to to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:143</div></div>
+<div class="ttc" id="mibii_8c_html_aeae05bfda8520c157c4436bc5cf8648b"><div class="ttname"><a href="mibii_8c.html#aeae05bfda8520c157c4436bc5cf8648b">mib_ii_check_oid</a></div><div class="ttdeci">resp_con_t mib_ii_check_oid(uint8_t *mib_oid, uint8_t *index)</div><div class="ttdoc">Check if exist OID. </div><div class="ttdef"><b>Definition:</b> mibii.c:36</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a></div><div class="ttdoc">Sucess to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:144</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a40c075666913ad4f73559ef972049d16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> mib_ii_show </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List MIB OID values. </p>
+<p>List all MIB Implementation with OID tree and data</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">void</td><td>Without argument</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">SUCCESS_CON</td><td>Success to list OID tree </td></tr>
+    <tr><td class="paramname">FAIL_CON</td><td>Fail to list OID tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                            {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">  #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordtype">size_t</span> i = 0;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">for</span> (i=0; i &lt; global_index; i++) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      debug_snmp(<span class="stringliteral">&quot;Index:%d&quot;</span>,i);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      debug_snmp(<span class="stringliteral">&quot;OID Tree: iso.3.6.1.2.1.%d.%d.0&quot;</span>,oid_list[i].oid_tree[0],oid_list[i].oid_tree[1]);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      debug_snmp(<span class="stringliteral">&quot;OID Value:%s&quot;</span>,oid_list[i].oid_value);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a></div><div class="ttdoc">Sucess to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:144</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="af534ed1c73b20f10d822d43da1ccc78e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> mib_ii_update_list </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update the MIB OID Tree. </p>
+<p>Search for OID initialized and update the data in the tree, we need to fill the OID first</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">oid</td><td>OID MIB tree string </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">oid_string</td><td>String of the data in the OID-MIB</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">SUCCESS_CON</td><td>Success update the OID MIB tree </td></tr>
+    <tr><td class="paramname">FAIL_CON</td><td>Fail to update the OID tree </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                                         {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  uint8_t index_list;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  uint8_t tree_format[4];</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  uint8_t mib1 = *tree;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  uint8_t mib2 = *(tree+1);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  tree_format[0] = mib1;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  tree_format[1] = mib2;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  tree_format[2] = 0;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  tree_format[3] = 0;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="comment">// sprintf((void *)tree_format,&quot;%c%c%c%c&quot;,mib1,mib2,mib3-0x30,mib4-0x30);</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="mibii_8c.html#aeae05bfda8520c157c4436bc5cf8648b">mib_ii_check_oid</a>(tree_format, &amp;index_list)) <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  sprintf(oid_list[index_list].oid_value,<span class="stringliteral">&quot;%s&quot;</span>,value);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">  #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  debug_snmp(<span class="stringliteral">&quot;Update MIB2 Indice:%d&quot;</span>,index_list);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  debug_snmp(<span class="stringliteral">&quot;OID Tree: iso.3.6.1.2.1.%d.%d.0&quot;</span>,oid_list[index_list].oid_tree[0],oid_list[index_list].oid_tree[1]);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  debug_snmp(<span class="stringliteral">&quot;OID Value:%s&quot;</span>,oid_list[index_list].oid_value);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a></div><div class="ttdoc">Error to to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:143</div></div>
+<div class="ttc" id="mibii_8c_html_aeae05bfda8520c157c4436bc5cf8648b"><div class="ttname"><a href="mibii_8c.html#aeae05bfda8520c157c4436bc5cf8648b">mib_ii_check_oid</a></div><div class="ttdeci">resp_con_t mib_ii_check_oid(uint8_t *mib_oid, uint8_t *index)</div><div class="ttdoc">Check if exist OID. </div><div class="ttdef"><b>Definition:</b> mibii.c:36</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a></div><div class="ttdoc">Sucess to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:144</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Quinta, 29 de Setembro de 2016 00:56:28 para HomeStark_6LoWPAN_Device por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "angular-vidbg",
+  "version": "0.0.12",
+  "authors": [
+    "2013gangli@gmail.com"
+  ],
+  "description": "Video background",
+  "keywords": [
+    "angular",
+    "video",
+    "background"
+  ],
+  "dependencies": {
+    "angular": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "*"
+  },
+  "license": "MIT",
+  "main": [
+    "dist/vidBg.css",
+    "dist/vidBg.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "src",
+    "Gruntfile.coffee",
+    "gulpfile.coffee"
+  ]
+}

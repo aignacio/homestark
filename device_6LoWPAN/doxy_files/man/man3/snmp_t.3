@@ -1,0 +1,45 @@
+.TH "snmp_t" 3 "Quinta, 29 de Setembro de 2016" "Version 1.0" "HomeStark_6LoWPAN_Device" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+snmp_t \- 
+.PP
+Struct for the SNMP Message\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <snmp\&.h>\fP
+.SS "Campos de Dados"
+
+.in +1c
+.ti -1c
+.RI "uint32_t \fBsnmp_version\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBrequest_type\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBresponse_type\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBrequest_id_c\fP [10]"
+.br
+.ti -1c
+.RI "uint8_t \fBcommunity\fP [\fBMAX_OCTET_STRING\fP]"
+.br
+.ti -1c
+.RI "uint8_t \fBoid_encoded\fP [MAX_OID_STRING]"
+.br
+.ti -1c
+.RI "uint8_t \fBvalue\fP [\fBMAX_OCTET_STRING\fP]"
+.br
+.in -1c
+.SH "Descrição detalhada"
+.PP 
+Struct for the SNMP Message\&. 
+
+.SH "Autor"
+.PP 
+Gerado automaticamente por Doxygen para HomeStark_6LoWPAN_Device a partir do código fonte\&.

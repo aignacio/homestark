@@ -1,0 +1,136 @@
+.TH "Pacotes" 3 "Sábado, 3 de Setembro de 2016" "Version 1.0" "MQTT-SNContiki" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Pacotes \- 
+.SS "Estruturas de Dados"
+
+.in +1c
+.ti -1c
+.RI "struct \fBdisconnect_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacote de desconexão do broker MQTT-SN\&. \fP"
+.ti -1c
+.RI "struct \fBping_req_t\fP"
+.br
+.RI "\fIEstrutura de pacote de desconexão do broker MQTT-SN\&. \fP"
+.ti -1c
+.RI "struct \fBpublish_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacote do tipo PUBLISH Identificador da tarefa\&. \fP"
+.ti -1c
+.RI "struct \fBsubscribe_wildcard_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacote de inscrição do tipo Wildcard MQTT-SN\&. \fP"
+.ti -1c
+.RI "struct \fBsubscribe_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacote MQTT-SN do tipo SUBSCRIBE\&. \fP"
+.ti -1c
+.RI "struct \fBconnect_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacotes MQTT-SN do tipo CONNECT\&. \fP"
+.ti -1c
+.RI "struct \fBregister_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacotes MQTT-SN do tipo REGISTER\&. \fP"
+.ti -1c
+.RI "struct \fBwilltopic_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacotes MQTT-SN do tipo WILL TOPIC\&. \fP"
+.ti -1c
+.RI "struct \fBwillmessage_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacotes MQTT-SN do tipo WILL MESSAGE\&. \fP"
+.ti -1c
+.RI "struct \fBregack_packet_t\fP"
+.br
+.RI "\fIEstrutura de pacotes MQTT-SN do tipo REGACK\&. \fP"
+.in -1c
+.SS "Funções"
+
+.in +1c
+.ti -1c
+.RI "struct \fB__attribute__\fP ((packed))"
+.br
+.in -1c
+.SS "Variáveis"
+
+.in +1c
+.ti -1c
+.RI "\fBdisconnect_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBping_req_t\fP"
+.br
+.ti -1c
+.RI "\fBpublish_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBsubscribe_wildcard_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBsubscribe_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBconnect_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBregister_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBwilltopic_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBwillmessage_packet_t\fP"
+.br
+.ti -1c
+.RI "\fBregack_packet_t\fP"
+.br
+.ti -1c
+.RI "uint8_t \fBlength\fP"
+.br
+.RI "\fIComprimento total do pacote MQTT-SN\&. \fP"
+.ti -1c
+.RI "uint8_t \fBtype\fP"
+.br
+.RI "\fIDescreve o tipo de mensagem que será enviado ao broker\&. \fP"
+.ti -1c
+.RI "uint8_t \fBflags\fP"
+.br
+.RI "\fIContém os parâmetros de flag que serão enviados como (DUP,QoS,Retain,Will, CleanSession, TopicType) \fP"
+.ti -1c
+.RI "uint8_t \fBprotocol_id\fP"
+.br
+.RI "\fIPresente somente no CONNECT indicando versão do protocolo e o nome\&. \fP"
+.ti -1c
+.RI "uint16_t \fBduration\fP"
+.br
+.RI "\fIIndica a duração de um período em segundos podendo ser de até 18 Horas\&. \fP"
+.ti -1c
+.RI "uint8_t \fBlength\fP"
+.br
+.RI "\fIComprimento total do pacote MQTT-SN\&. \fP"
+.ti -1c
+.RI "uint8_t \fBtype\fP"
+.br
+.RI "\fIDescreve o tipo de mensagem que será enviado ao broker\&. \fP"
+.ti -1c
+.RI "uint16_t \fBtopic_id\fP"
+.br
+.RI "\fIShort Topic que será utilizado para envio do REGISTER - Quando enviado pelo nó, usa-se 0x0000\&. \fP"
+.ti -1c
+.RI "uint16_t \fBmessage_id\fP"
+.br
+.RI "\fIIdentificador único do REGACK correspondente enviado pelo broker normalmente\&. \fP"
+.ti -1c
+.RI "char \fBtopic_name\fP [MQTT_SN_MAX_TOPIC_LENGTH]"
+.br
+.RI "\fINome do tópico a ser registrado\&. \fP"
+.in -1c
+.SH "Descrição detalhada"
+.PP 
+Macros de debug utilizadas para o MQTT-SN 
+.SH "Autor"
+.PP 
+Gerado automaticamente por Doxygen para MQTT-SNContiki a partir do código fonte\&.

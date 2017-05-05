@@ -1,0 +1,24 @@
+<div class="row">
+	<h2 style="text-align:center;"><span class="fa fa-cubes"></span> Dashboard:</h2>
+	<br>
+	<div class="row" ng-controller="dashCtrl">
+		<div ng-show="showUpdate">
+			<th-spinner theme="'windcatcher'" display="'true'" size="'size-lg'"></th-spinner>
+		</div>
+    <div gridster="gridsterOpts">
+        <ul>
+            <li gridster-item="dash" ng-repeat="dash in dash_sensors">
+								<div ng-class="{false:'inative_node'}[dash.status]" ng-if="dash.type == 'light'">
+									<ng-include src="'pages/windows/dash_templates/light_sensor.ejs'"></ng-include>
+								</div>
+								<div ng-class="{false:'inative_node'}[dash.status]" ng-if="dash.type == 'water'">
+									<ng-include src="'pages/windows/dash_templates/water_sensor.ejs'"></ng-include>
+								</div>
+								<div ng-class="{false:'inative_node'}[dash.status]" ng-if="dash.type == 'switch'">
+									<ng-include src="'pages/windows/dash_templates/switch_sensor.ejs'"></ng-include>
+								</div>
+            </li>
+        </ul>
+    </div>
+  </div>
+</div>

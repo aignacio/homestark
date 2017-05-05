@@ -1,0 +1,1195 @@
+\hypertarget{snmp_8h}{\section{Referência ao ficheiro snmpd/snmp.h}
+\label{snmp_8h}\index{snmpd/snmp.\+h@{snmpd/snmp.\+h}}
+}
+
+
+Licensed to the Apache Software Foundation (A\+S\+F) under one or more contributor license agreements.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}simple-\/udp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}etimer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ctimer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net/ip/uip-\/debug.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sys/ctimer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}homestark.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para snmp.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{snmp_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{snmp_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsnmp__t}{snmp\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Struct for the S\+N\+M\+P Message. \end{DoxyCompactList}\item 
+struct \hyperlink{structrequest}{request}
+\begin{DoxyCompactList}\small\item\em Struct for request of S\+N\+M\+P Packets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{snmp_8h_abb9d473894655ab94b1dca8f0ef5fa1d}{\#define \hyperlink{snmp_8h_abb9d473894655ab94b1dca8f0ef5fa1d}{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+N\+M\+P\+\_\+\+P\+O\+R\+T}~161}\label{snmp_8h_abb9d473894655ab94b1dca8f0ef5fa1d}
+
+\begin{DoxyCompactList}\small\item\em Default S\+N\+M\+P Agent port. \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_abe670cc5ceed3fad3be682fc0c1bb62e}{\#define \hyperlink{snmp_8h_abe670cc5ceed3fad3be682fc0c1bb62e}{E\+R\+R\+O\+R\+\_\+\+N\+O\+N\+E}~0x00 /$\ast$$\ast$  @brief No error occurred $\ast$/}\label{snmp_8h_abe670cc5ceed3fad3be682fc0c1bb62e}
+
+\begin{DoxyCompactList}\small\item\em Types of errors in S\+N\+M\+P P\+D\+U. \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_af32d4348918915bc367cc37feee380aa}{\#define {\bfseries E\+R\+R\+O\+R\+\_\+\+R\+E\+S\+P\+\_\+\+T\+O\+O\+\_\+\+L\+A\+R\+G\+E}~0x01 /$\ast$$\ast$  @brief Response message too large to transpor $\ast$/}\label{snmp_8h_af32d4348918915bc367cc37feee380aa}
+
+\item 
+\hypertarget{snmp_8h_a9c68a3cb2a8ed6cc0ecc1b90e153a4d6}{\#define {\bfseries E\+R\+R\+O\+R\+\_\+\+R\+E\+Q\+\_\+\+O\+I\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}~0x02 /$\ast$$\ast$  @brief The name of the requested object was not found $\ast$/}\label{snmp_8h_a9c68a3cb2a8ed6cc0ecc1b90e153a4d6}
+
+\item 
+\hypertarget{snmp_8h_aa645c4ae323d9c46969ad9e8c1cc759f}{\#define {\bfseries E\+R\+R\+O\+R\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+T\+C\+H}~0x03 /$\ast$$\ast$  @brief A data type in the request did not match the data type in the S\+N\+M\+P agent $\ast$/}\label{snmp_8h_aa645c4ae323d9c46969ad9e8c1cc759f}
+
+\item 
+\hypertarget{snmp_8h_aa9f64367e63ebe993445b600e21a9d7c}{\#define {\bfseries E\+R\+R\+O\+R\+\_\+\+M\+A\+N\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y}~0x04 /$\ast$$\ast$  @brief The S\+N\+M\+P manager attempted to set a read-\/only parameter $\ast$/}\label{snmp_8h_aa9f64367e63ebe993445b600e21a9d7c}
+
+\item 
+\hypertarget{snmp_8h_a157030e577ab0802e022ff053c8e2425}{\#define {\bfseries E\+R\+R\+O\+R\+\_\+\+G\+E\+N\+E\+R\+A\+L}~0x05 /$\ast$$\ast$  @brief General Error (some error other than the ones listed above) $\ast$/}\label{snmp_8h_a157030e577ab0802e022ff053c8e2425}
+
+\item 
+\hypertarget{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{\#define \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{A\+S\+N1\+\_\+\+P\+R\+I\+M\+\_\+\+I\+N\+T\+E\+G\+E\+R}~0x02}\label{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}
+
+\begin{DoxyCompactList}\small\item\em Primitives data types of A\+N\+S.\+1 encoding. \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_a527d19e9c9039d5be00f7a16072f848d}{\#define {\bfseries A\+S\+N1\+\_\+\+P\+R\+I\+M\+\_\+\+O\+C\+T\+\_\+\+S\+T\+R}~0x04}\label{snmp_8h_a527d19e9c9039d5be00f7a16072f848d}
+
+\item 
+\hypertarget{snmp_8h_a9ba0818a12a0200e430936492f575207}{\#define {\bfseries A\+S\+N1\+\_\+\+P\+R\+I\+M\+\_\+\+N\+U\+L\+L}~0x05}\label{snmp_8h_a9ba0818a12a0200e430936492f575207}
+
+\item 
+\hypertarget{snmp_8h_a4168ea3604dfb4452b63f916baa77db6}{\#define {\bfseries A\+S\+N1\+\_\+\+P\+R\+I\+M\+\_\+\+O\+I\+D}~0x06}\label{snmp_8h_a4168ea3604dfb4452b63f916baa77db6}
+
+\item 
+\hypertarget{snmp_8h_ac85ea75fcfc25d197e1ea064fa42179a}{\#define {\bfseries A\+S\+N1\+\_\+\+P\+R\+I\+M\+\_\+\+I\+P\+\_\+\+A\+D\+D\+R\+E\+S\+S}~0x40}\label{snmp_8h_ac85ea75fcfc25d197e1ea064fa42179a}
+
+\item 
+\hypertarget{snmp_8h_a996055a871e146bdd297898d98f4cbdc}{\#define {\bfseries A\+S\+N1\+\_\+\+P\+R\+I\+M\+\_\+\+T\+I\+M\+E\+S\+T\+A\+M\+P}~0x43}\label{snmp_8h_a996055a871e146bdd297898d98f4cbdc}
+
+\item 
+\hypertarget{snmp_8h_a23bdc4d15d908a80e4bc06be55463ffc}{\#define \hyperlink{snmp_8h_a23bdc4d15d908a80e4bc06be55463ffc}{M\+A\+X\+\_\+\+O\+C\+T\+E\+T\+\_\+\+S\+T\+R\+I\+N\+G}~0x\+F\+A}\label{snmp_8h_a23bdc4d15d908a80e4bc06be55463ffc}
+
+\begin{DoxyCompactList}\small\item\em Max data types in each kind of variable. \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_a4cb667ecd24e47e91d466b83f149ac1a}{\#define {\bfseries M\+A\+X\+\_\+\+O\+I\+D\+\_\+\+S\+T\+R\+I\+N\+G}~20}\label{snmp_8h_a4cb667ecd24e47e91d466b83f149ac1a}
+
+\item 
+\hypertarget{snmp_8h_a0317937adfd3502cbe39a0ea9e6e5b51}{\#define {\bfseries M\+A\+X\+\_\+\+U\+D\+P\+\_\+\+S\+N\+M\+P}~300}\label{snmp_8h_a0317937adfd3502cbe39a0ea9e6e5b51}
+
+\item 
+\hypertarget{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{\#define \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{A\+S\+N1\+\_\+\+C\+P\+X\+\_\+\+S\+E\+Q\+U\+E\+N\+C\+E}~0x30}\label{snmp_8h_aa4d923102cb2314e31cbf833482e9090}
+
+\begin{DoxyCompactList}\small\item\em Complex data types of A\+N\+S.\+1 encoding. \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_a60e229998bcd49b627bd7de12b4213fc}{\#define {\bfseries A\+S\+N1\+\_\+\+C\+P\+X\+\_\+\+G\+E\+T\+\_\+\+R\+E\+Q}~0x\+A0}\label{snmp_8h_a60e229998bcd49b627bd7de12b4213fc}
+
+\item 
+\hypertarget{snmp_8h_a19fce71c9def4f2eb9c1a56025cdd6e6}{\#define {\bfseries A\+S\+N1\+\_\+\+C\+P\+X\+\_\+\+N\+E\+X\+T\+\_\+\+R\+E\+Q}~0x\+A1}\label{snmp_8h_a19fce71c9def4f2eb9c1a56025cdd6e6}
+
+\item 
+\hypertarget{snmp_8h_a04bfde48c8f821965706cdbf272c07da}{\#define {\bfseries A\+S\+N1\+\_\+\+C\+P\+X\+\_\+\+G\+E\+T\+\_\+\+R\+E\+S\+P}~0x\+A2}\label{snmp_8h_a04bfde48c8f821965706cdbf272c07da}
+
+\item 
+\hypertarget{snmp_8h_a0de2cd3eb4c4bd22e91b3b69c86069bc}{\#define {\bfseries A\+S\+N1\+\_\+\+C\+P\+X\+\_\+\+S\+E\+T\+\_\+\+R\+E\+Q}~0x\+A3}\label{snmp_8h_a0de2cd3eb4c4bd22e91b3b69c86069bc}
+
+\item 
+\hypertarget{snmp_8h_a5a871824a2768a968be4165c13489289}{\#define {\bfseries A\+S\+N1\+\_\+\+C\+P\+X\+\_\+\+T\+R\+A\+P}~0x\+A4}\label{snmp_8h_a5a871824a2768a968be4165c13489289}
+
+\item 
+\hypertarget{snmp_8h_ab6614668ab182944f672a21c1d3cb581}{\#define {\bfseries M\+A\+X\+\_\+\+O\+I\+D\+S}~14             /$\ast$$\ast$ @brief Number max. of address that the device will answer about M\+I\+B Implementation $\ast$/}\label{snmp_8h_ab6614668ab182944f672a21c1d3cb581}
+
+\item 
+\hypertarget{snmp_8h_a62f5a786eeaa68ffaa9daf2856501283}{\#define {\bfseries M\+A\+X\+\_\+\+S\+T\+R\+I\+N\+G\+S\+\_\+\+L\+E\+N\+G\+T\+H}~100            /$\ast$$\ast$ @brief Max length of string in the O\+I\+D Implementation $\ast$/}\label{snmp_8h_a62f5a786eeaa68ffaa9daf2856501283}
+
+\item 
+\hypertarget{snmp_8h_a9590682504e9a26892b76a0ceabf6278}{\#define {\bfseries T\+I\+M\+E\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+\+S\+N\+M\+P}~2$\ast$C\+L\+O\+C\+K\+\_\+\+S\+E\+C\+O\+N\+D /$\ast$$\ast$ @brief Time to update the O\+I\+Ds of M\+I\+B implementation $\ast$/}\label{snmp_8h_a9590682504e9a26892b76a0ceabf6278}
+
+\item 
+\hypertarget{snmp_8h_a2dee98259ebf15b9d581bb358ec5d5e5}{\#define {\bfseries T\+I\+M\+E\+\_\+\+T\+R\+A\+P\+\_\+\+H\+E\+A\+R\+T\+B\+E\+A\+T}~10$\ast$C\+L\+O\+C\+K\+\_\+\+S\+E\+C\+O\+N\+D /$\ast$$\ast$ @brief Define the time to send trap callback heartbeat message $\ast$/}\label{snmp_8h_a2dee98259ebf15b9d581bb358ec5d5e5}
+
+\item 
+\hypertarget{snmp_8h_a2acca9a3f8dcd68b1b1f5d97bc6cab8c}{\#define {\bfseries T\+R\+A\+P\+\_\+\+C\+O\+L\+D\+\_\+\+S\+T\+A\+R\+T}~0}\label{snmp_8h_a2acca9a3f8dcd68b1b1f5d97bc6cab8c}
+
+\item 
+\hypertarget{snmp_8h_a27bfcab7b2ca69476aae70cf3d0aa842}{\#define {\bfseries T\+R\+A\+P\+\_\+\+W\+A\+R\+M\+\_\+\+S\+T\+A\+R\+T}~1}\label{snmp_8h_a27bfcab7b2ca69476aae70cf3d0aa842}
+
+\item 
+\hypertarget{snmp_8h_aab5ccd6840e9b8c6b2a72b02b0d24a52}{\#define {\bfseries T\+R\+A\+P\+\_\+\+L\+I\+N\+K\+\_\+\+D\+O\+W\+N}~2}\label{snmp_8h_aab5ccd6840e9b8c6b2a72b02b0d24a52}
+
+\item 
+\hypertarget{snmp_8h_a28a82871d8874b692ccaaa6be052a8bd}{\#define {\bfseries T\+R\+A\+P\+\_\+\+L\+I\+N\+K\+\_\+\+U\+P}~3}\label{snmp_8h_a28a82871d8874b692ccaaa6be052a8bd}
+
+\item 
+\hypertarget{snmp_8h_aa6a957ab1a01df3e55381d140eab2049}{\#define {\bfseries T\+R\+A\+P\+\_\+\+A\+U\+T\+H\+\_\+\+F\+A\+I\+L\+U\+R\+E}~4}\label{snmp_8h_aa6a957ab1a01df3e55381d140eab2049}
+
+\item 
+\hypertarget{snmp_8h_a309fcc1d0b0215506532ceab8e998e47}{\#define {\bfseries T\+R\+A\+P\+\_\+\+N\+E\+I\+G\+H\+B\+O\+R\+\_\+\+L\+O\+S\+S}~5}\label{snmp_8h_a309fcc1d0b0215506532ceab8e998e47}
+
+\item 
+\hypertarget{snmp_8h_a260ab6d9a9418c1d4d6f52bdb9c9b673}{\#define {\bfseries T\+R\+A\+P\+\_\+\+E\+N\+T\+E\+R\+P\+R\+I\+S\+E\+\_\+\+S\+P\+E\+C}~6}\label{snmp_8h_a260ab6d9a9418c1d4d6f52bdb9c9b673}
+
+\item 
+\hypertarget{snmp_8h_a043a2a252be7d375ad6e604f4d98ced5}{\#define {\bfseries T\+R\+A\+P\+\_\+\+S\+N\+M\+P\+\_\+\+P\+O\+R\+T}~162}\label{snmp_8h_a043a2a252be7d375ad6e604f4d98ced5}
+
+\item 
+\hypertarget{snmp_8h_a1f1b7fadcf29f1de5bb406bf356c1d71}{\#define \hyperlink{snmp_8h_a1f1b7fadcf29f1de5bb406bf356c1d71}{S\+N\+M\+P\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+1}~0}\label{snmp_8h_a1f1b7fadcf29f1de5bb406bf356c1d71}
+
+\begin{DoxyCompactList}\small\item\em value of the version field for the S\+N\+M\+Pv1 \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_a0599530b4b198b2c7fa49a274f3f3878}{\#define \hyperlink{snmp_8h_a0599530b4b198b2c7fa49a274f3f3878}{S\+N\+M\+P\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+2\+C}~1}\label{snmp_8h_a0599530b4b198b2c7fa49a274f3f3878}
+
+\begin{DoxyCompactList}\small\item\em value of the version field for the S\+N\+M\+Pv2c \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_aa0b283beac3c7da5c28058f52a817c0c}{\#define \hyperlink{snmp_8h_aa0b283beac3c7da5c28058f52a817c0c}{S\+N\+M\+P\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+3}~3}\label{snmp_8h_aa0b283beac3c7da5c28058f52a817c0c}
+
+\begin{DoxyCompactList}\small\item\em value of the version field for the S\+N\+M\+Pv3 \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_a388ebedb8b344492bded4ba233fab27d}{\#define \hyperlink{snmp_8h_a388ebedb8b344492bded4ba233fab27d}{check\+\_\+seq}(x)~(x == \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{A\+S\+N1\+\_\+\+C\+P\+X\+\_\+\+S\+E\+Q\+U\+E\+N\+C\+E} ? 1 \+: 0)}\label{snmp_8h_a388ebedb8b344492bded4ba233fab27d}
+
+\begin{DoxyCompactList}\small\item\em Decode the initial sequence type. \end{DoxyCompactList}\item 
+\hypertarget{snmp_8h_a8e7df5e1bbe7073bba31a017a76ae7c3}{\#define {\bfseries D\+E\+B\+U\+G\+\_\+\+S\+N\+M\+P\+\_\+\+D\+E\+C\+O\+D\+I\+N\+G}~/$\ast$$\ast$ @brief If defined, show decode S\+N\+M\+P messages $\ast$/}\label{snmp_8h_a8e7df5e1bbe7073bba31a017a76ae7c3}
+
+\item 
+\hypertarget{snmp_8h_a93706e3dc38501c9cb9f4cdfaebb1758}{\#define {\bfseries D\+E\+B\+U\+G\+\_\+\+S\+N\+M\+P}~/$\ast$$\ast$ @brief Enable S\+N\+M\+P Debug message $\ast$/}\label{snmp_8h_a93706e3dc38501c9cb9f4cdfaebb1758}
+
+\item 
+\hypertarget{snmp_8h_a53394c5715c5354d04dda91cd6badf9a}{\#define {\bfseries debug\+\_\+snmp}(fmt, args...)~printf(\char`\"{}\textbackslash{}n\mbox{[}S\+N\+M\+P\mbox{]} \char`\"{}fmt, \#\#args)}\label{snmp_8h_a53394c5715c5354d04dda91cd6badf9a}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerações}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \{ \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{F\+A\+I\+L\+\_\+\+C\+O\+N}, 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of errors in S\+N\+M\+P functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{snmp_8h_a0c7f91118bbe8cf32398c753ead2b7f2}{decode\+\_\+asn1\+\_\+oct\+\_\+str} (uint8\+\_\+t $\ast$data\+\_\+encoded, uint8\+\_\+t $\ast$oct\+\_\+str)
+\begin{DoxyCompactList}\small\item\em S\+N\+M\+P Decode Octet String. \end{DoxyCompactList}\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{snmp_8h_acb3a9652e9b960748692caef7f443384}{decode\+\_\+asn1\+\_\+integer} (uint8\+\_\+t $\ast$data\+\_\+encoded, uint32\+\_\+t $\ast$integer\+\_\+value)
+\begin{DoxyCompactList}\small\item\em S\+N\+M\+P Decode Integer. \end{DoxyCompactList}\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{snmp_8h_aca484712bcdb0bbc0f065061c4a0ed20}{snmp\+\_\+decode\+\_\+message} (char $\ast$snmp\+\_\+packet, \hyperlink{structsnmp__t}{snmp\+\_\+t} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Decode S\+N\+M\+P message. \end{DoxyCompactList}\item 
+uint16\+\_\+t \hyperlink{snmp_8h_a63d8ffecf9aa0af9824de046643c140f}{snmp\+\_\+encode\+\_\+message} (\hyperlink{structsnmp__t}{snmp\+\_\+t} $\ast$snmp\+\_\+handle, char $\ast$data\+\_\+encoded)
+\begin{DoxyCompactList}\small\item\em Encode S\+N\+M\+P message. \end{DoxyCompactList}\item 
+int \hyperlink{snmp_8h_a523ab718dec1a794b3f8c8752f1e2ae3}{ipaddr\+\_\+sprintf} (char $\ast$buf, uint8\+\_\+t buf\+\_\+len, const uip\+\_\+ipaddr\+\_\+t $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Convert I\+Pv6 address in char format. \end{DoxyCompactList}\item 
+void \hyperlink{snmp_8h_a05848f4eb62dd417b99e461854870bf9}{snmp\+\_\+cb\+\_\+data} (void)
+\begin{DoxyCompactList}\small\item\em S\+N\+M\+P Callback receive. \end{DoxyCompactList}\item 
+void \hyperlink{snmp_8h_a4d88f2fc7655280384131d543e0d83e5}{snmp\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em S\+N\+M\+P Init function. \end{DoxyCompactList}\item 
+void \hyperlink{snmp_8h_a732192a9e72d3182d395c47e2cd9c79e}{update\+\_\+snmp\+\_\+mib} (void)
+\begin{DoxyCompactList}\small\item\em Update S\+N\+M\+P O\+I\+Ds. \end{DoxyCompactList}\item 
+uint16\+\_\+t \hyperlink{snmp_8h_af72c0873252d8160ff31eae19d05a5a1}{snmp\+\_\+encode\+\_\+trap} (uint8\+\_\+t $\ast$trap\+\_\+pdu, uint8\+\_\+t type\+\_\+trap, uint8\+\_\+t heartbeat)
+\begin{DoxyCompactList}\small\item\em Encode a S\+N\+M\+Pv1 Trap message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{snmp_8h_ab81bbe09328677d32f662e865f20b0bd}{struct \hyperlink{structrequest}{request} $\ast$ {\bfseries request\+\_\+first}}\label{snmp_8h_ab81bbe09328677d32f662e865f20b0bd}
+
+\item 
+\hypertarget{snmp_8h_a3e7b17f11bc27215e1f0e52de3d1a92e}{struct \hyperlink{structrequest}{request} $\ast$ {\bfseries request\+\_\+last}}\label{snmp_8h_a3e7b17f11bc27215e1f0e52de3d1a92e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Licensed to the Apache Software Foundation (A\+S\+F) under one or more contributor license agreements. 
+
+See the N\+O\+T\+I\+C\+E file distributed with this work for additional information regarding copyright ownership. The A\+S\+F licenses this file to you under the Apache License, Version 2.\+0 (the \char`\"{}\+License\char`\"{}); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+\href{http://www.apache.org/licenses/LICENSE-2.0}{\tt http\+://www.\+apache.\+org/licenses/\+L\+I\+C\+E\+N\+S\+E-\/2.\+0}
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \char`\"{}\+A\+S I\+S\char`\"{} B\+A\+S\+I\+S, W\+I\+T\+H\+O\+U\+T W\+A\+R\+R\+A\+N\+T\+I\+E\+S O\+R C\+O\+N\+D\+I\+T\+I\+O\+N\+S O\+F A\+N\+Y K\+I\+N\+D, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+This project is delivered under Apache 2.\+0 license.
+
+Header functions about S\+N\+M\+P implementation \begin{DoxyAuthor}{Autor}
+Ânderson Ignácio da Silva 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+12 Sept 2016 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{Veja também}
+\href{http://www.aignacio.com}{\tt http\+://www.\+aignacio.\+com} 
+\end{DoxySeeAlso}
+
+
+\subsection{Documentação dos valores da enumeração}
+\hypertarget{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{\index{snmp.\+h@{snmp.\+h}!resp\+\_\+con\+\_\+t@{resp\+\_\+con\+\_\+t}}
+\index{resp\+\_\+con\+\_\+t@{resp\+\_\+con\+\_\+t}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{resp\+\_\+con\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf resp\+\_\+con\+\_\+t}}}\label{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}
+
+
+Type of errors in S\+N\+M\+P functions. 
+
+\begin{Desc}
+\item[Valores da enumeração]\par
+\begin{description}
+\index{F\+A\+I\+L\+\_\+\+C\+O\+N@{F\+A\+I\+L\+\_\+\+C\+O\+N}!snmp.\+h@{snmp.\+h}}\index{snmp.\+h@{snmp.\+h}!F\+A\+I\+L\+\_\+\+C\+O\+N@{F\+A\+I\+L\+\_\+\+C\+O\+N}}\item[{\em 
+\hypertarget{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{F\+A\+I\+L\+\_\+\+C\+O\+N}\label{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}
+}]Error to to process function. \index{S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N@{S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N}!snmp.\+h@{snmp.\+h}}\index{snmp.\+h@{snmp.\+h}!S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N@{S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N}}\item[{\em 
+\hypertarget{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N}\label{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}
+}]Sucess to process function. \begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000001}{Tarefa}]Implement more kind of errors \end{DoxyRefDesc}
+\end{description}
+\end{Desc}
+
+\begin{DoxyCode}
+142              \{
+143    \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON},
+144    \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON},
+145 \} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\_con\_t};
+\end{DoxyCode}
+
+
+\subsection{Documentação das funções}
+\hypertarget{snmp_8h_acb3a9652e9b960748692caef7f443384}{\index{snmp.\+h@{snmp.\+h}!decode\+\_\+asn1\+\_\+integer@{decode\+\_\+asn1\+\_\+integer}}
+\index{decode\+\_\+asn1\+\_\+integer@{decode\+\_\+asn1\+\_\+integer}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{decode\+\_\+asn1\+\_\+integer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} decode\+\_\+asn1\+\_\+integer (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{data\+\_\+encoded, }
+\item[{uint32\+\_\+t $\ast$}]{integer\+\_\+value}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_acb3a9652e9b960748692caef7f443384}
+
+
+S\+N\+M\+P Decode Integer. 
+
+Decode A\+S\+N.\+1 integer(32 bit value).
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em data\+\_\+encoded} & Data do decode \\
+\hline
+\mbox{\tt in}  & {\em integer\+\_\+value} & Variable the will receive the integer 32-\/bit\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success to decode integer \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to decode integer \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+91                                                                               \{
+92   uint8\_t length = (intptr\_t)*(data\_encoded+1);
+93   \textcolor{comment}{// uint32\_t integer\_value;}
+94   \textcolor{keywordtype}{size\_t} i = 0;
+95   uint32\_t aux;
+96 
+97   \textcolor{comment}{// Test if it's an integer value to be decoded}
+98   \textcolor{keywordflow}{if} (*data\_encoded != \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER})\{
+99     debug\_snmp(\textcolor{stringliteral}{"The value is not integer!"});
+100     \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+101   \}
+102 
+103   \textcolor{keywordflow}{for} (i=1, *integer\_value = 0; i <= length; i++)\{
+104     aux = *(data\_encoded+1+i);
+105     *integer\_value += aux*(pow(256,(length-i)));
+106     \textcolor{comment}{// debug\_snmp("%lu * 256^%d = %lu",aux,(length-i),*integer\_value);}
+107   \}
+108   \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+109 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_a0c7f91118bbe8cf32398c753ead2b7f2}{\index{snmp.\+h@{snmp.\+h}!decode\+\_\+asn1\+\_\+oct\+\_\+str@{decode\+\_\+asn1\+\_\+oct\+\_\+str}}
+\index{decode\+\_\+asn1\+\_\+oct\+\_\+str@{decode\+\_\+asn1\+\_\+oct\+\_\+str}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{decode\+\_\+asn1\+\_\+oct\+\_\+str}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} decode\+\_\+asn1\+\_\+oct\+\_\+str (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{data\+\_\+encoded, }
+\item[{uint8\+\_\+t $\ast$}]{oct\+\_\+str}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_a0c7f91118bbe8cf32398c753ead2b7f2}
+
+
+S\+N\+M\+P Decode Octet String. 
+
+Decode Octet String in A\+S\+N.\+1 format.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em data\+\_\+encoded} & Data do decode \\
+\hline
+\mbox{\tt in}  & {\em oct\+\_\+str} & Variable the will receive the octet string\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success to decode string octet \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to decode octet string \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+72                                                                        \{
+73   \textcolor{keywordflow}{if} (*data\_encoded !=  (intptr\_t)ASN1\_PRIM\_OCT\_STR) \{
+74     debug\_snmp(\textcolor{stringliteral}{"The type of value passed is not an octet string!"});
+75     \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+76   \}
+77 
+78   uint8\_t length = (intptr\_t)*(data\_encoded+1),
+79           index = 0;
+80   \textcolor{keywordflow}{while} (length) \{
+81     *(oct\_str+index) = (intptr\_t)*(data\_encoded+2+index);
+82     length--;
+83     index++;
+84   \}
+85 
+86   *(oct\_str+index) = \textcolor{charliteral}{'\(\backslash\)0'};
+87   \textcolor{comment}{// printf("\(\backslash\)nEndereco----:> %d\(\backslash\)n",oct\_str);}
+88   \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+89 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_a523ab718dec1a794b3f8c8752f1e2ae3}{\index{snmp.\+h@{snmp.\+h}!ipaddr\+\_\+sprintf@{ipaddr\+\_\+sprintf}}
+\index{ipaddr\+\_\+sprintf@{ipaddr\+\_\+sprintf}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{ipaddr\+\_\+sprintf}]{\setlength{\rightskip}{0pt plus 5cm}int ipaddr\+\_\+sprintf (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf, }
+\item[{uint8\+\_\+t}]{buf\+\_\+len, }
+\item[{const uip\+\_\+ipaddr\+\_\+t $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_a523ab718dec1a794b3f8c8752f1e2ae3}
+
+
+Convert I\+Pv6 address in char format. 
+
+Format I\+Pv6 address in string char variable.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em buf} & Variable that'll receive the ipv6 address decoded \\
+\hline
+\mbox{\tt in}  & {\em buf\+\_\+len} & Len of buf variable \\
+\hline
+\mbox{\tt in}  & {\em addr} & Address I\+Pv6 in uip\+\_\+ipaddr\+\_\+t format\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em len} & Length of buf variable formated \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+143                                                                          \{
+144   uint16\_t a;
+145   uint8\_t len = 0;
+146   \textcolor{keywordtype}{int} i, f;
+147   \textcolor{keywordflow}{for}(i = 0, f = 0; i < \textcolor{keyword}{sizeof}(uip\_ipaddr\_t); i += 2) \{
+148     a = (addr->u8[i] << 8) + addr->u8[i + 1];
+149     \textcolor{keywordflow}{if}(a == 0 && f >= 0) \{
+150       \textcolor{keywordflow}{if}(f++ == 0) \{
+151         len += snprintf(&buf[len], buf\_len - len, \textcolor{stringliteral}{"::"});
+152       \}
+153     \} \textcolor{keywordflow}{else} \{
+154       \textcolor{keywordflow}{if}(f > 0) \{
+155         f = -1;
+156       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(i > 0) \{
+157         len += snprintf(&buf[len], buf\_len - len, \textcolor{stringliteral}{":"});
+158       \}
+159       len += snprintf(&buf[len], buf\_len - len, \textcolor{stringliteral}{"%x"}, a);
+160     \}
+161   \}
+162 
+163   \textcolor{keywordflow}{return} len;
+164 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_a05848f4eb62dd417b99e461854870bf9}{\index{snmp.\+h@{snmp.\+h}!snmp\+\_\+cb\+\_\+data@{snmp\+\_\+cb\+\_\+data}}
+\index{snmp\+\_\+cb\+\_\+data@{snmp\+\_\+cb\+\_\+data}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{snmp\+\_\+cb\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}void snmp\+\_\+cb\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_a05848f4eb62dd417b99e461854870bf9}
+
+
+S\+N\+M\+P Callback receive. 
+
+Receive in callback mode, any data from N\+M\+S of S\+N\+M\+P protocol.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em void} & No argument to pass\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em void} & Doesn't return anything \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+109                        \{
+110   \textcolor{keyword}{static} uint16\_t len;
+111   \textcolor{keyword}{static} \textcolor{keywordtype}{char} buf[MAX\_UDP\_SNMP];
+112   memset(buf, 0, MAX\_UDP\_SNMP);
+113 
+114   \textcolor{keywordflow}{if}(uip\_newdata()) \{
+115     len = uip\_datalen();
+116     memcpy(buf, uip\_appdata, len);
+117 \textcolor{preprocessor}{    #ifdef DEBUG\_SNMP\_DECODING}
+118     debug\_snmp(\textcolor{stringliteral}{"%u bytes from ["}, len);
+119 \textcolor{preprocessor}{    #endif}
+120     uip\_debug\_ipaddr\_print(&UIP\_IP\_BUF->srcipaddr);
+121     printf(\textcolor{stringliteral}{"]:%u"}, UIP\_HTONS(UIP\_UDP\_BUF->srcport));
+122     uip\_ipaddr\_copy(&server\_conn->ripaddr, &UIP\_IP\_BUF->srcipaddr);
+123     server\_conn->rport = UIP\_UDP\_BUF->srcport;
+124     \hyperlink{structsnmp__t}{snmp\_t} snmp\_handle;
+125     \textcolor{keywordflow}{if} (\hyperlink{snmp_8h_aca484712bcdb0bbc0f065061c4a0ed20}{snmp\_decode\_message}(buf, &snmp\_handle))\{
+126 \textcolor{preprocessor}{      #ifdef DEBUG\_SNMP\_DECODING}
+127       debug\_snmp(\textcolor{stringliteral}{"New SNMP Request received!"});
+128 \textcolor{preprocessor}{      #endif}
+129       len = \hyperlink{snmp_8h_a63d8ffecf9aa0af9824de046643c140f}{snmp\_encode\_message}(&snmp\_handle, buf);
+130       uip\_udp\_packet\_send(server\_conn, buf, len);
+131       uip\_create\_unspecified(&server\_conn->ripaddr);
+132       server\_conn->rport = 0;
+133     \}
+134     \textcolor{keywordflow}{else}
+135       debug\_snmp(\textcolor{stringliteral}{"Problem on SNMP Request received!"});
+136   \}
+137 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_aca484712bcdb0bbc0f065061c4a0ed20}{\index{snmp.\+h@{snmp.\+h}!snmp\+\_\+decode\+\_\+message@{snmp\+\_\+decode\+\_\+message}}
+\index{snmp\+\_\+decode\+\_\+message@{snmp\+\_\+decode\+\_\+message}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{snmp\+\_\+decode\+\_\+message}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} snmp\+\_\+decode\+\_\+message (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{snmp\+\_\+packet, }
+\item[{{\bf snmp\+\_\+t} $\ast$}]{v}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_aca484712bcdb0bbc0f065061c4a0ed20}
+
+
+Decode S\+N\+M\+P message. 
+
+Decode a S\+N\+M\+P message v1 and format to answer request.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em snmp\+\_\+packet} & Data U\+D\+P -\/ S\+N\+M\+P to decode \\
+\hline
+\mbox{\tt in}  & {\em snmp\+\_\+handle} & Struct that will receive the S\+N\+M\+P request messsage\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success to decode S\+N\+M\+P Message \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to decode S\+N\+M\+P Message \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+111                                                                       \{
+112   uint8\_t buffer[50], aux;
+113   \textcolor{keywordtype}{size\_t} i;
+114 
+115 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+116   \textcolor{comment}{// debug\_snmp("Encoded SNMP packet:\(\backslash\)n\(\backslash\)t");}
+117   \textcolor{comment}{// for (i=0, j=0; i < *(snmp\_packet+1)+1; j++, i++)\{}
+118   \textcolor{comment}{//   if (j > 7)\{}
+119   \textcolor{comment}{//     j = 0;}
+120   \textcolor{comment}{//     printf("\(\backslash\)n\(\backslash\)t");}
+121   \textcolor{comment}{//   \}}
+122   \textcolor{comment}{//   printf("[%02x] ",*(snmp\_packet+i));}
+123   \textcolor{comment}{// \}}
+124 \textcolor{preprocessor}{  #endif}
+125 
+126   \textcolor{keywordflow}{if} (!\hyperlink{snmp_8h_a388ebedb8b344492bded4ba233fab27d}{check\_seq}(*snmp\_packet))\{
+127     debug\_snmp(\textcolor{stringliteral}{"Sequence initial of SNMP message error:%x"},*snmp\_packet);
+128     \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+129   \}
+130 
+131   \textcolor{comment}{/************************ Check the SNMP version ****************************/}
+132   \textcolor{keywordflow}{for} (i=0;i < *(snmp\_packet+3)+2; i++)
+133     buffer[i] = *(snmp\_packet+2+i);
+134   uint32\_t SNMPv = 0;
+135   \textcolor{keywordflow}{if} (!\hyperlink{snmp__asn1_8c_acb3a9652e9b960748692caef7f443384}{decode\_asn1\_integer}(buffer,&SNMPv)) \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+136 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+137   debug\_snmp(\textcolor{stringliteral}{"Version SNMP:[1] OK"});
+138 \textcolor{preprocessor}{  #endif}
+139   \textcolor{keywordflow}{if} (SNMPv != \hyperlink{snmp_8h_a1f1b7fadcf29f1de5bb406bf356c1d71}{SNMP\_VERSION\_1}) \{
+140     debug\_snmp(\textcolor{stringliteral}{"SNMP version is different from v1:%lu"},SNMPv);
+141     \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+142   \}
+143   snmp\_handle->snmp\_version = SNMPv;
+144 
+145   \textcolor{comment}{/********************** Get the community string ****************************/}
+146   \textcolor{keywordflow}{for} (i=0;i < *(snmp\_packet+6)+2; i++)
+147   snmp\_handle->community[i] = *(snmp\_packet+5+i);
+148   snmp\_handle->community[i] = \textcolor{charliteral}{'\(\backslash\)0'};
+149   aux = i;
+150 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+151   debug\_snmp(\textcolor{stringliteral}{"Community String: "});
+152   \textcolor{keywordflow}{for} (i=0; i < aux; i++)\{
+153     \textcolor{keywordflow}{if} (i<2)
+154       printf(\textcolor{stringliteral}{"[%d]"},snmp\_handle->community[i]);
+155     \textcolor{keywordflow}{else}
+156       printf(\textcolor{stringliteral}{"[%c]"},snmp\_handle->community[i]);
+157   \}
+158 \textcolor{preprocessor}{  #endif}
+159 
+160   \textcolor{comment}{/************************** Get the request ID ******************************/}
+161   aux = 5+snmp\_handle->community[1]+2+2;
+162   \textcolor{keywordflow}{for} (i=0;i < *(snmp\_packet+aux+1)+2; i++)
+163     snmp\_handle->request\_id\_c[i] = *(snmp\_packet+aux+i);
+164   snmp\_handle->request\_id\_c[i] = \textcolor{charliteral}{'\(\backslash\)0'};
+165   aux = i;
+166 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+167   debug\_snmp(\textcolor{stringliteral}{"Request ID: "});
+168   \textcolor{keywordflow}{for} (i=0; i < aux; i++)\{
+169     \textcolor{keywordflow}{if} (i<2)
+170       printf(\textcolor{stringliteral}{"[%d]"},snmp\_handle->request\_id\_c[i]);
+171     \textcolor{keywordflow}{else}
+172     printf(\textcolor{stringliteral}{"[%x]"},snmp\_handle->request\_id\_c[i]);
+173   \}
+174 \textcolor{preprocessor}{  #endif}
+175 
+176   \textcolor{comment}{/************************** Check for errors ********************************/}
+177   aux = 5+(snmp\_handle->community[1]+2)+2+(snmp\_handle->request\_id\_c[1]+2);
+178   \textcolor{keywordflow}{for} (i=0;i < 6; i++)
+179     buffer[i] = *(snmp\_packet+aux+i);
+180   buffer[i] = \textcolor{charliteral}{'\(\backslash\)0'};
+181   error\_check\_snmp(buffer);
+182 
+183   \textcolor{comment}{/**************************** Get the OID ***********************************/}
+184   aux = 5+(snmp\_handle->community[1]+2);
+185   aux += 2+(snmp\_handle->request\_id\_c[1]+2)+10;
+186   \textcolor{keywordflow}{for} (i=0;i < *(snmp\_packet+aux+1)+2; i++)
+187     snmp\_handle->oid\_encoded[i] = *(snmp\_packet+aux+i);
+188   snmp\_handle->oid\_encoded[i] = \textcolor{charliteral}{'\(\backslash\)0'};
+189   aux = i;
+190 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+191   debug\_snmp(\textcolor{stringliteral}{"OID: "});
+192   \textcolor{keywordflow}{for} (i=0; i < aux; i++)\{
+193     \textcolor{keywordflow}{if} (i <= 1)
+194       printf(\textcolor{stringliteral}{"[%d]"},snmp\_handle->oid\_encoded[i]);
+195     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 2)
+196       printf(\textcolor{stringliteral}{"[%d."},snmp\_handle->oid\_encoded[i]);
+197     \textcolor{keywordflow}{else}
+198     printf(\textcolor{stringliteral}{"%d."},snmp\_handle->oid\_encoded[i]);
+199   \}
+200   printf(\textcolor{stringliteral}{"]"});
+201 \textcolor{preprocessor}{  #endif}
+202 
+203   \textcolor{comment}{/************************** Get the PDU type ********************************/}
+204   aux = 5+(snmp\_handle->community[1]+2);
+205   snmp\_handle->request\_type  = *(snmp\_packet+aux);
+206   snmp\_handle->response\_type = ASN1\_CPX\_GET\_RESP;
+207 
+208   uint8\_t string\_value[\hyperlink{snmp_8h_a23bdc4d15d908a80e4bc06be55463ffc}{MAX\_OCTET\_STRING}];
+209   uint8\_t status\_mib2 = \hyperlink{mibii_8c_aa0bb802c0b80aaab6218e5a7753f8e28}{mib\_ii\_get\_oid}(snmp\_handle->oid\_encoded,&string\_value[0]);
+210 
+211   \textcolor{keywordflow}{switch} (snmp\_handle->request\_type) \{
+212     \textcolor{keywordflow}{case} \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE}:
+213     \textcolor{keywordflow}{break};
+214     \textcolor{keywordflow}{case} ASN1\_CPX\_GET\_REQ:
+215       aux = snmp\_handle->oid\_encoded[1]+1;
+216       \textcolor{keywordflow}{if} (snmp\_handle->oid\_encoded[aux] != 0   ||
+217           snmp\_handle->oid\_encoded[aux-3] != 1 ||
+218           snmp\_handle->oid\_encoded[aux-4] != 2 ||
+219           snmp\_handle->oid\_encoded[aux-5] != 1 ||
+220           snmp\_handle->oid\_encoded[aux-6] != 6 ||
+221           snmp\_handle->oid\_encoded[aux-7] != 0x2b)\{
+222         snmp\_handle->oid\_encoded[aux] = 1;
+223         status\_mib2 = \hyperlink{mibii_8c_aa0bb802c0b80aaab6218e5a7753f8e28}{mib\_ii\_get\_oid}(snmp\_handle->oid\_encoded,&string\_value[0]);
+224       \}
+225 \textcolor{preprocessor}{      #ifdef DEBUG\_SNMP\_DECODING}
+226       debug\_snmp(\textcolor{stringliteral}{"GET Request PDU Type"});
+227 \textcolor{preprocessor}{      #endif}
+228       \textcolor{keywordflow}{if} (!status\_mib2)\{
+229 \textcolor{preprocessor}{        #ifdef DEBUG\_SNMP\_DECODING}
+230         debug\_snmp(\textcolor{stringliteral}{"There isn't an value for that OID!"});
+231 \textcolor{preprocessor}{        #endif}
+232         snmp\_handle->value[0] = 0x05;
+233         snmp\_handle->value[1] = 0x00;
+234       \}
+235       \textcolor{keywordflow}{else} \{
+236         aux = strlen((\textcolor{keyword}{const} \textcolor{keywordtype}{char}*)string\_value);
+237         snmp\_handle->value[0] = ASN1\_PRIM\_OCT\_STR;
+238         snmp\_handle->value[1] = aux;
+239 
+240         \textcolor{keywordflow}{for} (i = 0; i < aux; i++)
+241           snmp\_handle->value[2+i] = string\_value[i];
+242         #ifdef DEBUG\_SNMP\_DECODING
+243         debug\_snmp(\textcolor{stringliteral}{"String for OID: "});
+244         \textcolor{keywordflow}{for} (i=0; i < aux+2; i++)\{
+245           \textcolor{keywordflow}{if} (i == 0)
+246             printf(\textcolor{stringliteral}{"[%x]"},snmp\_handle->value[i]);
+247           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 1)
+248             printf(\textcolor{stringliteral}{"[%d]["},snmp\_handle->value[i]);
+249           \textcolor{keywordflow}{else}
+250             printf(\textcolor{stringliteral}{"%c"},snmp\_handle->value[i]);
+251         \}
+252         printf(\textcolor{stringliteral}{"]"});
+253 \textcolor{preprocessor}{        #endif}
+254       \}
+255     \textcolor{keywordflow}{break};
+256     \textcolor{keywordflow}{case} ASN1\_CPX\_NEXT\_REQ:
+257       \textcolor{comment}{// Let's check the last byte}
+258       aux = snmp\_handle->oid\_encoded[1]+1;
+259       \textcolor{keywordflow}{if} (snmp\_handle->oid\_encoded[aux] == 0) \{
+260         \textcolor{comment}{// We need to increment the OID for the snmpwalk... requisition}
+261         \textcolor{keywordflow}{if} (snmp\_handle->oid\_encoded[aux-1] < 9) \{
+262           snmp\_handle->oid\_encoded[aux-1] = snmp\_handle->oid\_encoded[aux-1]+1;
+263         \}
+264         \textcolor{keywordflow}{else}
+265           snmp\_handle->oid\_encoded[aux] = 1; \textcolor{comment}{// Let's force not unknow value in the mib tree}
+266         status\_mib2 = \hyperlink{mibii_8c_aa0bb802c0b80aaab6218e5a7753f8e28}{mib\_ii\_get\_oid}(snmp\_handle->oid\_encoded,&string\_value[0]);
+267       \}
+268       \textcolor{keywordflow}{else}\{
+269         \textcolor{keywordflow}{if} (snmp\_handle->oid\_encoded[aux-1] == 1 &&
+270             snmp\_handle->oid\_encoded[aux-2] == 2 &&
+271             snmp\_handle->oid\_encoded[aux-3] == 1 &&
+272             snmp\_handle->oid\_encoded[aux-4] == 6 &&
+273             snmp\_handle->oid\_encoded[aux-5] == 0x2b) \{
+274           snmp\_handle->oid\_encoded[1] += 2;
+275           snmp\_handle->oid\_encoded[aux+1] = 1;
+276           snmp\_handle->oid\_encoded[aux+2] = 0;
+277           snmp\_handle->oid\_encoded[aux+3] = \textcolor{charliteral}{'\(\backslash\)0'};
+278         \}
+279         \textcolor{comment}{// We need to set to the nearest OID for the snmpwalk... requisition, in this case .1.0}
+280         status\_mib2 = \hyperlink{mibii_8c_aa0bb802c0b80aaab6218e5a7753f8e28}{mib\_ii\_get\_oid}(snmp\_handle->oid\_encoded,&string\_value[0]);
+281       \}
+282 
+283 \textcolor{preprocessor}{      #ifdef DEBUG\_SNMP\_DECODING}
+284       debug\_snmp(\textcolor{stringliteral}{"GET NEXT Request PDU Type"});
+285 \textcolor{preprocessor}{      #endif}
+286       \textcolor{keywordflow}{if} (!status\_mib2)\{
+287 \textcolor{preprocessor}{        #ifdef DEBUG\_SNMP\_DECODING}
+288         debug\_snmp(\textcolor{stringliteral}{"There isn't an value for that OID!"});
+289 \textcolor{preprocessor}{        #endif}
+290         snmp\_handle->value[0] = 0x05;
+291         snmp\_handle->value[1] = 0x00;
+292       \}
+293       \textcolor{keywordflow}{else} \{
+294         aux = strlen((\textcolor{keyword}{const} \textcolor{keywordtype}{char}*)string\_value);
+295         snmp\_handle->value[0] = ASN1\_PRIM\_OCT\_STR;
+296         snmp\_handle->value[1] = aux;
+297 
+298         \textcolor{keywordflow}{for} (i = 0; i < aux; i++)
+299           snmp\_handle->value[2+i] = string\_value[i];
+300         #ifdef DEBUG\_SNMP\_DECODING
+301         debug\_snmp(\textcolor{stringliteral}{"String for OID: "});
+302         \textcolor{keywordflow}{for} (i=0; i < aux+2; i++)\{
+303           \textcolor{keywordflow}{if} (i == 0)
+304             printf(\textcolor{stringliteral}{"[%x]"},snmp\_handle->value[i]);
+305           \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 1)
+306             printf(\textcolor{stringliteral}{"[%d]["},snmp\_handle->value[i]);
+307           \textcolor{keywordflow}{else}
+308             printf(\textcolor{stringliteral}{"%c"},snmp\_handle->value[i]);
+309         \}
+310         printf(\textcolor{stringliteral}{"]"});
+311 \textcolor{preprocessor}{        #endif}
+312       \}
+313     \textcolor{keywordflow}{break};
+314     \textcolor{keywordflow}{case} ASN1\_CPX\_GET\_RESP:
+315     \textcolor{keywordflow}{break};
+316     \textcolor{keywordflow}{case} ASN1\_CPX\_SET\_REQ:
+317     \textcolor{keywordflow}{break};
+318     \textcolor{keywordflow}{default}:
+319 \textcolor{preprocessor}{      #ifdef DEBUG\_SNMP\_DECODING}
+320       debug\_snmp(\textcolor{stringliteral}{"The PDU type is not know"});
+321 \textcolor{preprocessor}{      #endif}
+322       \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+323     \textcolor{keywordflow}{break};
+324   \}
+325 
+326 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+327   printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+328 \textcolor{preprocessor}{  #endif}
+329   \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+330 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_a63d8ffecf9aa0af9824de046643c140f}{\index{snmp.\+h@{snmp.\+h}!snmp\+\_\+encode\+\_\+message@{snmp\+\_\+encode\+\_\+message}}
+\index{snmp\+\_\+encode\+\_\+message@{snmp\+\_\+encode\+\_\+message}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{snmp\+\_\+encode\+\_\+message}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t snmp\+\_\+encode\+\_\+message (
+\begin{DoxyParamCaption}
+\item[{{\bf snmp\+\_\+t} $\ast$}]{snmp\+\_\+handle, }
+\item[{char $\ast$}]{data\+\_\+encoded}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_a63d8ffecf9aa0af9824de046643c140f}
+
+
+Encode S\+N\+M\+P message. 
+
+Encode a S\+N\+M\+P message and format to send the answer.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em snmp\+\_\+handle} & Struct that will be encoded in the S\+N\+M\+P message format \\
+\hline
+\mbox{\tt in}  & {\em data\+\_\+encoded} & Variable that'll receive the encoded S\+N\+M\+P Message\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em length} & Length of U\+D\+P packet encoded \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+332                                                                      \{
+333   uint8\_t i, aux = 0, aux2 = 0;
+334   *data\_encoded = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+335 
+336   aux2 = 0;
+337   aux2 += 3+(snmp\_handle->community[1]+2)+12;
+338   aux2 += (snmp\_handle->request\_id\_c[1]+2);
+339   aux2 += (snmp\_handle->oid\_encoded[1]+2);
+340   aux2 += (snmp\_handle->value[1]+2);
+341   *(data\_encoded+1) = aux2;
+342 
+343   *(data\_encoded+2) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+344   *(data\_encoded+3) = 0x01;
+345   \textcolor{keywordflow}{switch} (snmp\_handle->snmp\_version) \{
+346     \textcolor{keywordflow}{case} \hyperlink{snmp_8h_a1f1b7fadcf29f1de5bb406bf356c1d71}{SNMP\_VERSION\_1}:
+347       *(data\_encoded+4) = \hyperlink{snmp_8h_a1f1b7fadcf29f1de5bb406bf356c1d71}{SNMP\_VERSION\_1};
+348     \textcolor{keywordflow}{break};
+349     \textcolor{keywordflow}{case} \hyperlink{snmp_8h_a0599530b4b198b2c7fa49a274f3f3878}{SNMP\_VERSION\_2C}:
+350       *(data\_encoded+4) = \hyperlink{snmp_8h_a0599530b4b198b2c7fa49a274f3f3878}{SNMP\_VERSION\_2C};
+351     \textcolor{keywordflow}{break};
+352     \textcolor{keywordflow}{case} \hyperlink{snmp_8h_aa0b283beac3c7da5c28058f52a817c0c}{SNMP\_VERSION\_3}:
+353       *(data\_encoded+4) = \hyperlink{snmp_8h_aa0b283beac3c7da5c28058f52a817c0c}{SNMP\_VERSION\_3};
+354     \textcolor{keywordflow}{break};
+355     \textcolor{keywordflow}{default}:
+356       debug\_snmp(\textcolor{stringliteral}{"Version SNMP not supported"});
+357       \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+358     \textcolor{keywordflow}{break};
+359   \}
+360 
+361   \textcolor{keywordflow}{for} ( i = 0; i < snmp\_handle->community[1]+2; i++)
+362     *(data\_encoded+5+i) = snmp\_handle->community[i];
+363 
+364   aux = 5+snmp\_handle->community[1]+2;
+365   *(data\_encoded+aux) = ASN1\_CPX\_GET\_RESP;
+366 
+367   aux2 = 0;
+368   aux2 += (snmp\_handle->request\_id\_c[1]+2)+10;
+369   aux2 += (snmp\_handle->oid\_encoded[1]+2);
+370   aux2 += (snmp\_handle->value[1]+2);
+371   *(data\_encoded+aux+1) = aux2;
+372 
+373   aux += 2;
+374   \textcolor{keywordflow}{for} ( i = 0; i < snmp\_handle->request\_id\_c[1]+2; i++)
+375     *(data\_encoded+aux+i) = snmp\_handle->request\_id\_c[i];
+376 
+377   aux += snmp\_handle->request\_id\_c[1]+2;
+378 
+379   \textcolor{keywordflow}{if} (snmp\_handle->value[0] == ASN1\_PRIM\_NULL) \{
+380     *(data\_encoded+aux) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+381     aux++;
+382     *(data\_encoded+aux) = 0x01;
+383     aux++;
+384     *(data\_encoded+aux) = ERROR\_REQ\_OID\_NOT\_FOUND;
+385     aux++;
+386     *(data\_encoded+aux) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+387     aux++;
+388     *(data\_encoded+aux) = 0x01;
+389     aux++;
+390     *(data\_encoded+aux) = ERROR\_RESP\_TOO\_LARGE;
+391     aux++;
+392     *(data\_encoded+aux) = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+393     aux++;
+394     aux2 = 2;
+395     aux2 += (snmp\_handle->oid\_encoded[1]+2);
+396     aux2 += (snmp\_handle->value[1]+2);
+397     *(data\_encoded+aux) = aux2;
+398     aux++;
+399     *(data\_encoded+aux) = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+400     aux++;
+401     aux2 = 0;
+402     aux2 += (snmp\_handle->oid\_encoded[1]+2);
+403     aux2 += (snmp\_handle->value[1]+2);
+404     *(data\_encoded+aux) = aux2;
+405     aux++;
+406     \textcolor{keywordflow}{for} ( i = 0; i < snmp\_handle->oid\_encoded[1]+2; i++)
+407       *(data\_encoded+aux+i) = snmp\_handle->oid\_encoded[i];
+408     aux += snmp\_handle->oid\_encoded[1]+2;
+409     *(data\_encoded+aux) = ASN1\_PRIM\_NULL;
+410     aux++;
+411     *(data\_encoded+aux) = 0x00;
+412   \}
+413   \textcolor{keywordflow}{else}\{
+414     *(data\_encoded+aux) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+415     aux++;
+416     *(data\_encoded+aux) = 0x01;
+417     aux++;
+418     *(data\_encoded+aux) = \hyperlink{snmp_8h_abe670cc5ceed3fad3be682fc0c1bb62e}{ERROR\_NONE};
+419     aux++;
+420     *(data\_encoded+aux) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+421     aux++;
+422     *(data\_encoded+aux) = 0x01;
+423     aux++;
+424     *(data\_encoded+aux) = \hyperlink{snmp_8h_abe670cc5ceed3fad3be682fc0c1bb62e}{ERROR\_NONE};
+425     aux++;
+426     *(data\_encoded+aux) = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+427     aux++;
+428     aux2 = 2;
+429     aux2 += (snmp\_handle->oid\_encoded[1]+2);
+430     aux2 += (snmp\_handle->value[1]+2);
+431     *(data\_encoded+aux) = aux2;
+432     aux++;
+433     *(data\_encoded+aux) = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+434     aux++;
+435     aux2 = 0;
+436     aux2 += (snmp\_handle->oid\_encoded[1]+2);
+437     aux2 += (snmp\_handle->value[1]+2);
+438     *(data\_encoded+aux) = aux2;
+439     aux++;
+440     \textcolor{keywordflow}{for} ( i = 0; i < snmp\_handle->oid\_encoded[1]+2; i++)
+441       *(data\_encoded+aux+i) = snmp\_handle->oid\_encoded[i];
+442     aux += snmp\_handle->oid\_encoded[1]+2;
+443     \textcolor{keywordflow}{for} ( i = 0; i < snmp\_handle->value[1]+2; i++)
+444       *(data\_encoded+aux+i) = snmp\_handle->value[i];
+445   \}
+446 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+447   debug\_snmp(\textcolor{stringliteral}{"Len of encoded packet: %d"},*(data\_encoded+1)+1);
+448 \textcolor{preprocessor}{  #endif}
+449   \textcolor{keywordflow}{return} *(data\_encoded+1)+2;
+450 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_af72c0873252d8160ff31eae19d05a5a1}{\index{snmp.\+h@{snmp.\+h}!snmp\+\_\+encode\+\_\+trap@{snmp\+\_\+encode\+\_\+trap}}
+\index{snmp\+\_\+encode\+\_\+trap@{snmp\+\_\+encode\+\_\+trap}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{snmp\+\_\+encode\+\_\+trap}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t snmp\+\_\+encode\+\_\+trap (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{trap\+\_\+pdu, }
+\item[{uint8\+\_\+t}]{type\+\_\+trap, }
+\item[{uint8\+\_\+t}]{heartbeat}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_af72c0873252d8160ff31eae19d05a5a1}
+
+
+Encode a S\+N\+M\+Pv1 Trap message. 
+
+Encode a S\+N\+M\+Pv1 Trap type message with A\+W\+G\+E\+S P\+E\+N and heartbeat value
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em trap\+\_\+pdu} & Variable that'll receive the packet encoded \\
+\hline
+\mbox{\tt in}  & {\em type\+\_\+trap} & Type of trap that'll send (\char`\"{}cold\+Start\char`\"{},\char`\"{}\+Warm\+Start\char`\"{}...) \\
+\hline
+\mbox{\tt in}  & {\em heartbeat} & Heartbeat value of the node\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em len} & Length of encoded packet \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+483                                                                                   \{
+484   \textcolor{comment}{// uint8\_t i;//, aux = 0, aux2 = 0;}
+485   uint16\_t length\_trap = 0, aux = 0;
+486 
+487   *trap\_pdu = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+488   *(trap\_pdu+1) = 52+4;
+489 
+490   \textcolor{comment}{// SNMP Version}
+491   *(trap\_pdu+2) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+492   *(trap\_pdu+3) = 0x01;
+493   *(trap\_pdu+4) = \hyperlink{snmp_8h_a1f1b7fadcf29f1de5bb406bf356c1d71}{SNMP\_VERSION\_1};
+494 
+495   \textcolor{comment}{// Comunity String - always "public"}
+496   *(trap\_pdu+5) = ASN1\_PRIM\_OCT\_STR;
+497   *(trap\_pdu+6) = 0x06;
+498   *(trap\_pdu+7) = 0x70;
+499   *(trap\_pdu+8) = 0x75;
+500   *(trap\_pdu+9) = 0x62;
+501   *(trap\_pdu+10) = 0x6c;
+502   *(trap\_pdu+11) = 0x69;
+503   *(trap\_pdu+12) = 0x63;
+504 
+505   \textcolor{comment}{// Type of PDU - Trap(0xa4)}
+506   *(trap\_pdu+13) = ASN1\_CPX\_TRAP;
+507   aux = 14;
+508   *(trap\_pdu+aux) = 39+4;
+509 
+510   \textcolor{comment}{// Enterprise OID - 0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x04, 0x01, 0x02, 0x15}
+511   aux++;
+512   *(trap\_pdu+aux) = ASN1\_PRIM\_OID;
+513   aux++;
+514   *(trap\_pdu+aux) = 0x09;
+515   aux++;
+516   *(trap\_pdu+aux) = 0x2b;
+517   aux++;
+518   *(trap\_pdu+aux) = 0x06;
+519   aux++;
+520   *(trap\_pdu+aux) = 0x01;
+521   aux++;
+522   *(trap\_pdu+aux) = 0x04;
+523   aux++;
+524   *(trap\_pdu+aux) = 0x01;
+525   aux++;
+526   *(trap\_pdu+aux) = 0x04;
+527   aux++;
+528   *(trap\_pdu+aux) = 0x01;
+529   aux++;
+530   *(trap\_pdu+aux) = 0x02;
+531   aux++;
+532   *(trap\_pdu+aux) = 0x15;
+533 
+534   \textcolor{comment}{// IP Address of the agent, always 0.0.0.0 if we cannot send IPv6 in SNMPv1, in SNMPv2 the trap calls
+       inform}
+535   aux++;
+536   *(trap\_pdu+aux) = ASN1\_PRIM\_IP\_ADDRESS;
+537   aux++;
+538   *(trap\_pdu+aux) = 4;
+539   aux++;
+540   *(trap\_pdu+aux) = 0;
+541   aux++;
+542   *(trap\_pdu+aux) = 0;
+543   aux++;
+544   *(trap\_pdu+aux) = 0;
+545   aux++;
+546   *(trap\_pdu+aux) = 0;
+547 
+548   \textcolor{comment}{// Generic Trap type}
+549   aux++;
+550   *(trap\_pdu+aux) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+551   aux++;
+552   *(trap\_pdu+aux) = 0x01;
+553   aux++;
+554   *(trap\_pdu+aux) = type\_trap;
+555 
+556   \textcolor{comment}{// Specific Trap Number - we don't use this}
+557   aux++;
+558   *(trap\_pdu+aux) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+559   aux++;
+560   *(trap\_pdu+aux) = 0x01;
+561   aux++;
+562   *(trap\_pdu+aux) = 0x00;
+563 
+564   \textcolor{comment}{// Timestamp - we don't use this - default(0)}
+565   aux++;
+566   *(trap\_pdu+aux) = ASN1\_PRIM\_TIMESTAMP;
+567   aux++;
+568   *(trap\_pdu+aux) = 0x01;
+569   aux++;
+570   *(trap\_pdu+aux) = 0x00;
+571 
+572   \textcolor{comment}{// VarBind List - we don't use this - default(0)}
+573   aux++;
+574   *(trap\_pdu+aux) = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+575   aux++;
+576   *(trap\_pdu+aux) = 3+8+2+2;
+577 
+578   \textcolor{comment}{// VarBind List - we don't use this - default(0)}
+579   aux++;
+580   *(trap\_pdu+aux) = \hyperlink{snmp_8h_aa4d923102cb2314e31cbf833482e9090}{ASN1\_CPX\_SEQUENCE};
+581   aux++;
+582   *(trap\_pdu+aux) = 3+8+2;
+583 
+584   \textcolor{comment}{// OID}
+585   aux++;
+586   *(trap\_pdu+aux) = ASN1\_PRIM\_OID;
+587   aux++;
+588   *(trap\_pdu+aux) = 0x08;
+589   aux++;
+590   *(trap\_pdu+aux) = 0x2b;
+591   aux++;
+592   *(trap\_pdu+aux) = 0x06;
+593   aux++;
+594   *(trap\_pdu+aux) = 0x01;
+595   aux++;
+596   *(trap\_pdu+aux) = 0x02;
+597   aux++;
+598   *(trap\_pdu+aux) = 0x01;
+599   aux++;
+600   *(trap\_pdu+aux) = 0x02;
+601   aux++;
+602   *(trap\_pdu+aux) = 0x01;
+603   aux++;
+604   *(trap\_pdu+aux) = 0x00;
+605 
+606   \textcolor{comment}{// Value - Heartbeat}
+607   aux++;
+608   *(trap\_pdu+aux) = \hyperlink{snmp_8h_a45fec4a033960bca8c60e2f40d1d0e04}{ASN1\_PRIM\_INTEGER};
+609   aux++;
+610   *(trap\_pdu+aux) = 0x01;
+611   aux++;
+612   *(trap\_pdu+aux) = heartbeat;
+613 
+614   length\_trap = 54+4;
+615   \textcolor{keywordflow}{return} length\_trap;
+616 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_a4d88f2fc7655280384131d543e0d83e5}{\index{snmp.\+h@{snmp.\+h}!snmp\+\_\+init@{snmp\+\_\+init}}
+\index{snmp\+\_\+init@{snmp\+\_\+init}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{snmp\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void snmp\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_a4d88f2fc7655280384131d543e0d83e5}
+
+
+S\+N\+M\+P Init function. 
+
+Init S\+N\+M\+P A\+G\+E\+N\+T connection
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em void} & No argument to pass\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em void} & Not return argument \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+139                     \{
+140   process\_start(&snmp\_main, NULL);
+141 \}
+\end{DoxyCode}
+\hypertarget{snmp_8h_a732192a9e72d3182d395c47e2cd9c79e}{\index{snmp.\+h@{snmp.\+h}!update\+\_\+snmp\+\_\+mib@{update\+\_\+snmp\+\_\+mib}}
+\index{update\+\_\+snmp\+\_\+mib@{update\+\_\+snmp\+\_\+mib}!snmp.\+h@{snmp.\+h}}
+\subsubsection[{update\+\_\+snmp\+\_\+mib}]{\setlength{\rightskip}{0pt plus 5cm}void update\+\_\+snmp\+\_\+mib (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{snmp_8h_a732192a9e72d3182d395c47e2cd9c79e}
+
+
+Update S\+N\+M\+P O\+I\+Ds. 
+
+Update the O\+I\+Ds of values from network
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em void} & No argument to pass\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em void} & Not return argument \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+175                           \{
+176   heartbeat\_value++;
+177 
+178   uint8\_t oid\_tree[2];
+179   \textcolor{keywordtype}{char} dado[MAX\_STRINGS\_LENGTH];
+180 
+181   \textcolor{comment}{/******************************* Hearbeat ***********************************/}
+182   oid\_tree[0] = 4;
+183   oid\_tree[1] = 2;
+184   sprintf(dado,\textcolor{stringliteral}{"heartbeat\_%d"},heartbeat\_value);
+185   debug\_os(\textcolor{stringliteral}{"Dado de update: %s"},dado);
+186   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+187 
+188   \textcolor{comment}{/******************************** RSSI **************************************/}
+189   oid\_tree[0] = 4;
+190   oid\_tree[1] = 3;
+191   \textcolor{keywordtype}{int}  def\_rt\_rssi = sicslowpan\_get\_last\_rssi();
+192   sprintf(dado,\textcolor{stringliteral}{"RSSI:%d"},def\_rt\_rssi);
+193   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+194 
+195   \textcolor{comment}{/*************************** Prefered IPv6 **********************************/}
+196   \textcolor{keywordtype}{char} def\_rt\_str[64];
+197   oid\_tree[0] = 4;
+198   oid\_tree[1] = 4;
+199   memset(def\_rt\_str, 0, \textcolor{keyword}{sizeof}(def\_rt\_str));
+200   \hyperlink{snmp_8c_a523ab718dec1a794b3f8c8752f1e2ae3}{ipaddr\_sprintf}(def\_rt\_str, \textcolor{keyword}{sizeof}(def\_rt\_str), uip\_ds6\_defrt\_choose());
+201   sprintf(dado,\textcolor{stringliteral}{"Pref. route:[%s]"},def\_rt\_str);
+202   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+203 
+204   \textcolor{comment}{/********************* Rank RPL e Parent Link Metric ************************/}
+205   uint16\_t rank\_rpl = 0, link\_metric\_rpl = 0;
+206   rpl\_parent\_t *p = nbr\_table\_head(rpl\_parents);
+207   rpl\_instance\_t *default\_instance;
+208   default\_instance = rpl\_get\_default\_instance();
+209   \textcolor{keywordflow}{while}(p != NULL)\{
+210     \textcolor{keywordflow}{if} (p == default\_instance->current\_dag->preferred\_parent) \{
+211       rank\_rpl = p->rank;
+212       link\_metric\_rpl = rpl\_get\_parent\_link\_metric(p);
+213       \textcolor{keywordflow}{break};
+214     \}
+215     \textcolor{keywordflow}{else}
+216     p = nbr\_table\_next(rpl\_parents, p);
+217   \}
+218   oid\_tree[0] = 4;
+219   oid\_tree[1] = 5;
+220   sprintf(dado,\textcolor{stringliteral}{"Rank RPL:%5u"},rank\_rpl);
+221   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+222 
+223   oid\_tree[0] = 4;
+224   oid\_tree[1] = 6;
+225   sprintf(dado,\textcolor{stringliteral}{"Parent Link Metric:%5u"},link\_metric\_rpl);
+226   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+227 
+228   \textcolor{comment}{/*********************** Global and Local IPv6 Address **********************/}
+229   \textcolor{keywordtype}{int} i;
+230   uint8\_t state;
+231   uip\_ipaddr\_t global\_ipv6\_address\_node,
+232                local\_ipv6\_address\_node;
+233 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+234   debug\_snmp(\textcolor{stringliteral}{"Client IPv6 addresses: "});
+235 \textcolor{preprocessor}{  #endif}
+236   \textcolor{keywordflow}{for}(i = 0; i < UIP\_DS6\_ADDR\_NB; i++) \{
+237     state = uip\_ds6\_if.addr\_list[i].state;
+238     \textcolor{keywordflow}{if}(uip\_ds6\_if.addr\_list[i].isused &&
+239       (state == ADDR\_TENTATIVE || state == ADDR\_PREFERRED)) \{
+240       local\_ipv6\_address\_node = uip\_ds6\_if.addr\_list[i].ipaddr;
+241       \textcolor{keywordflow}{if} (i == 1)
+242         global\_ipv6\_address\_node = uip\_ds6\_if.addr\_list[i].ipaddr;
+243       \textcolor{keywordflow}{else}
+244         local\_ipv6\_address\_node = uip\_ds6\_if.addr\_list[i].ipaddr;
+245 \textcolor{preprocessor}{      #ifdef DEBUG\_SNMP\_DECODING}
+246       printf6addr(&uip\_ds6\_if.addr\_list[i].ipaddr);
+247 \textcolor{preprocessor}{      #endif}
+248       \textcolor{comment}{/* hack to make address "final" */}
+249       \textcolor{keywordflow}{if} (state == ADDR\_TENTATIVE)
+250         uip\_ds6\_if.addr\_list[i].state = ADDR\_PREFERRED;
+251     \}
+252   \}
+253 
+254   print\_ipv6\_addr(&global\_ipv6\_address\_node,&global\_ipv6\_char[0]);
+255   print\_ipv6\_addr(&local\_ipv6\_address\_node,&local\_ipv6\_char[0]);
+256 
+257   oid\_tree[0] = 4;
+258   oid\_tree[1] = 7;
+259   sprintf(dado,\textcolor{stringliteral}{"Local:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"}
+260                ,local\_ipv6\_char[0]
+261                ,local\_ipv6\_char[1]
+262                ,local\_ipv6\_char[8]
+263                ,local\_ipv6\_char[9]
+264                ,local\_ipv6\_char[10]
+265                ,local\_ipv6\_char[11]
+266                ,local\_ipv6\_char[12]
+267                ,local\_ipv6\_char[13]
+268                ,local\_ipv6\_char[14]
+269                ,local\_ipv6\_char[15]);
+270   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+271   oid\_tree[0] = 4;
+272   oid\_tree[1] = 8;
+273   sprintf(dado,\textcolor{stringliteral}{"Global:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"}
+274                ,global\_ipv6\_char[0]
+275                ,global\_ipv6\_char[1]
+276                ,global\_ipv6\_char[8]
+277                ,global\_ipv6\_char[9]
+278                ,global\_ipv6\_char[10]
+279                ,global\_ipv6\_char[11]
+280                ,global\_ipv6\_char[12]
+281                ,global\_ipv6\_char[13]
+282                ,global\_ipv6\_char[14]
+283                ,global\_ipv6\_char[15]);
+284   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+285 
+286 \}
+\end{DoxyCode}

@@ -1,0 +1,37 @@
+{
+	"name": "jquery-domchange",
+	"title": "jQuery DOM Change",
+	"description": "Simple jQuery plugin to add support for DOM change events.",
+	"keywords": [
+		"jquery",
+		"event",
+		"dom",
+		"change"
+	],
+	"version": "0.2.1",
+	"author": {
+		"name": "Colby Rogness",
+		"email": "colbyrogness@gmail.com",
+		"url": "https://github.com/colbin8r"
+	},
+	"maintainers": [
+		{
+			"name": "Colby Rogness",
+			"email": "colbyrogness@gmail.com",
+			"url": "https://github.com/colbin8r"
+		}
+	],
+	"licenses": [
+		{
+			"type": "GNU GPL 2.0",
+			"url": "http://zenorocha.mit-license.org/"
+		}
+	],
+	"bugs": "https://github.com/colbin8r/jquery-domchange/issues",
+	"homepage": "http://jqueryboilerplate.com",
+	"docs": "https://github.com/colbin8r/jquery-domchange#readme",
+	"download": "https://github.com/colbin8r/jquery-domchange/archive/master.zip",
+	"dependencies": {
+		"jquery": ">=1.4"
+	}
+}

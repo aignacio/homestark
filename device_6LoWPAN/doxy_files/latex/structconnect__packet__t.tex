@@ -1,0 +1,42 @@
+\hypertarget{structconnect__packet__t}{\section{Referência à estrutura connect\+\_\+packet\+\_\+t}
+\label{structconnect__packet__t}\index{connect\+\_\+packet\+\_\+t@{connect\+\_\+packet\+\_\+t}}
+}
+
+
+Estrutura de pacotes M\+Q\+T\+T-\/\+S\+N do tipo C\+O\+N\+N\+E\+C\+T.  
+
+
+
+
+{\ttfamily \#include $<$sabado\+\_\+list\+\_\+old.\+h$>$}
+
+\subsection*{Campos de Dados}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{uint8\+\_\+t \hyperlink{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{length}}\label{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}
+
+\begin{DoxyCompactList}\small\item\em Comprimento total do pacote M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}{uint8\+\_\+t \hyperlink{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}{type}}\label{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}
+
+\begin{DoxyCompactList}\small\item\em Descreve o tipo de mensagem que será enviado ao broker. \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_gab6b306ef981f5e21bb41ea2c2dbe8cd9}{uint8\+\_\+t \hyperlink{group__Pacotes_gab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags}}\label{group__Pacotes_gab6b306ef981f5e21bb41ea2c2dbe8cd9}
+
+\begin{DoxyCompactList}\small\item\em Contém os parâmetros de flag que serão enviados como (D\+U\+P,Qo\+S,Retain,Will, Clean\+Session, Topic\+Type) \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_gac600161f386567cf3ab274f4afbd5981}{uint8\+\_\+t \hyperlink{group__Pacotes_gac600161f386567cf3ab274f4afbd5981}{protocol\+\_\+id}}\label{group__Pacotes_gac600161f386567cf3ab274f4afbd5981}
+
+\begin{DoxyCompactList}\small\item\em Presente somente no C\+O\+N\+N\+E\+C\+T indicando versão do protocolo e o nome. \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_ga71f530f1f32dbca56a6af8a5fbbfbe49}{uint16\+\_\+t \hyperlink{group__Pacotes_ga71f530f1f32dbca56a6af8a5fbbfbe49}{duration}}\label{group__Pacotes_ga71f530f1f32dbca56a6af8a5fbbfbe49}
+
+\begin{DoxyCompactList}\small\item\em Indica a duração de um período em segundos podendo ser de até 18 Horas. \end{DoxyCompactList}\item 
+\hypertarget{structconnect__packet__t_a4616f81d6902f21aa47ea49dd3d5fdce}{char {\bfseries client\+\_\+id} \mbox{[}23\mbox{]}}\label{structconnect__packet__t_a4616f81d6902f21aa47ea49dd3d5fdce}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Estrutura de pacotes M\+Q\+T\+T-\/\+S\+N do tipo C\+O\+N\+N\+E\+C\+T. 
+
+A documentação para esta estrutura foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+aux\+\_\+tools/\hyperlink{sabado__list__old_8h}{sabado\+\_\+list\+\_\+old.\+h}\item 
+\hyperlink{mqtt__sn_8h}{mqtt\+\_\+sn.\+h}\end{DoxyCompactItemize}

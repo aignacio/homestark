@@ -1,0 +1,653 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xa71926d4, pid=25870, tid=2803256128
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_60-b19) (build 1.7.0_60-b19)
+# Java VM: Java HotSpot(TM) Server VM (24.60-b09 mixed mode linux-x86 )
+# Problematic frame:
+# C  0xa71926d4
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread is native thread
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0xa71926d4
+
+Registers:
+EAX=0x00000000, EBX=0xa71a3000, ECX=0x00000000, EDX=0x00000001
+ESP=0xa7164330, EBP=0xa7164428, ESI=0xa92750e0, EDI=0x00000000
+EIP=0xa71926d4, EFLAGS=0x00010217, CR2=0xa71926d4
+
+Top of Stack: (sp=0xa7164330)
+0xa7164330:   a92750e0 a71926c6 a71a3000 a7192724
+0xa7164340:   a92750e0 00000000 00000000 00000000
+0xa7164350:   00000000 f7767000 a7164b40 f7754efb
+0xa7164360:   a92750c8 a7164b40 a7164b40 a7164b40
+0xa7164370:   a7164390 00000000 00000000 00000000
+0xa7164380:   00000000 00000000 00000000 00000000
+0xa7164390:   f7767000 a7164b40 003d0f00 a7164428
+0xa71643a0:   3be6c3f7 fdfdb357 00000000 00000000 
+
+Instructions: (pc=0xa71926d4)
+0xa71926b4:   
+[error occurred during error reporting (printing registers, top of stack, instructions near pc), id 0xb]
+
+Register to memory mapping:
+
+EAX=0x00000000 is an unknown value
+EBX=0xa71a3000 is an unknown value
+ECX=0x00000000 is an unknown value
+EDX=0x00000001 is an unknown value
+ESP=0xa7164330 is an unknown value
+EBP=0xa7164428 is an unknown value
+ESI=0xa92750e0 is an unknown value
+EDI=0x00000000 is an unknown value
+
+
+Stack: [0xa6964000,0xa7165000],  sp=0xa7164330,  free space=8192k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  0xa71926d4
+
+
+---------------  P R O C E S S  ---------------
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 19456K, used 6514K [0xddfc0000, 0xe05c0000, 0xf3540000)
+  eden space 16896K, 23% used [0xddfc0000,0xde39dba0,0xdf040000)
+  from space 2560K, 99% used [0xdf040000,0xdf2becf8,0xdf2c0000)
+  to   space 2560K, 0% used [0xe0340000,0xe0340000,0xe05c0000)
+ ParOldGen       total 43520K, used 993K [0xb3540000, 0xb5fc0000, 0xddfc0000)
+  object space 43520K, 2% used [0xb3540000,0xb36387d8,0xb5fc0000)
+ PSPermGen       total 16384K, used 6474K [0xaf540000, 0xb0540000, 0xb3540000)
+  object space 16384K, 39% used [0xaf540000,0xafb92a20,0xb0540000)
+
+Card table byte_map: [0xaf31f000,0xaf540000] byte_map_base: 0xaeda4600
+
+Polling page: 0xf7784000
+
+Code Cache  [0xf3600000, 0xf3840000, 0xf6600000)
+ total_blobs=225 nmethods=80 adapters=98 free_code_cache=48681Kb largest_free_block=49825280
+
+Compilation events (10 events):
+Event: 1,435 Thread 0xac198c00 nmethod 76 0xf3670c48 code [0xf3670d40, 0xf3670df0]
+Event: 1,435 Thread 0xac198c00   77             sun.misc.ProxyGenerator$ConstantPool$IndirectEntry::<init> (21 bytes)
+Event: 1,435 Thread 0xac198c00 nmethod 77 0xf366db48 code [0xf366dc20, 0xf366dc70]
+Event: 1,435 Thread 0xac198c00   78             java.lang.reflect.Method::getName (5 bytes)
+Event: 1,435 Thread 0xac198c00 nmethod 78 0xf3672488 code [0xf3672560, 0xf36725b0]
+Event: 1,435 Thread 0xac198c00   79             java.util.HashMap$Entry::<init> (26 bytes)
+Event: 1,436 Thread 0xac198c00 nmethod 79 0xf3672608 code [0xf36726e0, 0xf3672750]
+Event: 1,436 Thread 0xac198c00   80             sun.misc.ProxyGenerator$ConstantPool::getClass (21 bytes)
+Event: 1,436 Thread 0xac196c00 nmethod 69 0xf3678908 code [0xf3678b20, 0xf367986c]
+Event: 1,437 Thread 0xac198c00 nmethod 80 0xf3672188 code [0xf36722a0, 0xf3672384]
+
+GC Heap History (2 events):
+Event: 1,215 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 19456K, used 16896K [0xddfc0000, 0xdf540000, 0xf3540000)
+  eden space 16896K, 100% used [0xddfc0000,0xdf040000,0xdf040000)
+  from space 2560K, 0% used [0xdf2c0000,0xdf2c0000,0xdf540000)
+  to   space 2560K, 0% used [0xdf040000,0xdf040000,0xdf2c0000)
+ ParOldGen       total 43520K, used 0K [0xb3540000, 0xb5fc0000, 0xddfc0000)
+  object space 43520K, 0% used [0xb3540000,0xb3540000,0xb5fc0000)
+ PSPermGen       total 16384K, used 5380K [0xaf540000, 0xb0540000, 0xb3540000)
+  object space 16384K, 32% used [0xaf540000,0xafa81018,0xb0540000)
+Event: 1,241 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 19456K, used 2555K [0xddfc0000, 0xe05c0000, 0xf3540000)
+  eden space 16896K, 0% used [0xddfc0000,0xddfc0000,0xdf040000)
+  from space 2560K, 99% used [0xdf040000,0xdf2becf8,0xdf2c0000)
+  to   space 2560K, 0% used [0xe0340000,0xe0340000,0xe05c0000)
+ ParOldGen       total 43520K, used 993K [0xb3540000, 0xb5fc0000, 0xddfc0000)
+  object space 43520K, 2% used [0xb3540000,0xb36387d8,0xb5fc0000)
+ PSPermGen       total 16384K, used 5380K [0xaf540000, 0xb0540000, 0xb3540000)
+  object space 16384K, 32% used [0xaf540000,0xafa81018,0xb0540000)
+}
+
+Deoptimization events (9 events):
+Event: 1,041 Thread 0xa9239000 Uncommon trap: reason=class_check action=maybe_recompile pc=0xf364c544 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 1,092 Thread 0xa9239000 Uncommon trap: reason=class_check action=maybe_recompile pc=0xf364c544 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 1,092 Thread 0xa9239000 Uncommon trap: reason=class_check action=maybe_recompile pc=0xf364c544 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 1,092 Thread 0xa9239000 Uncommon trap: reason=class_check action=maybe_recompile pc=0xf364c544 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 1,311 Thread 0xf6607400 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0xf366fdfc method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 137
+Event: 1,312 Thread 0xf6607400 Uncommon trap: reason=null_check action=make_not_entrant pc=0xf36652c0 method=java.lang.String.equals(Ljava/lang/Object;)Z @ 8
+Event: 1,321 Thread 0xf6607400 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0xf366fdfc method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 137
+Event: 1,329 Thread 0xf6607400 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0xf366fdfc method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 137
+Event: 1,347 Thread 0xf6607400 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0xf366fdfc method=java.util.HashMap.put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; @ 137
+
+Internal exceptions (10 events):
+Event: 1,408 Thread 0xf6607400 Threw 0xde3022f0 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,408 Thread 0xf6607400 Threw 0xde304738 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,408 Thread 0xf6607400 Threw 0xde306b90 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,408 Thread 0xf6607400 Threw 0xde309ba8 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,409 Thread 0xf6607400 Threw 0xde30c298 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,435 Thread 0xf6607400 Threw 0xde3658a8 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,436 Thread 0xf6607400 Threw 0xde36d2c0 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,437 Thread 0xf6607400 Threw 0xde3707f8 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,437 Thread 0xf6607400 Threw 0xde3759e8 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 1,438 Thread 0xf6607400 Threw 0xde378318 at /HUDSON/workspace/7u-2-build-linux-i586/jdk7u60/1081/hotspot/src/share/vm/prims/jvm.cpp:1244
+
+Events (10 events):
+Event: 1,435 loading class 0x09eae5a0
+Event: 1,435 loading class 0x09eae5a0 done
+Event: 1,436 loading class 0x09eae7e8
+Event: 1,436 loading class 0x09eae7e8 done
+Event: 1,437 loading class 0x09e970c8
+Event: 1,437 loading class 0x09e970c8 done
+Event: 1,437 loading class 0xa9280030
+Event: 1,437 loading class 0xa9280030 done
+Event: 1,438 loading class 0xa9280070
+Event: 1,438 loading class 0xa9280070 done
+
+
+Dynamic libraries:
+08048000-08049000 r-xp 00000000 08:02 9179185                            /opt/ti/uniflash_3.4/eclipse/jre/bin/java
+08049000-0804a000 rw-p 00000000 08:02 9179185                            /opt/ti/uniflash_3.4/eclipse/jre/bin/java
+09e50000-09ed4000 rw-p 00000000 00:00 0                                  [heap]
+a693e000-a6962000 r-xp 00000000 08:02 9450551                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libSystem_xmtr.so
+a6962000-a6963000 r--p 00023000 08:02 9450551                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libSystem_xmtr.so
+a6963000-a6964000 rw-p 00024000 08:02 9450551                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libSystem_xmtr.so
+a6964000-a6965000 ---p 00000000 00:00 0 
+a6965000-a7165000 rw-p 00000000 00:00 0                                  [stack:25916]
+a71ce000-a7284000 r-xp 00000000 08:02 9450609                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libTraceOperationServer.so
+a7284000-a7289000 r--p 000b5000 08:02 9450609                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libTraceOperationServer.so
+a7289000-a728b000 rw-p 000ba000 08:02 9450609                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libTraceOperationServer.so
+a728b000-a72d2000 r-xp 00000000 08:02 9450541                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libAETPropertyHelper.so
+a72d2000-a72d5000 r--p 00047000 08:02 9450541                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libAETPropertyHelper.so
+a72d5000-a72d6000 rw-p 0004a000 08:02 9450541                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libAETPropertyHelper.so
+a72d6000-a72d7000 ---p 00000000 00:00 0 
+a72d7000-a7ad7000 rw-p 00000000 00:00 0                                  [stack:25915]
+a7ad7000-a7b01000 r-xp 00000000 08:02 9450519                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsicicle.so
+a7b01000-a7b02000 ---p 0002a000 08:02 9450519                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsicicle.so
+a7b02000-a7b07000 r--p 0002a000 08:02 9450519                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsicicle.so
+a7b07000-a7b08000 rw-p 0002f000 08:02 9450519                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsicicle.so
+a7b08000-a7b38000 r-xp 00000000 08:02 9450522                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsroute.so
+a7b38000-a7b3c000 r--p 0002f000 08:02 9450522                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsroute.so
+a7b3c000-a7b3d000 rw-p 00033000 08:02 9450522                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsroute.so
+a7b3d000-a7d3e000 rw-s 00000000 00:11 8570072                            /dev/shm/JTI-765a6438
+a7d3e000-a7d76000 r-xp 00000000 08:02 9450523                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdstrove.so
+a7d76000-a7d7a000 r--p 00037000 08:02 9450523                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdstrove.so
+a7d7a000-a7d7b000 rw-p 0003b000 08:02 9450523                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdstrove.so
+a7d7b000-a7d7e000 ---p 00000000 00:00 0 
+a7d7e000-a7dcc000 rw-p 00000000 00:00 0 
+a7dcc000-a7dcd000 ---p 00000000 00:00 0 
+a7dcd000-a85cd000 rw-p 00000000 00:00 0                                  [stack:25914]
+a85cd000-a85ce000 ---p 00000000 00:00 0 
+a85ce000-a8dce000 rw-p 00000000 00:00 0                                  [stack:25913]
+a8dce000-a8df8000 r-xp 00000000 08:02 9451159                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpiarm_x.so
+a8df8000-a8df9000 r--p 00029000 08:02 9451159                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpiarm_x.so
+a8df9000-a8e0b000 rw-p 0002a000 08:02 9451159                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpiarm_x.so
+a8e0b000-a8e3c000 r-xp 00000000 08:02 9450513                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsboard.so
+a8e3c000-a8e40000 r--p 00030000 08:02 9450513                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsboard.so
+a8e40000-a8e41000 rw-p 00034000 08:02 9450513                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsboard.so
+a8e41000-a9045000 rw-p 00000000 00:00 0 
+a9045000-a90a4000 r-xp 00000000 08:02 9450504                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libjscxds110.so
+a90a4000-a90a9000 r--p 0005e000 08:02 9450504                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libjscxds110.so
+a90a9000-a90aa000 rw-p 00063000 08:02 9450504                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libjscxds110.so
+a90aa000-a90ac000 rw-p 00000000 00:00 0 
+a90ac000-a90fc000 r-xp 00000000 08:02 9449205                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDebugProperties.so
+a90fc000-a90fe000 rw-p 00050000 08:02 9449205                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDebugProperties.so
+a90fe000-a9200000 rw-p 00000000 00:00 0 
+a9200000-a92b9000 rw-p 00000000 00:00 0 
+a92b9000-a9300000 ---p 00000000 00:00 0 
+a9318000-a935c000 r-xp 00000000 08:02 9450518                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsfast3.so
+a935c000-a935d000 ---p 00044000 08:02 9450518                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsfast3.so
+a935d000-a9363000 r--p 00044000 08:02 9450518                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsfast3.so
+a9363000-a9364000 rw-p 0004a000 08:02 9450518                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdsfast3.so
+a9364000-a93fb000 r-xp 00000000 08:02 9450549                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libctools.so
+a93fb000-a93fc000 ---p 00097000 08:02 9450549                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libctools.so
+a93fc000-a93fe000 r--p 00097000 08:02 9450549                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libctools.so
+a93fe000-a93ff000 rw-p 00099000 08:02 9450549                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libctools.so
+a93ff000-a9400000 rw-p 00000000 00:00 0 
+a9400000-a9500000 rw-p 00000000 00:00 0 
+a951f000-a9522000 ---p 00000000 00:00 0 
+a9522000-a9570000 rw-p 00000000 00:00 0                                  [stack:25887]
+a9570000-a95fc000 r-xp 00000000 08:02 9449200                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libCollectorServer.so
+a95fc000-a95fe000 rw-p 0008c000 08:02 9449200                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libCollectorServer.so
+a95fe000-a9600000 rw-p 00000000 00:00 0 
+a9600000-a9601000 ---p 00000000 00:00 0 
+a9601000-a9e01000 rw-p 00000000 00:00 0                                  [stack:25886]
+a9e01000-aa1c8000 r-xp 00000000 08:02 9449557                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libxerces-c.so.28.0
+aa1c8000-aa1fb000 rw-p 003c6000 08:02 9449557                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libxerces-c.so.28.0
+aa1fb000-aa253000 r-xp 00000000 08:02 9449202                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libXPCOMUtility.so
+aa253000-aa255000 rw-p 00057000 08:02 9449202                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libXPCOMUtility.so
+aa255000-aa4fc000 r-xp 00000000 08:02 9449560                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libsetup_parser.so
+aa4fc000-aa4fe000 rw-p 002a7000 08:02 9449560                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libsetup_parser.so
+aa4fe000-aa4ff000 rw-p 00000000 00:00 0 
+aa4ff000-aa5b5000 r-xp 00000000 08:02 9449193                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libtiofr11.so
+aa5b5000-aa5b9000 rw-p 000b6000 08:02 9449193                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libtiofr11.so
+aa5b9000-aaea1000 r-xp 00000000 08:02 9449199                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDebugServer.so
+aaea1000-aaea4000 rw-p 008e7000 08:02 9449199                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDebugServer.so
+aaea4000-aaf00000 rw-p 00000000 00:00 0 
+aaf00000-aafa3000 rw-p 00000000 00:00 0 
+aafa3000-ab000000 ---p 00000000 00:00 0 
+ab000000-ab0fa000 rw-p 00000000 00:00 0 
+ab0fa000-ab100000 ---p 00000000 00:00 0 
+ab10e000-ab1f4000 r-xp 00000000 08:02 14559718                           /usr/lib32/libstdc++.so.6.0.20
+ab1f4000-ab1f8000 r--p 000e6000 08:02 14559718                           /usr/lib32/libstdc++.so.6.0.20
+ab1f8000-ab1f9000 rw-p 000ea000 08:02 14559718                           /usr/lib32/libstdc++.so.6.0.20
+ab1f9000-ab200000 rw-p 00000000 00:00 0 
+ab200000-ab2df000 rw-p 00000000 00:00 0 
+ab2df000-ab300000 ---p 00000000 00:00 0 
+ab307000-ab320000 r-xp 00000000 08:02 9450573                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libICETargetAdapter.so
+ab320000-ab321000 r--p 00018000 08:02 9450573                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libICETargetAdapter.so
+ab321000-ab322000 rw-p 00019000 08:02 9450573                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libICETargetAdapter.so
+ab322000-ab331000 r-xp 00000000 08:02 9450521                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdslocal.so
+ab331000-ab332000 ---p 0000f000 08:02 9450521                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdslocal.so
+ab332000-ab333000 r--p 0000f000 08:02 9450521                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdslocal.so
+ab333000-ab334000 rw-p 00010000 08:02 9450521                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libxdslocal.so
+ab334000-ab337000 ---p 00000000 00:00 0 
+ab337000-ab385000 rw-p 00000000 00:00 0                                  [stack:25885]
+ab385000-ab3ff000 r-xp 00000000 08:02 9449561                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libfsutil.so
+ab3ff000-ab400000 rw-p 0007a000 08:02 9449561                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libfsutil.so
+ab400000-ab4fd000 rw-p 00000000 00:00 0 
+ab4fd000-ab500000 ---p 00000000 00:00 0 
+ab50e000-ab53d000 r-xp 00000000 08:02 9451239                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510cortexm.so
+ab53d000-ab53e000 r--p 0002e000 08:02 9451239                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510cortexm.so
+ab53e000-ab53f000 rw-p 0002f000 08:02 9451239                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510cortexm.so
+ab53f000-ab540000 rw-p 00000000 00:00 0 
+ab540000-ab581000 r-xp 00000000 08:02 9449559                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libti_logger.so
+ab581000-ab584000 rw-p 00040000 08:02 9449559                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libti_logger.so
+ab584000-ab5fd000 r-xp 00000000 08:02 9449209                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libti_xpcom.so
+ab5fd000-ab600000 rw-p 00079000 08:02 9449209                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libti_xpcom.so
+ab600000-ab6fd000 rw-p 00000000 00:00 0 
+ab6fd000-ab700000 ---p 00000000 00:00 0 
+ab708000-ab73d000 r-xp 00000000 08:02 9449201                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDatasetServer.so
+ab73d000-ab73e000 rw-p 00035000 08:02 9449201                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDatasetServer.so
+ab73e000-ab900000 rw-p 00000000 00:00 0 
+ab900000-ab9fd000 rw-p 00000000 00:00 0 
+ab9fd000-aba00000 ---p 00000000 00:00 0 
+aba01000-aba16000 r--p 00000000 08:02 14422180                           /usr/share/locale/pt_BR/LC_MESSAGES/libc.mo
+aba16000-aba23000 r-xp 00000000 08:02 9449198                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDirectoryService.so
+aba23000-aba24000 rw-p 0000c000 08:02 9449198                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libDirectoryService.so
+aba24000-aba25000 ---p 00000000 00:00 0 
+aba25000-abaa5000 rw-p 00000000 00:00 0                                  [stack:25883]
+abaa5000-abaa8000 ---p 00000000 00:00 0 
+abaa8000-abaf6000 rw-p 00000000 00:00 0                                  [stack:25882]
+abaf6000-abaf9000 ---p 00000000 00:00 0 
+abaf9000-abb77000 rw-p 00000000 00:00 0                                  [stack:25881]
+abb77000-abd00000 r--p 00000000 08:02 14430677                           /usr/lib/locale/locale-archive
+abd00000-abd21000 rw-p 00000000 00:00 0 
+abd21000-abe00000 ---p 00000000 00:00 0 
+abe04000-abe0d000 r-xp 00000000 08:02 9450875                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpi_cs_dap.so
+abe0d000-abe0e000 r--p 00008000 08:02 9450875                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpi_cs_dap.so
+abe0e000-abe10000 rw-p 00009000 08:02 9450875                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpi_cs_dap.so
+abe10000-abe2b000 r-xp 00000000 08:02 9451242                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510cs_dap.so
+abe2b000-abe2c000 r--p 0001a000 08:02 9451242                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510cs_dap.so
+abe2c000-abe2d000 rw-p 0001b000 08:02 9451242                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510cs_dap.so
+abe2d000-abe2e000 rw-p 00000000 00:00 0 
+abe2e000-abe31000 ---p 00000000 00:00 0 
+abe31000-abeaf000 rw-p 00000000 00:00 0                                  [stack:25880]
+abeaf000-abeb2000 ---p 00000000 00:00 0 
+abeb2000-abf00000 rw-p 00000000 00:00 0                                  [stack:25879]
+abf00000-abffb000 rw-p 00000000 00:00 0 
+abffb000-ac000000 ---p 00000000 00:00 0 
+ac000000-ac001000 r-xp 00000000 08:02 9450553                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libctoolsndbg.so
+ac001000-ac002000 r--p 00000000 08:02 9450553                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libctoolsndbg.so
+ac002000-ac003000 rw-p 00001000 08:02 9450553                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libctoolsndbg.so
+ac003000-ac004000 rw-s 00000000 00:11 8570081                            /dev/shm/JTI-8116c21a
+ac004000-ac005000 rw-s 00000000 00:11 8570080                            /dev/shm/JTI-d988b203
+ac005000-ac006000 rw-s 00000000 00:11 8570079                            /dev/shm/JTI-485eb565
+ac006000-ac007000 rw-s 00000000 00:11 8570078                            /dev/shm/JTI-cadc4510
+ac007000-ac008000 rw-s 00000000 00:11 8570077                            /dev/shm/JTI-b57f331b
+ac008000-ac018000 r-xp 00000000 08:02 9450505                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libjtagdata.so
+ac018000-ac019000 r--p 00010000 08:02 9450505                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libjtagdata.so
+ac019000-ac01a000 rw-p 00011000 08:02 9450505                            /opt/ti/uniflash_3.4/ccs_base/common/uscif/libjtagdata.so
+ac01a000-ac02c000 r-xp 00000000 08:02 9450846                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libprsc.so
+ac02c000-ac02d000 r--p 00012000 08:02 9450846                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libprsc.so
+ac02d000-ac02e000 rw-p 00013000 08:02 9450846                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libprsc.so
+ac02e000-ac031000 ---p 00000000 00:00 0 
+ac031000-ac07f000 rw-p 00000000 00:00 0                                  [stack:25878]
+ac07f000-ac080000 ---p 00000000 00:00 0 
+ac080000-ac100000 rw-p 00000000 00:00 0                                  [stack:25876]
+ac100000-ac200000 rw-p 00000000 00:00 0 
+ac200000-ac201000 rw-s 00000000 00:11 8570076                            /dev/shm/JTI-cc1ca296
+ac201000-ac3c0000 r--s 031c1000 08:02 9179337                            /opt/ti/uniflash_3.4/eclipse/jre/lib/rt.jar
+ac3c0000-aea00000 rw-p 00000000 00:00 0 
+aea00000-aeafc000 rw-p 00000000 00:00 0 
+aeafc000-aeb00000 ---p 00000000 00:00 0 
+aeb00000-aeb0a000 r-xp 00000000 08:02 9450877                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpi_icepick.so
+aeb0a000-aeb0b000 r--p 00009000 08:02 9450877                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpi_icepick.so
+aeb0b000-aeb0e000 rw-p 0000a000 08:02 9450877                            /opt/ti/uniflash_3.4/ccs_base/emulation/tpi/libtpi_icepick.so
+aeb0e000-aeb2b000 r-xp 00000000 08:02 9451247                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510icepick_c.so
+aeb2b000-aeb2c000 r--p 0001c000 08:02 9451247                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510icepick_c.so
+aeb2c000-aeb2d000 rw-p 0001d000 08:02 9451247                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libtixds510icepick_c.so
+aeb2d000-aeb2e000 rw-p 00000000 00:00 0 
+aeb2e000-aeb31000 ---p 00000000 00:00 0 
+aeb31000-aeb7f000 rw-p 00000000 00:00 0                                  [stack:25877]
+aeb7f000-aeb80000 ---p 00000000 00:00 0 
+aeb80000-aec00000 rw-p 00000000 00:00 0                                  [stack:25875]
+aec00000-aec21000 rw-p 00000000 00:00 0 
+aec21000-aed00000 ---p 00000000 00:00 0 
+aed00000-aed01000 rw-s 00000000 00:11 8570075                            /dev/shm/JTI-f19b1663
+aed01000-aed02000 rw-s 00000000 00:11 8570074                            /dev/shm/JTI-094005ef
+aed02000-aed0b000 r-xp 00000000 08:02 9450843                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libcmapi.so
+aed0b000-aed0c000 r--p 00008000 08:02 9450843                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libcmapi.so
+aed0c000-aed0d000 rw-p 00009000 08:02 9450843                            /opt/ti/uniflash_3.4/ccs_base/emulation/drivers/libcmapi.so
+aed0d000-aed28000 r-xp 00000000 08:02 9450540                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libAETProperties.so
+aed28000-aed29000 r--p 0001a000 08:02 9450540                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libAETProperties.so
+aed29000-aed2a000 rw-p 0001b000 08:02 9450540                            /opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/libAETProperties.so
+aed2a000-aed33000 r-xp 00000000 08:02 9449558                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libCCReg.so
+aed33000-aed34000 rw-p 00009000 08:02 9449558                            /opt/ti/uniflash_3.4/ccs_base/common/bin/libCCReg.so
+aed34000-aed7f000 rw-p 00000000 00:00 0 
+aed7f000-aed80000 ---p 00000000 00:00 0 
+aed80000-aee00000 rw-p 00000000 00:00 0                                  [stack:25874]
+aee00000-aee21000 rw-p 00000000 00:00 0 
+aee21000-aef00000 ---p 00000000 00:00 0 
+aef00000-aef09000 r--s 00251000 08:02 9179336                            /opt/ti/uniflash_3.4/eclipse/jre/lib/resources.jar
+aef09000-aef23000 r-xp 00000000 08:02 9449208                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libXPCOMTILogger.so
+aef23000-aef24000 rw-p 00019000 08:02 9449208                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/bin/libXPCOMTILogger.so
+aef24000-aef7f000 rw-p 00000000 00:00 0 
+aef7f000-aef80000 ---p 00000000 00:00 0 
+aef80000-af000000 rw-p 00000000 00:00 0                                  [stack:25873]
+af000000-af021000 rw-p 00000000 00:00 0 
+af021000-af100000 ---p 00000000 00:00 0 
+af100000-af101000 rw-s 00000000 00:11 8570073                            /dev/shm/JTI-fbed219c
+af101000-af102000 rw-s 00000000 00:11 8570071                            /dev/shm/JTI-45ef329e
+af102000-af103000 rw-s 00000000 00:11 8570070                            /dev/shm/JTI-a86966c9
+af103000-af104000 rw-s 00000000 00:11 8570069                            /dev/shm/JTI-6c99e6e0
+af104000-af105000 rw-s 00000000 00:11 8570068                            /dev/shm/JTI-2ea6b079
+af105000-af106000 rw-s 00000000 00:11 8570067                            /dev/shm/sem.yOrOx9 (deleted)
+af106000-af122000 r-xp 00000000 08:02 14559704                           /usr/lib32/libgcc_s.so.1
+af122000-af123000 rw-p 0001b000 08:02 14559704                           /usr/lib32/libgcc_s.so.1
+af123000-af138000 r-xp 00000000 08:02 9179298                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libnet.so
+af138000-af139000 rw-p 00014000 08:02 9179298                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libnet.so
+af139000-af147000 r-xp 00000000 08:02 9179299                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libnio.so
+af147000-af148000 rw-p 0000e000 08:02 9179299                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libnio.so
+af148000-af149000 ---p 00000000 00:00 0 
+af149000-af1df000 rw-p 00000000 00:00 0                                  [stack:25872]
+af1df000-af31f000 rw-p 00000000 00:00 0 
+af31f000-af327000 rw-p 00000000 00:00 0 
+af327000-af33f000 rw-p 00000000 00:00 0 
+af33f000-af355000 rw-p 00000000 00:00 0 
+af355000-af494000 rw-p 00000000 00:00 0 
+af494000-af4a8000 rw-p 00000000 00:00 0 
+af4a8000-af53f000 rw-p 00000000 00:00 0 
+af53f000-b0540000 rw-p 00000000 00:00 0 
+b0540000-b3540000 rw-p 00000000 00:00 0 
+b3540000-b5fc0000 rw-p 00000000 00:00 0 
+b5fc0000-ddfc0000 rw-p 00000000 00:00 0 
+ddfc0000-e05c0000 rw-p 00000000 00:00 0 
+e05c0000-f3540000 rw-p 00000000 00:00 0 
+f3540000-f3549000 rw-p 00000000 00:00 0 
+f3549000-f3600000 rw-p 00000000 00:00 0 
+f3600000-f3840000 rwxp 00000000 00:00 0 
+f3840000-f66f5000 rw-p 00000000 00:00 0 
+f66f5000-f6700000 ---p 00000000 00:00 0 
+f6700000-f6707000 r--s 00000000 08:02 14563501                           /usr/lib32/gconv/gconv-modules.cache
+f6707000-f672b000 r--s 00126000 08:02 9449175                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/packages/ti/dss/java/com.ti.debug.engine_1.0.0.jar
+f672b000-f6733000 r--s 000a6000 08:02 9449178                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/packages/ti/dss/java/js.jar
+f6733000-f6755000 rw-p 00000000 00:00 0 
+f6755000-f676d000 rw-p 00000000 00:00 0 
+f676d000-f6778000 r-xp 00000000 08:02 16655041                           /lib32/libnss_files-2.19.so
+f6778000-f6779000 r--p 0000a000 08:02 16655041                           /lib32/libnss_files-2.19.so
+f6779000-f677a000 rw-p 0000b000 08:02 16655041                           /lib32/libnss_files-2.19.so
+f677a000-f678f000 r-xp 00000000 08:02 16655038                           /lib32/libnsl-2.19.so
+f678f000-f6790000 r--p 00015000 08:02 16655038                           /lib32/libnsl-2.19.so
+f6790000-f6791000 rw-p 00016000 08:02 16655038                           /lib32/libnsl-2.19.so
+f6791000-f6793000 rw-p 00000000 00:00 0 
+f6793000-f6794000 rw-s 00000000 00:11 8097024                            /dev/shm/JTI-5cc4cdf4
+f6794000-f6795000 rw-s 00000000 00:11 8097024                            /dev/shm/JTI-5cc4cdf4
+f6795000-f6797000 r-xp 00000000 08:02 14563435                           /usr/lib32/gconv/ISO8859-1.so
+f6797000-f6798000 r--p 00001000 08:02 14563435                           /usr/lib32/gconv/ISO8859-1.so
+f6798000-f6799000 rw-p 00002000 08:02 14563435                           /usr/lib32/gconv/ISO8859-1.so
+f6799000-f67b0000 r-xp 00000000 08:02 9179309                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libzip.so
+f67b0000-f67b1000 rw-p 00017000 08:02 9179309                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libzip.so
+f67b1000-f67b9000 rw-s 00000000 08:02 8128181                            /tmp/hsperfdata_root/25870
+f67b9000-f67dc000 r-xp 00000000 08:02 9179277                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libjava.so
+f67dc000-f67dd000 rw-p 00023000 08:02 9179277                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libjava.so
+f67dd000-f67e4000 r-xp 00000000 08:02 16655047                           /lib32/librt-2.19.so
+f67e4000-f67e5000 r--p 00006000 08:02 16655047                           /lib32/librt-2.19.so
+f67e5000-f67e6000 rw-p 00007000 08:02 16655047                           /lib32/librt-2.19.so
+f67e6000-f67e9000 ---p 00000000 00:00 0 
+f67e9000-f6837000 rw-p 00000000 00:00 0                                  [stack:25871]
+f6837000-f687b000 r-xp 00000000 08:02 16655036                           /lib32/libm-2.19.so
+f687b000-f687c000 r--p 00043000 08:02 16655036                           /lib32/libm-2.19.so
+f687c000-f687d000 rw-p 00044000 08:02 16655036                           /lib32/libm-2.19.so
+f687d000-f70ff000 r-xp 00000000 08:02 9437245                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/server/libjvm.so
+f70ff000-f7163000 rw-p 00882000 08:02 9437245                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/server/libjvm.so
+f7163000-f7588000 rw-p 00000000 00:00 0 
+f7588000-f772f000 r-xp 00000000 08:02 16655032                           /lib32/libc-2.19.so
+f772f000-f7731000 r--p 001a7000 08:02 16655032                           /lib32/libc-2.19.so
+f7731000-f7732000 rw-p 001a9000 08:02 16655032                           /lib32/libc-2.19.so
+f7732000-f7735000 rw-p 00000000 00:00 0 
+f7735000-f7738000 r-xp 00000000 08:02 16655035                           /lib32/libdl-2.19.so
+f7738000-f7739000 r--p 00002000 08:02 16655035                           /lib32/libdl-2.19.so
+f7739000-f773a000 rw-p 00003000 08:02 16655035                           /lib32/libdl-2.19.so
+f773a000-f774d000 r-xp 00000000 08:02 9437242                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/jli/libjli.so
+f774d000-f774e000 rw-p 00012000 08:02 9437242                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/jli/libjli.so
+f774e000-f7766000 r-xp 00000000 08:02 16655051                           /lib32/libpthread-2.19.so
+f7766000-f7767000 r--p 00017000 08:02 16655051                           /lib32/libpthread-2.19.so
+f7767000-f7768000 rw-p 00018000 08:02 16655051                           /lib32/libpthread-2.19.so
+f7768000-f776b000 rw-p 00000000 00:00 0 
+f776b000-f776c000 rw-s 00000000 00:11 8097024                            /dev/shm/JTI-5cc4cdf4
+f776c000-f776d000 r--s 00005000 08:02 9449174                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/packages/ti/dss/java/com.ti.ccstudio.scripting.environment_3.1.0.jar
+f776d000-f776e000 r--s 00000000 08:02 9449177                            /opt/ti/uniflash_3.4/ccs_base/DebugServer/packages/ti/dss/java/dss.jar
+f776e000-f7778000 r-xp 00000000 08:02 16655043                           /lib32/libnss_nis-2.19.so
+f7778000-f7779000 r--p 00009000 08:02 16655043                           /lib32/libnss_nis-2.19.so
+f7779000-f777a000 rw-p 0000a000 08:02 16655043                           /lib32/libnss_nis-2.19.so
+f777a000-f7781000 r-xp 00000000 08:02 16655039                           /lib32/libnss_compat-2.19.so
+f7781000-f7782000 r--p 00006000 08:02 16655039                           /lib32/libnss_compat-2.19.so
+f7782000-f7783000 rw-p 00007000 08:02 16655039                           /lib32/libnss_compat-2.19.so
+f7783000-f7784000 rw-p 00000000 00:00 0 
+f7784000-f7785000 r--p 00000000 00:00 0 
+f7785000-f7790000 r-xp 00000000 08:02 9179308                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libverify.so
+f7790000-f7791000 rw-p 0000b000 08:02 9179308                            /opt/ti/uniflash_3.4/eclipse/jre/lib/i386/libverify.so
+f7791000-f7792000 rw-p 00000000 00:00 0 
+f7792000-f7793000 r-xp 00000000 00:00 0                                  [vdso]
+f7793000-f7795000 r--p 00000000 00:00 0                                  [vvar]
+f7795000-f77b5000 r-xp 00000000 08:02 16655029                           /lib32/ld-2.19.so
+f77b5000-f77b6000 r--p 0001f000 08:02 16655029                           /lib32/ld-2.19.so
+f77b6000-f77b7000 rw-p 00020000 08:02 16655029                           /lib32/ld-2.19.so
+ff905000-ff906000 rwxp 00000000 00:00 0 
+ff938000-ff959000 rw-p 00000000 00:00 0                                  [stack]
+
+VM Arguments:
+java_command: org.mozilla.javascript.tools.shell.Main /opt/ti/uniflash_3.4/ccs_base/scripting/examples/uniflash/cmdLine//uniFlash_main.js -ccxml /projects/scripts/CC2650.ccxml -operation Erase -program main_core.elf
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/opt/ti/uniflash_3.4/ccs_base/scripting/bin/../../DebugServer/../../eclipse/jre
+CLASSPATH=/opt/ti/uniflash_3.4/ccs_base/scripting/bin/../../DebugServer/../dvt/scripting/dvt_scripting.jar:/opt/ti/uniflash_3.4/ccs_base/scripting/bin/../../DebugServer/packages/ti/dss/java/dss.jar:/opt/ti/uniflash_3.4/ccs_base/scripting/bin/../../DebugServer/packages/ti/dss/java/js.jar:
+PATH=/opt/ti/uniflash_3.4/ccs_base/scripting/bin/../../DebugServer/../../eclipse/jre/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/.:/opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/../xmldb/aet_config:/opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/../xmldb/trace_config/setup:/opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/../xmldb/trace_config/devices:/opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/../../../common/bin:/opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/../../../common/uscif:/opt/ti/uniflash_3.4/ccs_base/emulation/analysis/bin/../../tpi
+USERNAME=root
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x7e7300], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x7e7300], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x6816f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x6816f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x6816f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x6816f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x682ef0], sa_mask[0]=0x00000000, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x6841f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x6841f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x6841f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x6841f0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:8.5
+
+uname:Linux 3.16.0-4-amd64 #1 SMP Debian 3.16.7-ckt25-2+deb8u3 (2016-07-02) x86_64
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 31207, NOFILE 65536, AS infinity
+load average:1,87 1,59 1,44
+
+/proc/meminfo:
+MemTotal:        8098368 kB
+MemFree:         1181424 kB
+MemAvailable:    3317844 kB
+Buffers:          190172 kB
+Cached:          2210460 kB
+SwapCached:        32612 kB
+Active:          5258240 kB
+Inactive:        1205892 kB
+Active(anon):    3831876 kB
+Inactive(anon):   477468 kB
+Active(file):    1426364 kB
+Inactive(file):   728424 kB
+Unevictable:        3016 kB
+Mlocked:            3016 kB
+SwapTotal:       8290300 kB
+SwapFree:        7959320 kB
+Dirty:              3528 kB
+Writeback:             0 kB
+AnonPages:       4061260 kB
+Mapped:           747820 kB
+Shmem:            245584 kB
+Slab:             292632 kB
+SReclaimable:     235036 kB
+SUnreclaim:        57596 kB
+KernelStack:       21952 kB
+PageTables:        63172 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    12339484 kB
+Committed_AS:   12942440 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      367052 kB
+VmallocChunk:   34359349344 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:     1498052 kB
+DirectMap2M:     6793216 kB
+DirectMap1G:           0 kB
+
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, erms, ht, tsc, tscinvbit
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 61
+model name	: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+stepping	: 4
+microcode	: 0x1f
+cpu MHz		: 2899.968
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 20
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap
+bogomips	: 4789.13
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 61
+model name	: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+stepping	: 4
+microcode	: 0x1f
+cpu MHz		: 2899.968
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 20
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap
+bogomips	: 4789.13
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 61
+model name	: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+stepping	: 4
+microcode	: 0x1f
+cpu MHz		: 2899.968
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 20
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap
+bogomips	: 4789.13
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 61
+model name	: Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz
+stepping	: 4
+microcode	: 0x1f
+cpu MHz		: 2899.968
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 20
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch ida arat epb xsaveopt pln pts dtherm tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap
+bogomips	: 4789.13
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 8098368k(1181424k free), swap 8290300k(7959320k free)
+
+vm_info: Java HotSpot(TM) Server VM (24.60-b09) for linux-x86 JRE (1.7.0_60-b19), built on May  7 2014 13:42:18 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Sun Oct  2 22:38:18 2016
+elapsed time: 2 seconds
+

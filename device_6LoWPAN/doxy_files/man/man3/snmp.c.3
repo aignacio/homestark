@@ -1,0 +1,388 @@
+.TH "snmpd/snmp.c" 3 "Quinta, 29 de Setembro de 2016" "Version 1.0" "HomeStark_6LoWPAN_Device" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+snmpd/snmp.c \- 
+.PP
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <stdbool\&.h>\fP
+.br
+\fC#include <ctype\&.h>\fP
+.br
+\fC#include 'contiki\&.h'\fP
+.br
+\fC#include 'contiki-lib\&.h'\fP
+.br
+\fC#include 'contiki-net\&.h'\fP
+.br
+\fC#include 'snmp\&.h'\fP
+.br
+\fC#include 'mibii\&.h'\fP
+.br
+\fC#include 'net/rpl/rpl\&.h'\fP
+.br
+\fC#include 'net/ip/uip\&.h'\fP
+.br
+\fC#include 'net/ipv6/uip-ds6\&.h'\fP
+.br
+\fC#include 'simple-udp\&.h'\fP
+.br
+\fC#include 'list\&.h'\fP
+.br
+\fC#include 'sys/ctimer\&.h'\fP
+.br
+\fC#include 'sys/etimer\&.h'\fP
+.br
+\fC#include 'net/ip/uip-debug\&.h'\fP
+.br
+\fC#include 'net/rpl/rpl-private\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBprintf6addr\fP(addr)   debug_snmp('[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]', ((uint8_t *)addr)[0], ((uint8_t *)addr)[1], ((uint8_t *)addr)[2], ((uint8_t *)addr)[3], ((uint8_t *)addr)[4], ((uint8_t *)addr)[5], ((uint8_t *)addr)[6], ((uint8_t *)addr)[7], ((uint8_t *)addr)[8], ((uint8_t *)addr)[9], ((uint8_t *)addr)[10], ((uint8_t *)addr)[11], ((uint8_t *)addr)[12], ((uint8_t *)addr)[13], ((uint8_t *)addr)[14], ((uint8_t *)addr)[15])"
+.br
+.ti -1c
+.RI "#define \fBUIP_IP_BUF\fP   ((struct uip_ip_hdr *)&uip_buf[UIP_LLH_LEN])"
+.br
+.ti -1c
+.RI "#define \fBUIP_UDP_BUF\fP   ((struct uip_udp_hdr *)&uip_buf[uip_l2_l3_hdr_len])"
+.br
+.in -1c
+.SS "Funções"
+
+.in +1c
+.ti -1c
+.RI "\fBPROCESS\fP (snmp_main,'[SNMP] SNMPD - Agent V1')"
+.br
+.ti -1c
+.RI "void \fBcb_timer_trap_heartbeat\fP (void *ptr)"
+.br
+.ti -1c
+.RI "void \fBsnmp_cb_data\fP (void)"
+.br
+.RI "\fISNMP Callback receive\&. \fP"
+.ti -1c
+.RI "void \fBsnmp_init\fP (void)"
+.br
+.RI "\fISNMP Init function\&. \fP"
+.ti -1c
+.RI "int \fBipaddr_sprintf\fP (char *buf, uint8_t buf_len, const uip_ipaddr_t *addr)"
+.br
+.RI "\fIConvert IPv6 address in char format\&. \fP"
+.ti -1c
+.RI "void \fBupdate_snmp_mib\fP (void)"
+.br
+.RI "\fIUpdate SNMP OIDs\&. \fP"
+.ti -1c
+.RI "\fBPROCESS_THREAD\fP (snmp_main, ev, data)"
+.br
+.in -1c
+.SS "Variáveis"
+
+.in +1c
+.ti -1c
+.RI "uint8_t \fBheartbeat_value\fP = 0"
+.br
+.ti -1c
+.RI "char \fBglobal_ipv6_char\fP [16]"
+.br
+.ti -1c
+.RI "char \fBlocal_ipv6_char\fP [16]"
+.br
+.in -1c
+.SH "Descrição detalhada"
+.PP 
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements\&. 
+
+See the NOTICE file distributed with this work for additional information regarding copyright ownership\&. The ASF licenses this file to you under the Apache License, Version 2\&.0 (the 'License'); you may not use this file except in compliance with the License\&. You may obtain a copy of the License at
+.PP
+http://www.apache.org/licenses/LICENSE-2.0
+.PP
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\&. See the License for the specific language governing permissions and limitations under the License\&.
+.PP
+This project is delivered under Apache 2\&.0 license\&.
+.PP
+Main functions of SNMP port 
+.PP
+\fBAutor:\fP
+.RS 4
+Ânderson Ignácio da Silva 
+.RE
+.PP
+\fBData:\fP
+.RS 4
+12 Sept 2016 
+.RE
+.PP
+\fBVeja também:\fP
+.RS 4
+http://www.aignacio.com 
+.RE
+.PP
+
+.SH "Documentação das funções"
+.PP 
+.SS "int ipaddr_sprintf (char *buf, uint8_tbuf_len, const uip_ipaddr_t *addr)"
+
+.PP
+Convert IPv6 address in char format\&. Format IPv6 address in string char variable\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIbuf\fP Variable that'll receive the ipv6 address decoded 
+.br
+\fIbuf_len\fP Len of buf variable 
+.br
+\fIaddr\fP Address IPv6 in uip_ipaddr_t format
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIlen\fP Length of buf variable formated 
+.RE
+.PP
+
+.PP
+.nf
+143                                                                          {
+144   uint16_t a;
+145   uint8_t len = 0;
+146   int i, f;
+147   for(i = 0, f = 0; i < sizeof(uip_ipaddr_t); i += 2) {
+148     a = (addr->u8[i] << 8) + addr->u8[i + 1];
+149     if(a == 0 && f >= 0) {
+150       if(f++ == 0) {
+151         len += snprintf(&buf[len], buf_len - len, "::");
+152       }
+153     } else {
+154       if(f > 0) {
+155         f = -1;
+156       } else if(i > 0) {
+157         len += snprintf(&buf[len], buf_len - len, ":");
+158       }
+159       len += snprintf(&buf[len], buf_len - len, "%x", a);
+160     }
+161   }
+162 
+163   return len;
+164 }
+.fi
+.SS "void snmp_cb_data (void)"
+
+.PP
+SNMP Callback receive\&. Receive in callback mode, any data from NMS of SNMP protocol\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIvoid\fP No argument to pass
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIvoid\fP Doesn't return anything 
+.RE
+.PP
+
+.PP
+.nf
+109                        {
+110   static uint16_t len;
+111   static char buf[MAX_UDP_SNMP];
+112   memset(buf, 0, MAX_UDP_SNMP);
+113 
+114   if(uip_newdata()) {
+115     len = uip_datalen();
+116     memcpy(buf, uip_appdata, len);
+117     #ifdef DEBUG_SNMP_DECODING
+118     debug_snmp("%u bytes from [", len);
+119     #endif
+120     uip_debug_ipaddr_print(&UIP_IP_BUF->srcipaddr);
+121     printf("]:%u", UIP_HTONS(UIP_UDP_BUF->srcport));
+122     uip_ipaddr_copy(&server_conn->ripaddr, &UIP_IP_BUF->srcipaddr);
+123     server_conn->rport = UIP_UDP_BUF->srcport;
+124     snmp_t snmp_handle;
+125     if (snmp_decode_message(buf, &snmp_handle)){
+126       #ifdef DEBUG_SNMP_DECODING
+127       debug_snmp("New SNMP Request received!");
+128       #endif
+129       len = snmp_encode_message(&snmp_handle, buf);
+130       uip_udp_packet_send(server_conn, buf, len);
+131       uip_create_unspecified(&server_conn->ripaddr);
+132       server_conn->rport = 0;
+133     }
+134     else
+135       debug_snmp("Problem on SNMP Request received!");
+136   }
+137 }
+.fi
+.SS "void snmp_init (void)"
+
+.PP
+SNMP Init function\&. Init SNMP AGENT connection
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIvoid\fP No argument to pass
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIvoid\fP Not return argument 
+.RE
+.PP
+
+.PP
+.nf
+139                     {
+140   process_start(&snmp_main, NULL);
+141 }
+.fi
+.SS "void update_snmp_mib (void)"
+
+.PP
+Update SNMP OIDs\&. Update the OIDs of values from network
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIvoid\fP No argument to pass
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIvoid\fP Not return argument 
+.RE
+.PP
+
+.PP
+.nf
+175                           {
+176   heartbeat_value++;
+177 
+178   uint8_t oid_tree[2];
+179   char dado[MAX_STRINGS_LENGTH];
+180 
+181   /******************************* Hearbeat ***********************************/
+182   oid_tree[0] = 4;
+183   oid_tree[1] = 2;
+184   sprintf(dado,"heartbeat_%d",heartbeat_value);
+185   debug_os("Dado de update: %s",dado);
+186   mib_ii_update_list(oid_tree,dado);
+187 
+188   /******************************** RSSI **************************************/
+189   oid_tree[0] = 4;
+190   oid_tree[1] = 3;
+191   int  def_rt_rssi = sicslowpan_get_last_rssi();
+192   sprintf(dado,"RSSI:%d",def_rt_rssi);
+193   mib_ii_update_list(oid_tree,dado);
+194 
+195   /*************************** Prefered IPv6 **********************************/
+196   char def_rt_str[64];
+197   oid_tree[0] = 4;
+198   oid_tree[1] = 4;
+199   memset(def_rt_str, 0, sizeof(def_rt_str));
+200   ipaddr_sprintf(def_rt_str, sizeof(def_rt_str), uip_ds6_defrt_choose());
+201   sprintf(dado,"Pref\&. route:[%s]",def_rt_str);
+202   mib_ii_update_list(oid_tree,dado);
+203 
+204   /********************* Rank RPL e Parent Link Metric ************************/
+205   uint16_t rank_rpl = 0, link_metric_rpl = 0;
+206   rpl_parent_t *p = nbr_table_head(rpl_parents);
+207   rpl_instance_t *default_instance;
+208   default_instance = rpl_get_default_instance();
+209   while(p != NULL){
+210     if (p == default_instance->current_dag->preferred_parent) {
+211       rank_rpl = p->rank;
+212       link_metric_rpl = rpl_get_parent_link_metric(p);
+213       break;
+214     }
+215     else
+216     p = nbr_table_next(rpl_parents, p);
+217   }
+218   oid_tree[0] = 4;
+219   oid_tree[1] = 5;
+220   sprintf(dado,"Rank RPL:%5u",rank_rpl);
+221   mib_ii_update_list(oid_tree,dado);
+222 
+223   oid_tree[0] = 4;
+224   oid_tree[1] = 6;
+225   sprintf(dado,"Parent Link Metric:%5u",link_metric_rpl);
+226   mib_ii_update_list(oid_tree,dado);
+227 
+228   /*********************** Global and Local IPv6 Address **********************/
+229   int i;
+230   uint8_t state;
+231   uip_ipaddr_t global_ipv6_address_node,
+232                local_ipv6_address_node;
+233   #ifdef DEBUG_SNMP_DECODING
+234   debug_snmp("Client IPv6 addresses: ");
+235   #endif
+236   for(i = 0; i < UIP_DS6_ADDR_NB; i++) {
+237     state = uip_ds6_if\&.addr_list[i]\&.state;
+238     if(uip_ds6_if\&.addr_list[i]\&.isused &&
+239       (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
+240       local_ipv6_address_node = uip_ds6_if\&.addr_list[i]\&.ipaddr;
+241       if (i == 1)
+242         global_ipv6_address_node = uip_ds6_if\&.addr_list[i]\&.ipaddr;
+243       else
+244         local_ipv6_address_node = uip_ds6_if\&.addr_list[i]\&.ipaddr;
+245       #ifdef DEBUG_SNMP_DECODING
+246       printf6addr(&uip_ds6_if\&.addr_list[i]\&.ipaddr);
+247       #endif
+248       /* hack to make address "final" */
+249       if (state == ADDR_TENTATIVE)
+250         uip_ds6_if\&.addr_list[i]\&.state = ADDR_PREFERRED;
+251     }
+252   }
+253 
+254   print_ipv6_addr(&global_ipv6_address_node,&global_ipv6_char[0]);
+255   print_ipv6_addr(&local_ipv6_address_node,&local_ipv6_char[0]);
+256 
+257   oid_tree[0] = 4;
+258   oid_tree[1] = 7;
+259   sprintf(dado,"Local:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"
+260                ,local_ipv6_char[0]
+261                ,local_ipv6_char[1]
+262                ,local_ipv6_char[8]
+263                ,local_ipv6_char[9]
+264                ,local_ipv6_char[10]
+265                ,local_ipv6_char[11]
+266                ,local_ipv6_char[12]
+267                ,local_ipv6_char[13]
+268                ,local_ipv6_char[14]
+269                ,local_ipv6_char[15]);
+270   mib_ii_update_list(oid_tree,dado);
+271   oid_tree[0] = 4;
+272   oid_tree[1] = 8;
+273   sprintf(dado,"Global:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"
+274                ,global_ipv6_char[0]
+275                ,global_ipv6_char[1]
+276                ,global_ipv6_char[8]
+277                ,global_ipv6_char[9]
+278                ,global_ipv6_char[10]
+279                ,global_ipv6_char[11]
+280                ,global_ipv6_char[12]
+281                ,global_ipv6_char[13]
+282                ,global_ipv6_char[14]
+283                ,global_ipv6_char[15]);
+284   mib_ii_update_list(oid_tree,dado);
+285 
+286 }
+.fi
+.SH "Autor"
+.PP 
+Gerado automaticamente por Doxygen para HomeStark_6LoWPAN_Device a partir do código fonte\&.

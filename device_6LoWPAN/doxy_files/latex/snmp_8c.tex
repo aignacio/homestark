@@ -1,0 +1,380 @@
+\hypertarget{snmp_8c}{\section{Referência ao ficheiro snmpd/snmp.c}
+\label{snmp_8c}\index{snmpd/snmp.\+c@{snmpd/snmp.\+c}}
+}
+
+
+Licensed to the Apache Software Foundation (A\+S\+F) under one or more contributor license agreements.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$stdbool.\+h$>$}\\*
+{\ttfamily \#include $<$ctype.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}contiki.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}contiki-\/lib.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}contiki-\/net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}snmp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mibii.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net/rpl/rpl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net/ip/uip.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net/ipv6/uip-\/ds6.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}simple-\/udp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sys/ctimer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sys/etimer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net/ip/uip-\/debug.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net/rpl/rpl-\/private.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para snmp.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{snmp_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{snmp_8c_a746e71ce3acb168ac03c8e7140e87b89}{\#define {\bfseries printf6addr}(addr)~debug\+\_\+snmp(\char`\"{}\mbox{[}\%02x\%02x\+:\%02x\%02x\+:\%02x\%02x\+:\%02x\%02x\+:\%02x\%02x\+:\%02x\%02x\+:\%02x\%02x\+:\%02x\%02x\mbox{]}\char`\"{}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}0\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}1\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}2\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}3\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}4\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}5\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}6\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}7\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}8\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}9\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}10\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}11\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}12\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}13\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}14\mbox{]}, ((uint8\+\_\+t $\ast$)addr)\mbox{[}15\mbox{]})}\label{snmp_8c_a746e71ce3acb168ac03c8e7140e87b89}
+
+\item 
+\hypertarget{snmp_8c_af966537cf73ee5973da59bba6b21b731}{\#define {\bfseries U\+I\+P\+\_\+\+I\+P\+\_\+\+B\+U\+F}~((struct uip\+\_\+ip\+\_\+hdr $\ast$)\&uip\+\_\+buf\mbox{[}U\+I\+P\+\_\+\+L\+L\+H\+\_\+\+L\+E\+N\mbox{]})}\label{snmp_8c_af966537cf73ee5973da59bba6b21b731}
+
+\item 
+\hypertarget{snmp_8c_aaed757731852d359419ae5270a02e7a4}{\#define {\bfseries U\+I\+P\+\_\+\+U\+D\+P\+\_\+\+B\+U\+F}~((struct uip\+\_\+udp\+\_\+hdr $\ast$)\&uip\+\_\+buf\mbox{[}uip\+\_\+l2\+\_\+l3\+\_\+hdr\+\_\+len\mbox{]})}\label{snmp_8c_aaed757731852d359419ae5270a02e7a4}
+
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{snmp_8c_a017be87c3d2f34ed9931125f00331652}{{\bfseries P\+R\+O\+C\+E\+S\+S} (snmp\+\_\+main,\char`\"{}\mbox{[}S\+N\+M\+P\mbox{]} S\+N\+M\+P\+D -\/ Agent V1\char`\"{})}\label{snmp_8c_a017be87c3d2f34ed9931125f00331652}
+
+\item 
+\hypertarget{snmp_8c_ac872c6219ebe7191f9b637b2f7ab4540}{void {\bfseries cb\+\_\+timer\+\_\+trap\+\_\+heartbeat} (void $\ast$ptr)}\label{snmp_8c_ac872c6219ebe7191f9b637b2f7ab4540}
+
+\item 
+void \hyperlink{snmp_8c_a05848f4eb62dd417b99e461854870bf9}{snmp\+\_\+cb\+\_\+data} (void)
+\begin{DoxyCompactList}\small\item\em S\+N\+M\+P Callback receive. \end{DoxyCompactList}\item 
+void \hyperlink{snmp_8c_a4d88f2fc7655280384131d543e0d83e5}{snmp\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em S\+N\+M\+P Init function. \end{DoxyCompactList}\item 
+int \hyperlink{snmp_8c_a523ab718dec1a794b3f8c8752f1e2ae3}{ipaddr\+\_\+sprintf} (char $\ast$buf, uint8\+\_\+t buf\+\_\+len, const uip\+\_\+ipaddr\+\_\+t $\ast$addr)
+\begin{DoxyCompactList}\small\item\em Convert I\+Pv6 address in char format. \end{DoxyCompactList}\item 
+void \hyperlink{snmp_8c_a732192a9e72d3182d395c47e2cd9c79e}{update\+\_\+snmp\+\_\+mib} (void)
+\begin{DoxyCompactList}\small\item\em Update S\+N\+M\+P O\+I\+Ds. \end{DoxyCompactList}\item 
+\hypertarget{snmp_8c_a06248b2be6d0f915906f3ac2a553a2c4}{{\bfseries P\+R\+O\+C\+E\+S\+S\+\_\+\+T\+H\+R\+E\+A\+D} (snmp\+\_\+main, ev, data)}\label{snmp_8c_a06248b2be6d0f915906f3ac2a553a2c4}
+
+\end{DoxyCompactItemize}
+\subsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{snmp_8c_a6055f56cef0bd9fe682cd277cb07ed6d}{uint8\+\_\+t {\bfseries heartbeat\+\_\+value} = 0}\label{snmp_8c_a6055f56cef0bd9fe682cd277cb07ed6d}
+
+\item 
+\hypertarget{snmp_8c_aee895689dd33d9428a16235a1de06bb0}{char {\bfseries global\+\_\+ipv6\+\_\+char} \mbox{[}16\mbox{]}}\label{snmp_8c_aee895689dd33d9428a16235a1de06bb0}
+
+\item 
+\hypertarget{snmp_8c_aa9a37ad626aaa7064544988241b7a2a6}{char {\bfseries local\+\_\+ipv6\+\_\+char} \mbox{[}16\mbox{]}}\label{snmp_8c_aa9a37ad626aaa7064544988241b7a2a6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Licensed to the Apache Software Foundation (A\+S\+F) under one or more contributor license agreements. 
+
+See the N\+O\+T\+I\+C\+E file distributed with this work for additional information regarding copyright ownership. The A\+S\+F licenses this file to you under the Apache License, Version 2.\+0 (the \char`\"{}\+License\char`\"{}); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+\href{http://www.apache.org/licenses/LICENSE-2.0}{\tt http\+://www.\+apache.\+org/licenses/\+L\+I\+C\+E\+N\+S\+E-\/2.\+0}
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \char`\"{}\+A\+S I\+S\char`\"{} B\+A\+S\+I\+S, W\+I\+T\+H\+O\+U\+T W\+A\+R\+R\+A\+N\+T\+I\+E\+S O\+R C\+O\+N\+D\+I\+T\+I\+O\+N\+S O\+F A\+N\+Y K\+I\+N\+D, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+This project is delivered under Apache 2.\+0 license.
+
+Main functions of S\+N\+M\+P port \begin{DoxyAuthor}{Autor}
+Ânderson Ignácio da Silva 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+12 Sept 2016 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{Veja também}
+\href{http://www.aignacio.com}{\tt http\+://www.\+aignacio.\+com} 
+\end{DoxySeeAlso}
+
+
+\subsection{Documentação das funções}
+\hypertarget{snmp_8c_a523ab718dec1a794b3f8c8752f1e2ae3}{\index{snmp.\+c@{snmp.\+c}!ipaddr\+\_\+sprintf@{ipaddr\+\_\+sprintf}}
+\index{ipaddr\+\_\+sprintf@{ipaddr\+\_\+sprintf}!snmp.\+c@{snmp.\+c}}
+\subsubsection[{ipaddr\+\_\+sprintf}]{\setlength{\rightskip}{0pt plus 5cm}int ipaddr\+\_\+sprintf (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf, }
+\item[{uint8\+\_\+t}]{buf\+\_\+len, }
+\item[{const uip\+\_\+ipaddr\+\_\+t $\ast$}]{addr}
+\end{DoxyParamCaption}
+)}}\label{snmp_8c_a523ab718dec1a794b3f8c8752f1e2ae3}
+
+
+Convert I\+Pv6 address in char format. 
+
+Format I\+Pv6 address in string char variable.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em buf} & Variable that'll receive the ipv6 address decoded \\
+\hline
+\mbox{\tt in}  & {\em buf\+\_\+len} & Len of buf variable \\
+\hline
+\mbox{\tt in}  & {\em addr} & Address I\+Pv6 in uip\+\_\+ipaddr\+\_\+t format\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em len} & Length of buf variable formated \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+143                                                                          \{
+144   uint16\_t a;
+145   uint8\_t len = 0;
+146   \textcolor{keywordtype}{int} i, f;
+147   \textcolor{keywordflow}{for}(i = 0, f = 0; i < \textcolor{keyword}{sizeof}(uip\_ipaddr\_t); i += 2) \{
+148     a = (addr->u8[i] << 8) + addr->u8[i + 1];
+149     \textcolor{keywordflow}{if}(a == 0 && f >= 0) \{
+150       \textcolor{keywordflow}{if}(f++ == 0) \{
+151         len += snprintf(&buf[len], buf\_len - len, \textcolor{stringliteral}{"::"});
+152       \}
+153     \} \textcolor{keywordflow}{else} \{
+154       \textcolor{keywordflow}{if}(f > 0) \{
+155         f = -1;
+156       \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(i > 0) \{
+157         len += snprintf(&buf[len], buf\_len - len, \textcolor{stringliteral}{":"});
+158       \}
+159       len += snprintf(&buf[len], buf\_len - len, \textcolor{stringliteral}{"%x"}, a);
+160     \}
+161   \}
+162 
+163   \textcolor{keywordflow}{return} len;
+164 \}
+\end{DoxyCode}
+\hypertarget{snmp_8c_a05848f4eb62dd417b99e461854870bf9}{\index{snmp.\+c@{snmp.\+c}!snmp\+\_\+cb\+\_\+data@{snmp\+\_\+cb\+\_\+data}}
+\index{snmp\+\_\+cb\+\_\+data@{snmp\+\_\+cb\+\_\+data}!snmp.\+c@{snmp.\+c}}
+\subsubsection[{snmp\+\_\+cb\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}void snmp\+\_\+cb\+\_\+data (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{snmp_8c_a05848f4eb62dd417b99e461854870bf9}
+
+
+S\+N\+M\+P Callback receive. 
+
+Receive in callback mode, any data from N\+M\+S of S\+N\+M\+P protocol.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em void} & No argument to pass\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em void} & Doesn't return anything \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+109                        \{
+110   \textcolor{keyword}{static} uint16\_t len;
+111   \textcolor{keyword}{static} \textcolor{keywordtype}{char} buf[MAX\_UDP\_SNMP];
+112   memset(buf, 0, MAX\_UDP\_SNMP);
+113 
+114   \textcolor{keywordflow}{if}(uip\_newdata()) \{
+115     len = uip\_datalen();
+116     memcpy(buf, uip\_appdata, len);
+117 \textcolor{preprocessor}{    #ifdef DEBUG\_SNMP\_DECODING}
+118     debug\_snmp(\textcolor{stringliteral}{"%u bytes from ["}, len);
+119 \textcolor{preprocessor}{    #endif}
+120     uip\_debug\_ipaddr\_print(&UIP\_IP\_BUF->srcipaddr);
+121     printf(\textcolor{stringliteral}{"]:%u"}, UIP\_HTONS(UIP\_UDP\_BUF->srcport));
+122     uip\_ipaddr\_copy(&server\_conn->ripaddr, &UIP\_IP\_BUF->srcipaddr);
+123     server\_conn->rport = UIP\_UDP\_BUF->srcport;
+124     \hyperlink{structsnmp__t}{snmp\_t} snmp\_handle;
+125     \textcolor{keywordflow}{if} (\hyperlink{snmp_8h_aca484712bcdb0bbc0f065061c4a0ed20}{snmp\_decode\_message}(buf, &snmp\_handle))\{
+126 \textcolor{preprocessor}{      #ifdef DEBUG\_SNMP\_DECODING}
+127       debug\_snmp(\textcolor{stringliteral}{"New SNMP Request received!"});
+128 \textcolor{preprocessor}{      #endif}
+129       len = \hyperlink{snmp_8h_a63d8ffecf9aa0af9824de046643c140f}{snmp\_encode\_message}(&snmp\_handle, buf);
+130       uip\_udp\_packet\_send(server\_conn, buf, len);
+131       uip\_create\_unspecified(&server\_conn->ripaddr);
+132       server\_conn->rport = 0;
+133     \}
+134     \textcolor{keywordflow}{else}
+135       debug\_snmp(\textcolor{stringliteral}{"Problem on SNMP Request received!"});
+136   \}
+137 \}
+\end{DoxyCode}
+\hypertarget{snmp_8c_a4d88f2fc7655280384131d543e0d83e5}{\index{snmp.\+c@{snmp.\+c}!snmp\+\_\+init@{snmp\+\_\+init}}
+\index{snmp\+\_\+init@{snmp\+\_\+init}!snmp.\+c@{snmp.\+c}}
+\subsubsection[{snmp\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void snmp\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{snmp_8c_a4d88f2fc7655280384131d543e0d83e5}
+
+
+S\+N\+M\+P Init function. 
+
+Init S\+N\+M\+P A\+G\+E\+N\+T connection
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em void} & No argument to pass\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em void} & Not return argument \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+139                     \{
+140   process\_start(&snmp\_main, NULL);
+141 \}
+\end{DoxyCode}
+\hypertarget{snmp_8c_a732192a9e72d3182d395c47e2cd9c79e}{\index{snmp.\+c@{snmp.\+c}!update\+\_\+snmp\+\_\+mib@{update\+\_\+snmp\+\_\+mib}}
+\index{update\+\_\+snmp\+\_\+mib@{update\+\_\+snmp\+\_\+mib}!snmp.\+c@{snmp.\+c}}
+\subsubsection[{update\+\_\+snmp\+\_\+mib}]{\setlength{\rightskip}{0pt plus 5cm}void update\+\_\+snmp\+\_\+mib (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{snmp_8c_a732192a9e72d3182d395c47e2cd9c79e}
+
+
+Update S\+N\+M\+P O\+I\+Ds. 
+
+Update the O\+I\+Ds of values from network
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em void} & No argument to pass\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em void} & Not return argument \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+175                           \{
+176   heartbeat\_value++;
+177 
+178   uint8\_t oid\_tree[2];
+179   \textcolor{keywordtype}{char} dado[MAX\_STRINGS\_LENGTH];
+180 
+181   \textcolor{comment}{/******************************* Hearbeat ***********************************/}
+182   oid\_tree[0] = 4;
+183   oid\_tree[1] = 2;
+184   sprintf(dado,\textcolor{stringliteral}{"heartbeat\_%d"},heartbeat\_value);
+185   debug\_os(\textcolor{stringliteral}{"Dado de update: %s"},dado);
+186   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+187 
+188   \textcolor{comment}{/******************************** RSSI **************************************/}
+189   oid\_tree[0] = 4;
+190   oid\_tree[1] = 3;
+191   \textcolor{keywordtype}{int}  def\_rt\_rssi = sicslowpan\_get\_last\_rssi();
+192   sprintf(dado,\textcolor{stringliteral}{"RSSI:%d"},def\_rt\_rssi);
+193   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+194 
+195   \textcolor{comment}{/*************************** Prefered IPv6 **********************************/}
+196   \textcolor{keywordtype}{char} def\_rt\_str[64];
+197   oid\_tree[0] = 4;
+198   oid\_tree[1] = 4;
+199   memset(def\_rt\_str, 0, \textcolor{keyword}{sizeof}(def\_rt\_str));
+200   \hyperlink{snmp_8c_a523ab718dec1a794b3f8c8752f1e2ae3}{ipaddr\_sprintf}(def\_rt\_str, \textcolor{keyword}{sizeof}(def\_rt\_str), uip\_ds6\_defrt\_choose());
+201   sprintf(dado,\textcolor{stringliteral}{"Pref. route:[%s]"},def\_rt\_str);
+202   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+203 
+204   \textcolor{comment}{/********************* Rank RPL e Parent Link Metric ************************/}
+205   uint16\_t rank\_rpl = 0, link\_metric\_rpl = 0;
+206   rpl\_parent\_t *p = nbr\_table\_head(rpl\_parents);
+207   rpl\_instance\_t *default\_instance;
+208   default\_instance = rpl\_get\_default\_instance();
+209   \textcolor{keywordflow}{while}(p != NULL)\{
+210     \textcolor{keywordflow}{if} (p == default\_instance->current\_dag->preferred\_parent) \{
+211       rank\_rpl = p->rank;
+212       link\_metric\_rpl = rpl\_get\_parent\_link\_metric(p);
+213       \textcolor{keywordflow}{break};
+214     \}
+215     \textcolor{keywordflow}{else}
+216     p = nbr\_table\_next(rpl\_parents, p);
+217   \}
+218   oid\_tree[0] = 4;
+219   oid\_tree[1] = 5;
+220   sprintf(dado,\textcolor{stringliteral}{"Rank RPL:%5u"},rank\_rpl);
+221   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+222 
+223   oid\_tree[0] = 4;
+224   oid\_tree[1] = 6;
+225   sprintf(dado,\textcolor{stringliteral}{"Parent Link Metric:%5u"},link\_metric\_rpl);
+226   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+227 
+228   \textcolor{comment}{/*********************** Global and Local IPv6 Address **********************/}
+229   \textcolor{keywordtype}{int} i;
+230   uint8\_t state;
+231   uip\_ipaddr\_t global\_ipv6\_address\_node,
+232                local\_ipv6\_address\_node;
+233 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+234   debug\_snmp(\textcolor{stringliteral}{"Client IPv6 addresses: "});
+235 \textcolor{preprocessor}{  #endif}
+236   \textcolor{keywordflow}{for}(i = 0; i < UIP\_DS6\_ADDR\_NB; i++) \{
+237     state = uip\_ds6\_if.addr\_list[i].state;
+238     \textcolor{keywordflow}{if}(uip\_ds6\_if.addr\_list[i].isused &&
+239       (state == ADDR\_TENTATIVE || state == ADDR\_PREFERRED)) \{
+240       local\_ipv6\_address\_node = uip\_ds6\_if.addr\_list[i].ipaddr;
+241       \textcolor{keywordflow}{if} (i == 1)
+242         global\_ipv6\_address\_node = uip\_ds6\_if.addr\_list[i].ipaddr;
+243       \textcolor{keywordflow}{else}
+244         local\_ipv6\_address\_node = uip\_ds6\_if.addr\_list[i].ipaddr;
+245 \textcolor{preprocessor}{      #ifdef DEBUG\_SNMP\_DECODING}
+246       printf6addr(&uip\_ds6\_if.addr\_list[i].ipaddr);
+247 \textcolor{preprocessor}{      #endif}
+248       \textcolor{comment}{/* hack to make address "final" */}
+249       \textcolor{keywordflow}{if} (state == ADDR\_TENTATIVE)
+250         uip\_ds6\_if.addr\_list[i].state = ADDR\_PREFERRED;
+251     \}
+252   \}
+253 
+254   print\_ipv6\_addr(&global\_ipv6\_address\_node,&global\_ipv6\_char[0]);
+255   print\_ipv6\_addr(&local\_ipv6\_address\_node,&local\_ipv6\_char[0]);
+256 
+257   oid\_tree[0] = 4;
+258   oid\_tree[1] = 7;
+259   sprintf(dado,\textcolor{stringliteral}{"Local:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"}
+260                ,local\_ipv6\_char[0]
+261                ,local\_ipv6\_char[1]
+262                ,local\_ipv6\_char[8]
+263                ,local\_ipv6\_char[9]
+264                ,local\_ipv6\_char[10]
+265                ,local\_ipv6\_char[11]
+266                ,local\_ipv6\_char[12]
+267                ,local\_ipv6\_char[13]
+268                ,local\_ipv6\_char[14]
+269                ,local\_ipv6\_char[15]);
+270   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+271   oid\_tree[0] = 4;
+272   oid\_tree[1] = 8;
+273   sprintf(dado,\textcolor{stringliteral}{"Global:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"}
+274                ,global\_ipv6\_char[0]
+275                ,global\_ipv6\_char[1]
+276                ,global\_ipv6\_char[8]
+277                ,global\_ipv6\_char[9]
+278                ,global\_ipv6\_char[10]
+279                ,global\_ipv6\_char[11]
+280                ,global\_ipv6\_char[12]
+281                ,global\_ipv6\_char[13]
+282                ,global\_ipv6\_char[14]
+283                ,global\_ipv6\_char[15]);
+284   \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\_ii\_update\_list}(oid\_tree,dado);
+285 
+286 \}
+\end{DoxyCode}

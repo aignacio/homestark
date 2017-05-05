@@ -1,0 +1,31 @@
+{
+  "name": "angular-location-update",
+  "version": "0.0.2",
+  "homepage": "https://github.com/anglibs/angular-location-update",
+  "authors": [
+    "garmoshka-mo <dan@dub.ink>"
+  ],
+  "main": "angular-location-update.js",
+  "description": "Updates location path without reloading of controller",
+  "ignore": [
+    "**/.*",
+    "*.yml",
+    "*.xml",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "*"
+  },
+  "_release": "0.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.2",
+    "commit": "103e945c535f9c0e3479c4faf77930404c823f21"
+  },
+  "_source": "https://github.com/anglibs/angular-location-update.git",
+  "_target": "*",
+  "_originalSource": "angular-location-update"
+}

@@ -1,0 +1,39 @@
+\#\+Dispositivo Home\+Stark 6\+Lo\+W\+P\+A\+N Network 
+
+{\bfseries Desenvolvedor\+:} Ânderson Ignácio da Silva
+
+Projeto de T\+C\+C para criação de uma rede mesh 6\+Lo\+W\+P\+A\+N gerenciável utilizando protocolos de gerenciamento e dados de redes I\+P. O Target alvo utilizado é o C\+C2650 da Texas Instruments, porém com pequenas adaptações também funciona em outros dispositivos. O dispositivo implementado é capaz de se conectar a uma rede mesh 6\+Lo\+W\+P\+A\+N, comunicando via Co\+A\+P ou M\+Q\+T\+T-\/\+S\+N com broker através de uma interface de gestão/configuração. Também é possível gerenciar a rede mesh através do protocolo S\+N\+M\+Pv1 também implementado.  {\bfseries Características\+:}
+\begin{DoxyItemize}
+\item \mbox{[}x\mbox{]} Protocolo M\+Q\+T\+T-\/\+S\+N
+\item \mbox{[}x\mbox{]} Protocolo Co\+A\+P
+\item \mbox{[}x\mbox{]} Agent S\+N\+M\+Pv1
+\item \mbox{[}x\mbox{]} Documentação em Doxygen
+\end{DoxyItemize}
+
+\subsection*{Implementação\+:}
+
+```make $>$make T\+A\+R\+G\+E\+T=srf06-\/cc26xx $>$make T\+A\+R\+G\+E\+T=z1 ``` A implementação do projeto foi realizada utilizando o dispositivo z1-\/zolertia em simulações com a ferramenta cooja porém, em função de limites de memória R\+O\+M do cross-\/toolchain (msp-\/gcc), deve-\/se utilizar o compilador em anexo na pasta {\bfseries tools}, onde também há um shell script de instalação do mesmo. Outro detalhe em relação as simulações são os critérios de memória R\+A\+M do z1, a qual limita a utilização de apenas umas das características de protocolos utilizados (mqtt, coap, snmp). Diferentemente da simulação, todas os protocolos podem ser utilizados caso do Target alvo seja o C\+C2650.
+
+\subsection*{S\+N\+M\+Pv1\+:}
+
+A implementação do agente S\+N\+M\+P se limita apenas a versão 1 do protocolo onde algumas O\+I\+Ds da M\+I\+B2 são implementadas, no arquivo \hyperlink{main__core_8c}{main\+\_\+core.\+c} estão as inicializações e descrições de O\+I\+Ds utilizadas. Como não há definição de M\+I\+B para a rede R\+P\+L, foram utilizadas O\+I\+Ds disponíveis de informações do host. O teste do protocolo S\+N\+M\+P foi realizado utilizando o programa para Linux net-\/snmp com comandos de {\bfseries snmpget} e {\bfseries snmpwalk}, uma vez que o dispositivo responde a requisições get e get-\/next. Uma característica é de que o dispositivo responde ao walk somente na O\+I\+D master da requisição, logo\+: requisição\+: snmpget .... iso.\+3.\+6.\+1.\+2.\+1.\+1 resposta\+: iso.\+3.\+6.\+1.\+2.\+1.\+1.\+1 = ... iso.\+3.\+6.\+1.\+2.\+1.\+1.\+2 = ... iso.\+3.\+6.\+1.\+2.\+1.\+1.\+3 = ... ... Esta característica evita o overhead possível de ser gerado em uma requisição deste tipo. O protocolo S\+N\+M\+P é utilizado somente para gerenciamento da rede R\+P\+L os quais fornecem a interface um meio de montar a topologia da rede. Um exemplo de requisição/resposta real pode ser visto abaixo\+: 
+
+\subsection*{Co\+A\+P\+:}
+
+A implementação do Co\+A\+P fornece acesso a periféricos e ações dos dispositivos para troca de dados, todas os recursos estão contidos na pasta {\bfseries resources}. O modo de servidor Co\+A\+P é executado no dispositivo que responde as requisições restfull conforme soliticações de clientes. Para teste do protocolo recomenda-\/se a utilização do plugin copper para o firefox, o qual além de ser capaz de descobrir recursos, fornece ferramentas para diferentes tipos de requisições. 
+
+\subsection*{M\+Q\+T\+T-\/\+S\+N\+:}
+
+A implementação do M\+Q\+T\+T-\/\+S\+N já está contida nesse repositório\+: \href{https://github.com/aignacio/MQTT-SN-Contiki---HomeStark}{\tt M\+Q\+T\+T-\/\+S\+N}
+
+\subsection*{Observações}
+
+Se o C\+C2650 utilizado for o launchpad, ele pode apresentar erro na programação com o Uniflash Tool, tal problema relacionado com o programador J\+T\+A\+G anexado a placa, para resolver isso, conecte o launchpad a um Windows com o software Smart\+R\+F Flash Programmer v2 e clique em \char`\"{}update\char`\"{} que após o update da ferramenta, ele irá ser programado no Linux. Toda documentação das funções está em doxygen no caminho ./doxy\+\_\+files/html/index.html.
+
+\subsection*{Contribuições e licença\+:}
+
+Este software está sendo liberado sobre a licença Apache 2.\+0, qualquer contribuição deve ser informada ao autor, criando um branch novo para o feature implementado.
+
+\subsection*{Nomenclaturas adicionais\+:}
+
+E\+T\+X (expected transmission count) = Medidor de qualidade de caminho entre dois nós em um pacote wireless de rede. Basicamente esse núme ro indica o número esperado de transmissões de um pacote necessária s para que não haja erro na recepção no destino. 

@@ -1,0 +1,329 @@
+\hypertarget{mibii_8c}{\section{Referência ao ficheiro snmpd/mibii.c}
+\label{mibii_8c}\index{snmpd/mibii.\+c@{snmpd/mibii.\+c}}
+}
+
+
+Licensed to the Apache Software Foundation (A\+S\+F) under one or more contributor license agreements.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}snmp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mibii.\+h\char`\"{}}\\*
+Diagrama de dependências de inclusão para mibii.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mibii_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mibii_8c_aeae05bfda8520c157c4436bc5cf8648b}{mib\+\_\+ii\+\_\+check\+\_\+oid} (uint8\+\_\+t $\ast$mib\+\_\+oid, uint8\+\_\+t $\ast$index)
+\begin{DoxyCompactList}\small\item\em Check if exist O\+I\+D. \end{DoxyCompactList}\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mibii_8c_aa0bb802c0b80aaab6218e5a7753f8e28}{mib\+\_\+ii\+\_\+get\+\_\+oid} (uint8\+\_\+t $\ast$oid, uint8\+\_\+t $\ast$oid\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Get O\+I\+D Value in the M\+I\+B tree. \end{DoxyCompactList}\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{mib\+\_\+ii\+\_\+update\+\_\+list} (uint8\+\_\+t $\ast$tree, char $\ast$value)
+\begin{DoxyCompactList}\small\item\em Update the M\+I\+B O\+I\+D Tree. \end{DoxyCompactList}\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mibii_8c_a87f7eaae8f191a87c287fc4896e3524e}{mib\+\_\+ii\+\_\+fill\+\_\+list} (uint8\+\_\+t $\ast$oid\+\_\+tree\+\_\+var, const char $\ast$value)
+\begin{DoxyCompactList}\small\item\em Init the M\+I\+B O\+I\+D implementation. \end{DoxyCompactList}\item 
+\hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mibii_8c_a40c075666913ad4f73559ef972049d16}{mib\+\_\+ii\+\_\+show} (void)
+\begin{DoxyCompactList}\small\item\em List M\+I\+B O\+I\+D values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mibii_8c_a4d9874368b0a756022a37de20575c884}{uint8\+\_\+t {\bfseries global\+\_\+index} = 0}\label{mibii_8c_a4d9874368b0a756022a37de20575c884}
+
+\item 
+\hypertarget{mibii_8c_a8fe722bc2441f81a00d11912cf29126f}{\hyperlink{structoid__data}{oid\+\_\+data} {\bfseries oid\+\_\+list} \mbox{[}M\+A\+X\+\_\+\+O\+I\+D\+S\mbox{]}}\label{mibii_8c_a8fe722bc2441f81a00d11912cf29126f}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Licensed to the Apache Software Foundation (A\+S\+F) under one or more contributor license agreements. 
+
+See the N\+O\+T\+I\+C\+E file distributed with this work for additional information regarding copyright ownership. The A\+S\+F licenses this file to you under the Apache License, Version 2.\+0 (the \char`\"{}\+License\char`\"{}); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+\href{http://www.apache.org/licenses/LICENSE-2.0}{\tt http\+://www.\+apache.\+org/licenses/\+L\+I\+C\+E\+N\+S\+E-\/2.\+0}
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \char`\"{}\+A\+S I\+S\char`\"{} B\+A\+S\+I\+S, W\+I\+T\+H\+O\+U\+T W\+A\+R\+R\+A\+N\+T\+I\+E\+S O\+R C\+O\+N\+D\+I\+T\+I\+O\+N\+S O\+F A\+N\+Y K\+I\+N\+D, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+This project is under A\+P\+A\+C\+H\+E 2.\+0 license.
+
+M\+I\+B I\+I Implementation of homestark network \begin{DoxyAuthor}{Autor}
+Ânderson Ignácio da Silva 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+19 Sept 2016 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{Veja também}
+\href{http://www.aignacio.com}{\tt http\+://www.\+aignacio.\+com} 
+\end{DoxySeeAlso}
+
+
+\subsection{Documentação das funções}
+\hypertarget{mibii_8c_aeae05bfda8520c157c4436bc5cf8648b}{\index{mibii.\+c@{mibii.\+c}!mib\+\_\+ii\+\_\+check\+\_\+oid@{mib\+\_\+ii\+\_\+check\+\_\+oid}}
+\index{mib\+\_\+ii\+\_\+check\+\_\+oid@{mib\+\_\+ii\+\_\+check\+\_\+oid}!mibii.\+c@{mibii.\+c}}
+\subsubsection[{mib\+\_\+ii\+\_\+check\+\_\+oid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mib\+\_\+ii\+\_\+check\+\_\+oid (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{mib\+\_\+oid, }
+\item[{uint8\+\_\+t $\ast$}]{index}
+\end{DoxyParamCaption}
+)}}\label{mibii_8c_aeae05bfda8520c157c4436bc5cf8648b}
+
+
+Check if exist O\+I\+D. 
+
+Run in the M\+I\+B Structure to find O\+I\+D available.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em mib\+\_\+oid} & O\+I\+D M\+I\+B tree string \\
+\hline
+\mbox{\tt in}  & {\em index} & Index of the position of the M\+I\+B searched\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success to find O\+I\+D value \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to find O\+I\+D value \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+36                                                              \{
+37   uint8\_t i,
+38           mib\_s[4];
+39   \textcolor{comment}{// A correct oid for this implementation must be iso.3.6.1.2.1.x.x.0}
+40   mib\_s[0] = *(mib\_oid);
+41   mib\_s[1] = *(mib\_oid+1),
+42   mib\_s[2] = *(mib\_oid+2),
+43   mib\_s[3] = *(mib\_oid+3);
+44 
+45 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+46   debug\_snmp(\textcolor{stringliteral}{"MIB to search: iso.3.6.1.2.1.[%d].[%d].[%d].[%d]"},mib\_s[0],mib\_s[1],mib\_s[2],mib\_s[3]);
+47 \textcolor{preprocessor}{  #endif}
+48 
+49   \textcolor{keywordflow}{if} (mib\_s[2] != 0 || mib\_s[3] != 0)
+50     \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+51 
+52   \textcolor{keywordflow}{for} (i = 0; i < MAX\_OIDS; i++)\{
+53     \textcolor{keywordflow}{if} (oid\_list[i].oid\_tree[0] == mib\_s[0] && oid\_list[i].oid\_tree[1] == mib\_s[1])\{
+54       *index = i;
+55       \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+56     \}
+57     \textcolor{comment}{// debug\_snmp("%s",mibii\_tree[i]);}
+58   \}
+59 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+60   debug\_snmp(\textcolor{stringliteral}{"MIB2 - There isn't OID mapped!"});
+61 \textcolor{preprocessor}{  #endif}
+62   \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+63 \}
+\end{DoxyCode}
+\hypertarget{mibii_8c_a87f7eaae8f191a87c287fc4896e3524e}{\index{mibii.\+c@{mibii.\+c}!mib\+\_\+ii\+\_\+fill\+\_\+list@{mib\+\_\+ii\+\_\+fill\+\_\+list}}
+\index{mib\+\_\+ii\+\_\+fill\+\_\+list@{mib\+\_\+ii\+\_\+fill\+\_\+list}!mibii.\+c@{mibii.\+c}}
+\subsubsection[{mib\+\_\+ii\+\_\+fill\+\_\+list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mib\+\_\+ii\+\_\+fill\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{oid\+\_\+tree\+\_\+var, }
+\item[{const char $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{mibii_8c_a87f7eaae8f191a87c287fc4896e3524e}
+
+
+Init the M\+I\+B O\+I\+D implementation. 
+
+Initialize the M\+I\+B O\+I\+D implementation structure
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em oid\+\_\+tree\+\_\+var} & O\+I\+D M\+I\+B tree string \\
+\hline
+\mbox{\tt in}  & {\em value} & Value to insert into O\+I\+D data\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success insert in the O\+I\+D M\+I\+B tree \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to insert in the O\+I\+D tree \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+125                                                                      \{
+126   \textcolor{keywordflow}{if} (global\_index == MAX\_OIDS) \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+127   uint8\_t index = global\_index++;
+128 
+129   oid\_list[index].\hyperlink{structoid__data_a2675b7bf5cd84760d8e230b3f689d57d}{oid\_tree}[0]  = *oid\_tree\_var;
+130   oid\_list[index].\hyperlink{structoid__data_a2675b7bf5cd84760d8e230b3f689d57d}{oid\_tree}[1]  = *(oid\_tree\_var+1);
+131   strcpy(oid\_list[index].oid\_value,value);
+132 
+133 
+134   \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+135 \}
+\end{DoxyCode}
+\hypertarget{mibii_8c_aa0bb802c0b80aaab6218e5a7753f8e28}{\index{mibii.\+c@{mibii.\+c}!mib\+\_\+ii\+\_\+get\+\_\+oid@{mib\+\_\+ii\+\_\+get\+\_\+oid}}
+\index{mib\+\_\+ii\+\_\+get\+\_\+oid@{mib\+\_\+ii\+\_\+get\+\_\+oid}!mibii.\+c@{mibii.\+c}}
+\subsubsection[{mib\+\_\+ii\+\_\+get\+\_\+oid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mib\+\_\+ii\+\_\+get\+\_\+oid (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{oid, }
+\item[{uint8\+\_\+t $\ast$}]{oid\+\_\+string}
+\end{DoxyParamCaption}
+)}}\label{mibii_8c_aa0bb802c0b80aaab6218e5a7753f8e28}
+
+
+Get O\+I\+D Value in the M\+I\+B tree. 
+
+Search for O\+I\+D data in the M\+I\+B tree of the O\+I\+D passed.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em oid} & O\+I\+D M\+I\+B tree string \\
+\hline
+\mbox{\tt in}  & {\em oid\+\_\+string} & String of the data in the O\+I\+D-\/\+M\+I\+B\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success to get the O\+I\+D Value \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to get the O\+I\+D Value \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+65                                                             \{
+66 \textcolor{preprocessor}{  #if CONTIKI\_TARGET\_SRF06\_CC26XX}
+67     uint8\_t index;
+68     \textcolor{keywordflow}{if} (!\hyperlink{mibii_8c_aeae05bfda8520c157c4436bc5cf8648b}{mib\_ii\_check\_oid}(oid+7,&index)) \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+69 
+70     \textcolor{keywordtype}{char} data[MAX\_STRINGS\_LENGTH];
+71     strcpy(data,oid\_list[index].oid\_value);
+72 
+73     uint8\_t len = strlen(data),
+74             index2 = 0;
+75     \textcolor{keywordflow}{while} (index2 <= len) \{
+76       *(oid\_string+index2) = data[index2];
+77       index2++;
+78     \}
+79     *(oid\_string+index2) = \textcolor{charliteral}{'\(\backslash\)0'};
+80 
+81 \textcolor{preprocessor}{    #ifdef DEBUG\_SNMP\_DECODING}
+82     debug\_snmp(\textcolor{stringliteral}{"MIB2 Decode OID received:%s"},data);
+83 \textcolor{preprocessor}{    #endif}
+84     \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+85 \textcolor{preprocessor}{  #else}
+86     uint8\_t data[] = \textcolor{stringliteral}{"z1\_snmp\(\backslash\)0"};
+87     uint8\_t len = 8,
+88             index2 = 0;
+89     \textcolor{keywordflow}{while} (index2 <= len) \{
+90       *(oid\_string+index2) = data[index2];
+91       index2++;
+92     \}
+93     *(oid\_string+index2) = \textcolor{charliteral}{'\(\backslash\)0'};
+94 \textcolor{preprocessor}{    #ifdef DEBUG\_SNMP\_DECODING}
+95     debug\_snmp(\textcolor{stringliteral}{"MIB2 Decode OID received:%s"},(\textcolor{keywordtype}{char} *)oid\_string);
+96 \textcolor{preprocessor}{    #endif}
+97     \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+98 \textcolor{preprocessor}{  #endif}
+99 \}
+\end{DoxyCode}
+\hypertarget{mibii_8c_a40c075666913ad4f73559ef972049d16}{\index{mibii.\+c@{mibii.\+c}!mib\+\_\+ii\+\_\+show@{mib\+\_\+ii\+\_\+show}}
+\index{mib\+\_\+ii\+\_\+show@{mib\+\_\+ii\+\_\+show}!mibii.\+c@{mibii.\+c}}
+\subsubsection[{mib\+\_\+ii\+\_\+show}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mib\+\_\+ii\+\_\+show (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{mibii_8c_a40c075666913ad4f73559ef972049d16}
+
+
+List M\+I\+B O\+I\+D values. 
+
+List all M\+I\+B Implementation with O\+I\+D tree and data
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em void} & Without argument\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success to list O\+I\+D tree \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to list O\+I\+D tree \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+137                             \{
+138 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+139   \textcolor{keywordtype}{size\_t} i = 0;
+140     \textcolor{keywordflow}{for} (i=0; i < global\_index; i++) \{
+141       debug\_snmp(\textcolor{stringliteral}{"Index:%d"},i);
+142       debug\_snmp(\textcolor{stringliteral}{"OID Tree: iso.3.6.1.2.1.%d.%d.0"},oid\_list[i].oid\_tree[0],oid\_list[i].oid\_tree[1]);
+143       debug\_snmp(\textcolor{stringliteral}{"OID Value:%s"},oid\_list[i].oid\_value);
+144     \}
+145 \textcolor{preprocessor}{  #endif}
+146   \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+147 \}
+\end{DoxyCode}
+\hypertarget{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}{\index{mibii.\+c@{mibii.\+c}!mib\+\_\+ii\+\_\+update\+\_\+list@{mib\+\_\+ii\+\_\+update\+\_\+list}}
+\index{mib\+\_\+ii\+\_\+update\+\_\+list@{mib\+\_\+ii\+\_\+update\+\_\+list}!mibii.\+c@{mibii.\+c}}
+\subsubsection[{mib\+\_\+ii\+\_\+update\+\_\+list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mib\+\_\+ii\+\_\+update\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{tree, }
+\item[{char $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{mibii_8c_af534ed1c73b20f10d822d43da1ccc78e}
+
+
+Update the M\+I\+B O\+I\+D Tree. 
+
+Search for O\+I\+D initialized and update the data in the tree, we need to fill the O\+I\+D first
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em oid} & O\+I\+D M\+I\+B tree string \\
+\hline
+\mbox{\tt in}  & {\em oid\+\_\+string} & String of the data in the O\+I\+D-\/\+M\+I\+B\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Success update the O\+I\+D M\+I\+B tree \\
+\hline
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Fail to update the O\+I\+D tree \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+101                                                          \{
+102   uint8\_t index\_list;
+103   uint8\_t tree\_format[4];
+104   uint8\_t mib1 = *tree;
+105   uint8\_t mib2 = *(tree+1);
+106 
+107   tree\_format[0] = mib1;
+108   tree\_format[1] = mib2;
+109   tree\_format[2] = 0;
+110   tree\_format[3] = 0;
+111 
+112   \textcolor{comment}{// sprintf((void *)tree\_format,"%c%c%c%c",mib1,mib2,mib3-0x30,mib4-0x30);}
+113   \textcolor{keywordflow}{if} (!\hyperlink{mibii_8c_aeae05bfda8520c157c4436bc5cf8648b}{mib\_ii\_check\_oid}(tree\_format, &index\_list)) \textcolor{keywordflow}{return} 
+      \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+114   sprintf(oid\_list[index\_list].oid\_value,\textcolor{stringliteral}{"%s"},value);
+115 
+116 
+117 \textcolor{preprocessor}{  #ifdef DEBUG\_SNMP\_DECODING}
+118   debug\_snmp(\textcolor{stringliteral}{"Update MIB2 Indice:%d"},index\_list);
+119   debug\_snmp(\textcolor{stringliteral}{"OID Tree: iso.3.6.1.2.1.%d.%d.0"},oid\_list[index\_list].oid\_tree[0],oid\_list[index\_list].
+      oid\_tree[1]);
+120   debug\_snmp(\textcolor{stringliteral}{"OID Value:%s"},oid\_list[index\_list].oid\_value);
+121 \textcolor{preprocessor}{  #endif}
+122   \textcolor{keywordflow}{return} \hyperlink{snmp_8h_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f}{SUCCESS\_CON};
+123 \}
+\end{DoxyCode}

@@ -1,0 +1,1469 @@
+\hypertarget{mqtt__sn_8h}{\section{Referência ao ficheiro mqtt\+\_\+sn.\+h}
+\label{mqtt__sn_8h}\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+}
+
+
+\begin{DoxyVerb}    Conjunto de protótipos e definiçoes do protocolo MQTT-SN
+\end{DoxyVerb}
+  
+
+
+{\ttfamily \#include \char`\"{}simple-\/udp.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}etimer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ctimer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net/ip/uip-\/debug.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sys/ctimer.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdbool.\+h$>$}\\*
+Diagrama de dependências de inclusão para mqtt\+\_\+sn.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mqtt__sn_8h__incl}
+\end{center}
+\end{figure}
+Este grafo mostra quais são os ficheiros que incluem directamente ou indirectamente este ficheiro\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{mqtt__sn_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Estruturas de Dados}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmqtt__sn__task__t}{mqtt\+\_\+sn\+\_\+task\+\_\+t}
+\begin{DoxyCompactList}\small\item\em estruturas para o bind de topic e short topic id \end{DoxyCompactList}\item 
+struct \hyperlink{structnode}{node}
+\begin{DoxyCompactList}\small\item\em Estrutura de fila M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+struct \hyperlink{structshort__topics__t}{short\+\_\+topics\+\_\+t}
+\item 
+struct \hyperlink{structmqtt__sn__con__t}{mqtt\+\_\+sn\+\_\+con\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Estrutura de conexão ao broker M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__MQTT__SN__DEBUG_ga2949e816367fa801d4015f596cf2925a}{\#define \hyperlink{group__MQTT__SN__DEBUG_ga2949e816367fa801d4015f596cf2925a}{D\+E\+B\+U\+G\+\_\+\+M\+Q\+T\+T\+\_\+\+S\+N}}\label{group__MQTT__SN__DEBUG_ga2949e816367fa801d4015f596cf2925a}
+
+\begin{DoxyCompactList}\small\item\em Se definida habilita mensagens de debug da rede M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__DEBUG_ga7871b41b94f3b5aac9e79ad353903ae7}{\#define \hyperlink{group__MQTT__SN__DEBUG_ga7871b41b94f3b5aac9e79ad353903ae7}{D\+E\+B\+U\+G\+\_\+\+O\+S}}\label{group__MQTT__SN__DEBUG_ga7871b41b94f3b5aac9e79ad353903ae7}
+
+\begin{DoxyCompactList}\small\item\em Se definida habilita mensagens de debug do sistema operacional. \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__DEBUG_gac3a54f3a6ca71cb643dc99df536f503c}{\#define \hyperlink{group__MQTT__SN__DEBUG_gac3a54f3a6ca71cb643dc99df536f503c}{D\+E\+B\+U\+G\+\_\+\+T\+A\+S\+K}}\label{group__MQTT__SN__DEBUG_gac3a54f3a6ca71cb643dc99df536f503c}
+
+\begin{DoxyCompactList}\small\item\em Se definida habilita mensagens de debug de tarefas da fila utilizada pelo M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hypertarget{mqtt__sn_8h_a36f42ab727628183e36ec7de583bf61f}{\#define {\bfseries debug\+\_\+task}(fmt, args...)~printf(\char`\"{}\textbackslash{}n\mbox{[}Tarefa\mbox{]} \char`\"{}fmt, \#\#args)}\label{mqtt__sn_8h_a36f42ab727628183e36ec7de583bf61f}
+
+\item 
+\hypertarget{mqtt__sn_8h_a4414818dcd874c17a091c7a4d9f9ed37}{\#define {\bfseries debug\+\_\+os}(fmt, args...)~printf(\char`\"{}\textbackslash{}n\mbox{[}D\+E\+M\+O\mbox{]} \char`\"{}fmt, \#\#args)}\label{mqtt__sn_8h_a4414818dcd874c17a091c7a4d9f9ed37}
+
+\item 
+\hypertarget{mqtt__sn_8h_ae3e2de92bfa1195fcee6b320e7445986}{\#define {\bfseries debug\+\_\+mqtt}(fmt, args...)~printf(\char`\"{}\textbackslash{}n\mbox{[}M\+Q\+T\+T-\/S\+N\mbox{]} \char`\"{}fmt, \#\#args)}\label{mqtt__sn_8h_ae3e2de92bfa1195fcee6b320e7445986}
+
+\item 
+\hypertarget{mqtt__sn_8h_a0d5347618ab59b9090d2d4dfcaf37395}{\#define {\bfseries debug\+\_\+udp}(fmt,...)}\label{mqtt__sn_8h_a0d5347618ab59b9090d2d4dfcaf37395}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gac6620fe642df6fedae5da980e3cc1685}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H}~(255)}\label{group__MQTT__SN__CONTROL_gac6620fe642df6fedae5da980e3cc1685}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga3dccee9ebffc9265d5c3cd3107ca601b}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+M\+A\+X\+\_\+\+T\+O\+P\+I\+C\+\_\+\+L\+E\+N\+G\+T\+H}~(M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+M\+A\+X\+\_\+\+P\+A\+C\+K\+E\+T\+\_\+\+L\+E\+N\+G\+T\+H-\/6)}\label{group__MQTT__SN__CONTROL_ga3dccee9ebffc9265d5c3cd3107ca601b}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga064185df38354c8d31cba8f173a8b39f}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+A\+D\+V\+E\+R\+T\+I\+S\+E}~(0x00)}\label{group__MQTT__SN__CONTROL_ga064185df38354c8d31cba8f173a8b39f}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga8170ee7211bec9249606010e8af4765d}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+E\+A\+R\+C\+H\+G\+W}~(0x01)}\label{group__MQTT__SN__CONTROL_ga8170ee7211bec9249606010e8af4765d}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga5be35929c3e372b4a2fed0e133be0e92}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+G\+W\+I\+N\+F\+O}~(0x02)}\label{group__MQTT__SN__CONTROL_ga5be35929c3e372b4a2fed0e133be0e92}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga0ad512804838d2ba709e82ffb010d991}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+N\+E\+C\+T}~(0x04)}\label{group__MQTT__SN__CONTROL_ga0ad512804838d2ba709e82ffb010d991}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gac4469be7c31731176bfa8c5bd38f3a58}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+N\+A\+C\+K}~(0x05)}\label{group__MQTT__SN__CONTROL_gac4469be7c31731176bfa8c5bd38f3a58}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga914fff9b2b9e7c08d6b732599f0cf348}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+T\+O\+P\+I\+C\+R\+E\+Q}~(0x06)}\label{group__MQTT__SN__CONTROL_ga914fff9b2b9e7c08d6b732599f0cf348}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga95c657f75f0f02a093b8623a50dc0af8}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+T\+O\+P\+I\+C}~(0x07)}\label{group__MQTT__SN__CONTROL_ga95c657f75f0f02a093b8623a50dc0af8}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gaefa36203de4d9ff51372abd51fa6521a}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+M\+S\+G\+R\+E\+Q}~(0x08)}\label{group__MQTT__SN__CONTROL_gaefa36203de4d9ff51372abd51fa6521a}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga0ab12c9559a2419e1c88080fa3c594c0}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+M\+S\+G}~(0x09)}\label{group__MQTT__SN__CONTROL_ga0ab12c9559a2419e1c88080fa3c594c0}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga742472508835bbeab8a22d6294f34e8f}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R}~(0x0\+A)}\label{group__MQTT__SN__CONTROL_ga742472508835bbeab8a22d6294f34e8f}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gab600be8ae75c06a49cc89d0f7255ac12}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+R\+E\+G\+A\+C\+K}~(0x0\+B)}\label{group__MQTT__SN__CONTROL_gab600be8ae75c06a49cc89d0f7255ac12}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga1c34c285be401165ca3b9ef1c9180354}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+U\+B\+L\+I\+S\+H}~(0x0\+C)}\label{group__MQTT__SN__CONTROL_ga1c34c285be401165ca3b9ef1c9180354}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga5bc44c53d2905a5242a3b72d44c125b2}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+U\+B\+A\+C\+K}~(0x0\+D)}\label{group__MQTT__SN__CONTROL_ga5bc44c53d2905a5242a3b72d44c125b2}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gacef39c4b8c3dd36ed4caf90f6a716585}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+U\+B\+C\+O\+M\+P}~(0x0\+E)}\label{group__MQTT__SN__CONTROL_gacef39c4b8c3dd36ed4caf90f6a716585}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gac4953c83079abc9804fce7dca7b0a648}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+U\+B\+R\+E\+C}~(0x0\+F)}\label{group__MQTT__SN__CONTROL_gac4953c83079abc9804fce7dca7b0a648}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga74daeb038d5cf996c680fc34b187dfba}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+U\+B\+R\+E\+L}~(0x10)}\label{group__MQTT__SN__CONTROL_ga74daeb038d5cf996c680fc34b187dfba}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga1e4f5d7bc584d5ffcda760303ab76904}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+E}~(0x12)}\label{group__MQTT__SN__CONTROL_ga1e4f5d7bc584d5ffcda760303ab76904}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga6db4e874ad63924de121a89d4bcd559d}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+U\+B\+A\+C\+K}~(0x13)}\label{group__MQTT__SN__CONTROL_ga6db4e874ad63924de121a89d4bcd559d}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga0aaddbe1b0ebd1ece45ada17e618e560}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+S\+U\+B\+S\+C\+R\+I\+B\+E}~(0x14)}\label{group__MQTT__SN__CONTROL_ga0aaddbe1b0ebd1ece45ada17e618e560}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga494ee75d7c290823f3738a4d77beea97}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+S\+U\+B\+A\+C\+K}~(0x15)}\label{group__MQTT__SN__CONTROL_ga494ee75d7c290823f3738a4d77beea97}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga24c4412f26f5db3dabc57c8511690a7b}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+I\+N\+G\+R\+E\+Q}~(0x16)}\label{group__MQTT__SN__CONTROL_ga24c4412f26f5db3dabc57c8511690a7b}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga104849c06dad11e57805341ca6394513}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+I\+N\+G\+R\+E\+S\+P}~(0x17)}\label{group__MQTT__SN__CONTROL_ga104849c06dad11e57805341ca6394513}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gaeb18a759d020c1443a602636204c6fdd}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+D\+I\+S\+C\+O\+N\+N\+E\+C\+T}~(0x18)}\label{group__MQTT__SN__CONTROL_gaeb18a759d020c1443a602636204c6fdd}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gae34bbdc05e79d37cc1f2060a885c3e05}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+T\+O\+P\+I\+C\+U\+P\+D}~(0x1\+A)}\label{group__MQTT__SN__CONTROL_gae34bbdc05e79d37cc1f2060a885c3e05}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga3181a18a9d476f1ca97a1bc935c8b712}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+T\+O\+P\+I\+C\+R\+E\+S\+P}~(0x1\+B)}\label{group__MQTT__SN__CONTROL_ga3181a18a9d476f1ca97a1bc935c8b712}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga63c970e654cb17f2a30294a719b11b71}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+M\+S\+G\+U\+P\+D}~(0x1\+C)}\label{group__MQTT__SN__CONTROL_ga63c970e654cb17f2a30294a719b11b71}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga855273768c5808acc67a07b8c4b6f5fa}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+W\+I\+L\+L\+M\+S\+G\+R\+E\+S\+P}~(0x1\+D)}\label{group__MQTT__SN__CONTROL_ga855273768c5808acc67a07b8c4b6f5fa}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gaccc43fa2c1468ee81b07ca73265057e0}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+U\+B\+\_\+\+W\+I\+L\+D\+C\+A\+R\+D}~(0x1\+E)}\label{group__MQTT__SN__CONTROL_gaccc43fa2c1468ee81b07ca73265057e0}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga206c51c6b01cdf9347809ebfc03caaef}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L}~(0x00)}\label{group__MQTT__SN__CONTROL_ga206c51c6b01cdf9347809ebfc03caaef}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga655ae15e8e7734cedf42fab6eb3610b5}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+R\+E\+D\+E\+F\+I\+N\+E\+D}~(0x01)}\label{group__MQTT__SN__CONTROL_ga655ae15e8e7734cedf42fab6eb3610b5}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gaa17c2076a81b61d2719199521563d1c5}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+H\+O\+R\+T}~(0x02)}\label{group__MQTT__SN__CONTROL_gaa17c2076a81b61d2719199521563d1c5}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga2d49bf6469a7864f24a537f059ee0612}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+D\+U\+P}~(0x1 $<$$<$ 7)}\label{group__MQTT__SN__CONTROL_ga2d49bf6469a7864f24a537f059ee0612}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga37b57822f47fbb4ba1639e5be988c437}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+Q\+O\+S\+\_\+0}~(0x0 $<$$<$ 5)}\label{group__MQTT__SN__CONTROL_ga37b57822f47fbb4ba1639e5be988c437}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga6d04b90ba54b58e08caa593a84105f21}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+Q\+O\+S\+\_\+1}~(0x1 $<$$<$ 5)}\label{group__MQTT__SN__CONTROL_ga6d04b90ba54b58e08caa593a84105f21}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga953eaf715ee6055e9f119950be8d7399}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+Q\+O\+S\+\_\+2}~(0x2 $<$$<$ 5)}\label{group__MQTT__SN__CONTROL_ga953eaf715ee6055e9f119950be8d7399}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga8095eefa31299b606b4ba8bbbcb00195}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+Q\+O\+S\+\_\+\+N1}~(0x3 $<$$<$ 5)}\label{group__MQTT__SN__CONTROL_ga8095eefa31299b606b4ba8bbbcb00195}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga45271b87fd548295bc4c86c225fc648e}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+R\+E\+T\+A\+I\+N}~(0x1 $<$$<$ 4)}\label{group__MQTT__SN__CONTROL_ga45271b87fd548295bc4c86c225fc648e}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga8e3f7578e0fef59224e365cef8613f8e}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+W\+I\+L\+L}~(0x1 $<$$<$ 3)}\label{group__MQTT__SN__CONTROL_ga8e3f7578e0fef59224e365cef8613f8e}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga842ab1c7124c0b63f62ed3283dafbe06}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+F\+L\+A\+G\+\_\+\+C\+L\+E\+A\+N}~(0x1 $<$$<$ 2)}\label{group__MQTT__SN__CONTROL_ga842ab1c7124c0b63f62ed3283dafbe06}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga0066dd4afeef507b2e8f5ac01f71ea37}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+P\+R\+O\+T\+O\+C\+O\+L\+\_\+\+I\+D}~(0x01)}\label{group__MQTT__SN__CONTROL_ga0066dd4afeef507b2e8f5ac01f71ea37}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga43005b6b1934800f67a6d169c779c92b}{\#define {\bfseries A\+C\+C\+E\+P\+T\+E\+D}~0x00}\label{group__MQTT__SN__CONTROL_ga43005b6b1934800f67a6d169c779c92b}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga9b2b214d1ddb0f617efdd26ccc91def4}{\#define {\bfseries R\+E\+J\+E\+C\+T\+E\+D\+\_\+\+C\+O\+N\+G\+E\+S\+T\+I\+O\+N}~0x01}\label{group__MQTT__SN__CONTROL_ga9b2b214d1ddb0f617efdd26ccc91def4}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga9b548f6c60530b07c9b9f5ef5b1ac8b9}{\#define {\bfseries R\+E\+J\+E\+C\+T\+E\+D\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+T\+O\+P\+I\+C\+\_\+\+I\+D}~0x02}\label{group__MQTT__SN__CONTROL_ga9b548f6c60530b07c9b9f5ef5b1ac8b9}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga93af4e6b658c4823ae9603b86bb7c64a}{\#define {\bfseries R\+E\+J\+E\+C\+T\+E\+D\+\_\+\+N\+O\+T\+\_\+\+S\+U\+P\+P\+O\+R\+T\+E\+D}~0x03}\label{group__MQTT__SN__CONTROL_ga93af4e6b658c4823ae9603b86bb7c64a}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga206c51c6b01cdf9347809ebfc03caaef}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+N\+O\+R\+M\+A\+L}~(0x00)}\label{group__MQTT__SN__CONTROL_ga206c51c6b01cdf9347809ebfc03caaef}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga655ae15e8e7734cedf42fab6eb3610b5}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+P\+R\+E\+D\+E\+F\+I\+N\+E\+D}~(0x01)}\label{group__MQTT__SN__CONTROL_ga655ae15e8e7734cedf42fab6eb3610b5}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_gaa17c2076a81b61d2719199521563d1c5}{\#define {\bfseries M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+S\+H\+O\+R\+T}~(0x02)}\label{group__MQTT__SN__CONTROL_gaa17c2076a81b61d2719199521563d1c5}
+
+\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga34bf6ae7cc029057c70910ae26a3335f}{\#define \hyperlink{group__MQTT__SN__CONTROL_ga34bf6ae7cc029057c70910ae26a3335f}{ss}(x)~sizeof(x)/sizeof($\ast$x)}\label{group__MQTT__SN__CONTROL_ga34bf6ae7cc029057c70910ae26a3335f}
+
+\begin{DoxyCompactList}\small\item\em Computa o tamanho de um vetor de ponteiros. \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga8d316cee94174b8c2d16e328fdf1e607}{\#define \hyperlink{group__MQTT__SN__CONTROL_ga8d316cee94174b8c2d16e328fdf1e607}{M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+A\+U\+T\+O\+\_\+\+R\+E\+C\+O\+N\+N\+E\+C\+T}}\label{group__MQTT__SN__CONTROL_ga8d316cee94174b8c2d16e328fdf1e607}
+
+\begin{DoxyCompactList}\small\item\em Define se o dispositivo deve se auto conectar de tempos em tempos. \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga180af20d177732dc470c147452feb30f}{\#define \hyperlink{group__MQTT__SN__CONTROL_ga180af20d177732dc470c147452feb30f}{M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+R\+E\+T\+R\+Y\+\_\+\+P\+I\+N\+G}~5}\label{group__MQTT__SN__CONTROL_ga180af20d177732dc470c147452feb30f}
+
+\begin{DoxyCompactList}\small\item\em Número de tentativas de envio de P\+I\+N\+G R\+E\+Q\+U\+E\+S\+T antes de desconectar nó $<$-\/$>$ broker. \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga7533efb537d4d4eebf1b6d3d5256cb0b}{\#define \hyperlink{group__MQTT__SN__CONTROL_ga7533efb537d4d4eebf1b6d3d5256cb0b}{M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+I\+M\+E\+O\+U\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T}~9$\ast$C\+L\+O\+C\+K\+\_\+\+S\+E\+C\+O\+N\+D}\label{group__MQTT__SN__CONTROL_ga7533efb537d4d4eebf1b6d3d5256cb0b}
+
+\begin{DoxyCompactList}\small\item\em Tempo base para comunicação M\+Q\+T\+T-\/\+S\+N broker $<$-\/$>$ nó \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga47da8d46176b160b0db00fe221725d4c}{\#define \hyperlink{group__MQTT__SN__CONTROL_ga47da8d46176b160b0db00fe221725d4c}{M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+T\+I\+M\+E\+O\+U\+T}~C\+L\+O\+C\+K\+\_\+\+S\+E\+C\+O\+N\+D}\label{group__MQTT__SN__CONTROL_ga47da8d46176b160b0db00fe221725d4c}
+
+\begin{DoxyCompactList}\small\item\em Tempo base para comunicação M\+Q\+T\+T-\/\+S\+N broker $<$-\/$>$ nó \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__CONTROL_gaad5ac7de3008d8fa37447193aebc31e2}{\#define \hyperlink{group__MQTT__SN__CONTROL_gaad5ac7de3008d8fa37447193aebc31e2}{M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+R\+E\+T\+R\+Y}~5}\label{group__MQTT__SN__CONTROL_gaad5ac7de3008d8fa37447193aebc31e2}
+
+\begin{DoxyCompactList}\small\item\em Número de tentativas de enviar qualquer pacote ao broker antes de desconectar. \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga45ab5881e190d570f3784e50be2cce65}{\#define \hyperlink{group__MQTT__SN__CONTROL_ga45ab5881e190d570f3784e50be2cce65}{M\+A\+X\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+M\+Q\+T\+T\+\_\+\+S\+N}~100}\label{group__MQTT__SN__CONTROL_ga45ab5881e190d570f3784e50be2cce65}
+
+\begin{DoxyCompactList}\small\item\em Número máximo de tarefas a serem inseridas alocadas dinamicamente M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hypertarget{group__MQTT__SN__CONTROL_ga5ed98e8fc00194886ebc14d25540f81b}{\#define \hyperlink{group__MQTT__SN__CONTROL_ga5ed98e8fc00194886ebc14d25540f81b}{M\+A\+X\+\_\+\+T\+O\+P\+I\+C\+\_\+\+U\+S\+E\+D}~100}\label{group__MQTT__SN__CONTROL_ga5ed98e8fc00194886ebc14d25540f81b}
+
+\begin{DoxyCompactList}\small\item\em Número máximo de tópicos que o usuário pode registrar, a A\+P\+I cria um conjunto de estruturas para o bind de topic e short topic id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Definições de tipos}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mqtt__sn_8h_a679e4bebc7798d960960760150bdc5a7}{typedef void($\ast$ \hyperlink{mqtt__sn_8h_a679e4bebc7798d960960760150bdc5a7}{mqtt\+\_\+sn\+\_\+cb\+\_\+f} )(char $\ast$, char $\ast$)}\label{mqtt__sn_8h_a679e4bebc7798d960960760150bdc5a7}
+
+\begin{DoxyCompactList}\small\item\em Tipo de função de callback que deve ser repassada ao broker. \end{DoxyCompactList}\item 
+\hypertarget{mqtt__sn_8h_a51f20fb9c3db12dd6ecc8a05b4793020}{typedef enum \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98}{resp\+\_\+con} {\bfseries resp\+\_\+con\+\_\+t}}\label{mqtt__sn_8h_a51f20fb9c3db12dd6ecc8a05b4793020}
+
+\end{DoxyCompactItemize}
+\subsection*{Enumerações}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{mqtt__sn_8h_a754c1055b4431040415cf01b39caaa98}{resp\+\_\+con} \{ \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{F\+A\+I\+L\+\_\+\+C\+O\+N}, 
+{\bfseries S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N}, 
+{\bfseries F\+A\+I\+L\+\_\+\+C\+O\+N}, 
+{\bfseries S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N}
+ \}
+\item 
+\hypertarget{mqtt__sn_8h_aab2bca192b63f37bf4847be3686bca75}{enum {\bfseries mqtt\+\_\+sn\+\_\+status\+\_\+t} \{ \\*
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+D\+I\+S\+C\+O\+N\+N\+E\+C\+T\+E\+D}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+C\+O\+N\+N\+A\+C\+K}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+R\+E\+G\+A\+C\+K}, 
+\\*
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+I\+D\+D\+L\+E}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+P\+U\+B\+A\+C\+K}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+S\+U\+B\+A\+C\+K}, 
+\\*
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+P\+U\+B\+\_\+\+R\+E\+Q}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+S\+U\+B\+\_\+\+R\+E\+Q}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+R\+E\+G\+\_\+\+R\+E\+Q}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D}, 
+\\*
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+D\+I\+S\+C\+O\+N\+N\+E\+C\+T\+E\+D}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+C\+O\+N\+N\+A\+C\+K}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+W\+I\+L\+L\+T\+O\+P\+I\+C\+R\+E\+Q}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+W\+I\+L\+L\+M\+S\+G\+R\+E\+Q}, 
+\\*
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+R\+E\+G\+A\+C\+K}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+T\+O\+P\+I\+C\+\_\+\+S\+U\+B\+S\+C\+R\+I\+B\+I\+N\+G}, 
+\\*
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+P\+U\+B\+A\+C\+K}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+W\+A\+I\+T\+I\+N\+G\+\_\+\+S\+U\+B\+A\+C\+K}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+P\+U\+B\+\_\+\+R\+E\+Q}, 
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+S\+U\+B\+\_\+\+R\+E\+Q}, 
+\\*
+{\bfseries M\+Q\+T\+T\+S\+N\+\_\+\+R\+E\+G\+\_\+\+R\+E\+Q}
+ \}}\label{mqtt__sn_8h_aab2bca192b63f37bf4847be3686bca75}
+
+\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__Pacotes_gab898071398b359603a35c202e9c65f3b}{struct {\bfseries \+\_\+\+\_\+attribute\+\_\+\+\_\+} ((packed))}\label{group__Pacotes_gab898071398b359603a35c202e9c65f3b}
+
+\item 
+\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mqtt__sn_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}{mqtt\+\_\+sn\+\_\+insert\+\_\+queue} (\hyperlink{structmqtt__sn__task__t}{mqtt\+\_\+sn\+\_\+task\+\_\+t} new)
+\begin{DoxyCompactList}\small\item\em Insere uma tarefa na fila. \end{DoxyCompactList}\item 
+void \hyperlink{mqtt__sn_8h_ad0a729c99366dad086be6be954e71f2c}{mqtt\+\_\+sn\+\_\+delete\+\_\+queue} ()
+\begin{DoxyCompactList}\small\item\em Remove o elemento mais próximo de ser processado. \end{DoxyCompactList}\item 
+void \hyperlink{mqtt__sn_8h_a71004d5b7e8b1add14024102d8d62042}{mqtt\+\_\+sn\+\_\+check\+\_\+queue} ()
+\begin{DoxyCompactList}\small\item\em Lista as tarefas da fila. \end{DoxyCompactList}\item 
+\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mqtt__sn_8h_a172afa34fe10ad1ee4ffc0d226b35b4d}{mqtt\+\_\+sn\+\_\+check\+\_\+rc} (uint8\+\_\+t rc)
+\begin{DoxyCompactList}\small\item\em Envia requisição de conexão ao broker M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+void \hyperlink{mqtt__sn_8h_af9146fa082fe2bc6612fb13dbb20ed36}{mqtt\+\_\+sn\+\_\+recv\+\_\+parser} (const uint8\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em Realiza o parsing das mensagens U\+D\+P recebidas. \end{DoxyCompactList}\item 
+\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mqtt__sn_8h_a8771e78d9d8d5379ff27fba1feefe37c}{mqtt\+\_\+sn\+\_\+create\+\_\+sck} (\hyperlink{structmqtt__sn__con__t}{mqtt\+\_\+sn\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+connection, char $\ast$topics\mbox{[}$\,$\mbox{]}, size\+\_\+t topic\+\_\+len, \hyperlink{mqtt__sn_8h_a679e4bebc7798d960960760150bdc5a7}{mqtt\+\_\+sn\+\_\+cb\+\_\+f} cb\+\_\+f)
+\begin{DoxyCompactList}\small\item\em Inicia conexão ao broker U\+D\+P. \end{DoxyCompactList}\item 
+\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mqtt__sn_8h_ae17664af7f894e29743fafdf8bf98f89}{mqtt\+\_\+sn\+\_\+reg\+\_\+send} (void)
+\begin{DoxyCompactList}\small\item\em Envio de mensagens ao broker do tipo R\+E\+G\+I\+S\+T\+E\+R. \end{DoxyCompactList}\item 
+\hyperlink{sabado__list__old_8h_aab2bca192b63f37bf4847be3686bca75}{mqtt\+\_\+sn\+\_\+status\+\_\+t} \hyperlink{mqtt__sn_8h_a200e89a8fd400c652431bd505de6f827}{mqtt\+\_\+sn\+\_\+check\+\_\+status} (void)
+\begin{DoxyCompactList}\small\item\em Checa o status da conexão M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mqtt__sn_8h_a1b8eb51076a2923f2c036f1ff925c168}{mqtt\+\_\+sn\+\_\+con\+\_\+send} (void)
+\begin{DoxyCompactList}\small\item\em Envia requisição de conexão ao broker M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mqtt__sn_8h_a8e059290e1f7ce5f5bb17409767fe36d}{mqtt\+\_\+sn\+\_\+pub} (char $\ast$topic, char $\ast$message, bool retain\+\_\+flag, uint8\+\_\+t qos\+\_\+level)
+\begin{DoxyCompactList}\small\item\em Prepara requisição de inscrição ao broker M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+bool \hyperlink{mqtt__sn_8h_afb698c97e10afa31e2c11351f6ce9388}{mqtt\+\_\+sn\+\_\+check\+\_\+empty} (void)
+\begin{DoxyCompactList}\small\item\em Checa o status da fila de tarefas M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+void \hyperlink{mqtt__sn_8h_ac598f98e844bfd5bbdb577099ddf06d1}{parse\+\_\+mqtt\+\_\+type\+\_\+string} (uint8\+\_\+t type, char $\ast$$\ast$type\+\_\+string)
+\begin{DoxyCompactList}\small\item\em Retorna a string de status correspondente. \end{DoxyCompactList}\item 
+void \hyperlink{mqtt__sn_8h_a46fe607d1db728d41ed6aec6fee3fc77}{mqtt\+\_\+sn\+\_\+init} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa P\+R\+O\+C\+E\+S\+S\+\_\+\+T\+H\+R\+E\+A\+D M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} \hyperlink{mqtt__sn_8h_a550856b818c23fce9e4d5b253c3e7547}{mqtt\+\_\+sn\+\_\+pub\+\_\+send} (char $\ast$topic, char $\ast$message, bool retain\+\_\+flag, uint8\+\_\+t qos)
+\begin{DoxyCompactList}\small\item\em Envia pacote P\+U\+B\+L\+I\+S\+H ao broker M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{mqtt__sn_8h_a9bd6d4e9304d00d28861751c22b146e4}{mqtt\+\_\+sn\+\_\+check\+\_\+status\+\_\+string} (void)
+\begin{DoxyCompactList}\small\item\em Checa o status da conexãoe em String. \end{DoxyCompactList}\item 
+uint8\+\_\+t \hyperlink{mqtt__sn_8h_adba0283cc8fadf24f2f04246c76e8cde}{mqtt\+\_\+sn\+\_\+get\+\_\+qos\+\_\+flag} (int8\+\_\+t qos)
+\begin{DoxyCompactList}\small\item\em Gera a flag de nível Qo\+S. \end{DoxyCompactList}\item 
+\hypertarget{mqtt__sn_8h_aa6e0e9b8d7769407ab35fec5443e3896}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries mqtt\+\_\+sn\+\_\+regack\+\_\+send} (uint16\+\_\+t msg\+\_\+id, uint16\+\_\+t topic\+\_\+id)}\label{mqtt__sn_8h_aa6e0e9b8d7769407ab35fec5443e3896}
+
+\item 
+\hypertarget{mqtt__sn_8h_a6674e1ecf45890d3a15ab667fe4a4f58}{void {\bfseries print\+\_\+g\+\_\+topics} (void)}\label{mqtt__sn_8h_a6674e1ecf45890d3a15ab667fe4a4f58}
+
+\item 
+\hypertarget{mqtt__sn_8h_ac9614aca44158215c43b8810e052939d}{void {\bfseries timeout\+\_\+con} (void $\ast$ptr)}\label{mqtt__sn_8h_ac9614aca44158215c43b8810e052939d}
+
+\item 
+\hypertarget{mqtt__sn_8h_a35dbd49b5fdc1d6e3dfe2b2d7255cf3e}{void {\bfseries timeout\+\_\+ping\+\_\+mqtt} (void $\ast$ptr)}\label{mqtt__sn_8h_a35dbd49b5fdc1d6e3dfe2b2d7255cf3e}
+
+\item 
+\hypertarget{mqtt__sn_8h_af09083ea59a182fdf109b6e3fa213bec}{void {\bfseries mqtt\+\_\+sn\+\_\+ping\+\_\+send} (void)}\label{mqtt__sn_8h_af09083ea59a182fdf109b6e3fa213bec}
+
+\item 
+\hypertarget{mqtt__sn_8h_a2620f37584b501fde35e71806a78b35a}{bool {\bfseries unlock\+\_\+tasks} (void)}\label{mqtt__sn_8h_a2620f37584b501fde35e71806a78b35a}
+
+\item 
+\hypertarget{mqtt__sn_8h_aab8d5db0224c9b083af9f18094053795}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries mqtt\+\_\+sn\+\_\+sub} (char $\ast$topic, uint8\+\_\+t qos)}\label{mqtt__sn_8h_aab8d5db0224c9b083af9f18094053795}
+
+\item 
+\hypertarget{mqtt__sn_8h_a105b8d440266b4a582f2d627e57be14a}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries mqtt\+\_\+sn\+\_\+sub\+\_\+send} (char $\ast$topic, uint8\+\_\+t qos)}\label{mqtt__sn_8h_a105b8d440266b4a582f2d627e57be14a}
+
+\item 
+\hypertarget{mqtt__sn_8h_a831d03a2cd7fbc884cec2013c2ebc823}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries mqtt\+\_\+sn\+\_\+sub\+\_\+send\+\_\+wildcard} (char $\ast$topic, uint8\+\_\+t qos)}\label{mqtt__sn_8h_a831d03a2cd7fbc884cec2013c2ebc823}
+
+\item 
+\hypertarget{mqtt__sn_8h_af60c0aa848adffbfe41a2e655a279f9d}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries verf\+\_\+hist\+\_\+sub} (char $\ast$topic)}\label{mqtt__sn_8h_af60c0aa848adffbfe41a2e655a279f9d}
+
+\item 
+\hypertarget{mqtt__sn_8h_ada3c457ee81d0b29892742401845d918}{void {\bfseries init\+\_\+vectors} (void)}\label{mqtt__sn_8h_ada3c457ee81d0b29892742401845d918}
+
+\item 
+\hypertarget{mqtt__sn_8h_ae0cb1cb4ad61ca752d66b286f839d72b}{void {\bfseries init\+\_\+sub} (void $\ast$ptr)}\label{mqtt__sn_8h_ae0cb1cb4ad61ca752d66b286f839d72b}
+
+\item 
+\hypertarget{mqtt__sn_8h_ac81a0d1e0daa51cdb8495a52e317e140}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries verf\+\_\+register} (char $\ast$topic)}\label{mqtt__sn_8h_ac81a0d1e0daa51cdb8495a52e317e140}
+
+\item 
+\hypertarget{mqtt__sn_8h_ade91c29dc851d7eef5fe46a9804b4d5e}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries mqtt\+\_\+sn\+\_\+disconnect} (uint16\+\_\+t duration)}\label{mqtt__sn_8h_ade91c29dc851d7eef5fe46a9804b4d5e}
+
+\item 
+\hypertarget{mqtt__sn_8h_a6718f310e6635c018a7126c5b1311e50}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries mqtt\+\_\+sn\+\_\+will\+\_\+message\+\_\+send} (void)}\label{mqtt__sn_8h_a6718f310e6635c018a7126c5b1311e50}
+
+\item 
+\hypertarget{mqtt__sn_8h_adfb1174ee7cff21df2d0afbb6fe2db30}{\hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\+\_\+con\+\_\+t} {\bfseries mqtt\+\_\+sn\+\_\+will\+\_\+topic\+\_\+send} (void)}\label{mqtt__sn_8h_adfb1174ee7cff21df2d0afbb6fe2db30}
+
+\end{DoxyCompactItemize}
+\subsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__Pacotes_ga1bdd22cd8ef2662e484e03ebdae7c970}{{\bfseries disconnect\+\_\+packet\+\_\+t}}\label{group__Pacotes_ga1bdd22cd8ef2662e484e03ebdae7c970}
+
+\item 
+\hypertarget{group__Pacotes_gaaa5b26ddb66cc7e85a9f4b30881775f2}{{\bfseries ping\+\_\+req\+\_\+t}}\label{group__Pacotes_gaaa5b26ddb66cc7e85a9f4b30881775f2}
+
+\item 
+\hypertarget{group__Pacotes_ga1f5bdda25ae963bb270e8a301b201b51}{{\bfseries publish\+\_\+packet\+\_\+t}}\label{group__Pacotes_ga1f5bdda25ae963bb270e8a301b201b51}
+
+\item 
+\hypertarget{group__Pacotes_gad20a7c29debd43f1bb693ea71cf25f37}{{\bfseries subscribe\+\_\+wildcard\+\_\+packet\+\_\+t}}\label{group__Pacotes_gad20a7c29debd43f1bb693ea71cf25f37}
+
+\item 
+\hypertarget{group__Pacotes_gad1653d1eb1e0b157ee553f5e18e837e3}{{\bfseries subscribe\+\_\+packet\+\_\+t}}\label{group__Pacotes_gad1653d1eb1e0b157ee553f5e18e837e3}
+
+\item 
+\hypertarget{group__Pacotes_gac7e9bb2727332431de0ed82739b64a37}{{\bfseries connect\+\_\+packet\+\_\+t}}\label{group__Pacotes_gac7e9bb2727332431de0ed82739b64a37}
+
+\item 
+\hypertarget{group__Pacotes_ga504f9ba055b5a5a51a852c85ba691d2f}{{\bfseries register\+\_\+packet\+\_\+t}}\label{group__Pacotes_ga504f9ba055b5a5a51a852c85ba691d2f}
+
+\item 
+\hypertarget{group__Pacotes_ga10d9b05d37a49ef4473051eb8cd9062e}{{\bfseries willtopic\+\_\+packet\+\_\+t}}\label{group__Pacotes_ga10d9b05d37a49ef4473051eb8cd9062e}
+
+\item 
+\hypertarget{group__Pacotes_ga498ec637bb31754407eaf35a3c0b3b4b}{{\bfseries willmessage\+\_\+packet\+\_\+t}}\label{group__Pacotes_ga498ec637bb31754407eaf35a3c0b3b4b}
+
+\item 
+\hypertarget{group__Pacotes_ga35c8d1d4849e06b6cd1a59b1d86b8368}{{\bfseries regack\+\_\+packet\+\_\+t}}\label{group__Pacotes_ga35c8d1d4849e06b6cd1a59b1d86b8368}
+
+\item 
+\hypertarget{mqtt__sn_8h_a47c68c75b7151c412b3e13a0752a3a43}{struct \hyperlink{structnode}{node} $\ast$ {\bfseries mqtt\+\_\+queue\+\_\+first}}\label{mqtt__sn_8h_a47c68c75b7151c412b3e13a0752a3a43}
+
+\item 
+\hypertarget{mqtt__sn_8h_a777f6f15b97e834ca56d2b35f55846d0}{struct \hyperlink{structnode}{node} $\ast$ {\bfseries mqtt\+\_\+queue\+\_\+last}}\label{mqtt__sn_8h_a777f6f15b97e834ca56d2b35f55846d0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+\begin{DoxyVerb}    Conjunto de protótipos e definiçoes do protocolo MQTT-SN
+\end{DoxyVerb}
+ 
+
+\begin{DoxyAuthor}{Autor}
+Ânderson Ignácio da Silva \href{mailto:anderson@aignacio.com}{\tt anderson@aignacio.\+com} 
+\end{DoxyAuthor}
+
+
+\subsection{Documentação dos valores da enumeração}
+\hypertarget{mqtt__sn_8h_a754c1055b4431040415cf01b39caaa98}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!resp\+\_\+con@{resp\+\_\+con}}
+\index{resp\+\_\+con@{resp\+\_\+con}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{resp\+\_\+con}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf resp\+\_\+con}}}\label{mqtt__sn_8h_a754c1055b4431040415cf01b39caaa98}
+\begin{Desc}
+\item[Valores da enumeração]\par
+\begin{description}
+\index{F\+A\+I\+L\+\_\+\+C\+O\+N@{F\+A\+I\+L\+\_\+\+C\+O\+N}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!F\+A\+I\+L\+\_\+\+C\+O\+N@{F\+A\+I\+L\+\_\+\+C\+O\+N}}\item[{\em 
+\hypertarget{mqtt__sn_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{F\+A\+I\+L\+\_\+\+C\+O\+N}\label{mqtt__sn_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}
+}]Erro ao processar algo. \end{description}
+\end{Desc}
+
+\begin{DoxyCode}
+382                      \{
+383    \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON},
+384    SUCCESS\_CON,
+385 \} \hyperlink{sabado__list__old_8h_add91ba4199db8665b9b9fc56fc6783a6}{resp\_con\_t};
+\end{DoxyCode}
+
+
+\subsection{Documentação das funções}
+\hypertarget{mqtt__sn_8h_afb698c97e10afa31e2c11351f6ce9388}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+check\+\_\+empty@{mqtt\+\_\+sn\+\_\+check\+\_\+empty}}
+\index{mqtt\+\_\+sn\+\_\+check\+\_\+empty@{mqtt\+\_\+sn\+\_\+check\+\_\+empty}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+check\+\_\+empty}]{\setlength{\rightskip}{0pt plus 5cm}bool mqtt\+\_\+sn\+\_\+check\+\_\+empty (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_afb698c97e10afa31e2c11351f6ce9388}
+
+
+Checa o status da fila de tarefas M\+Q\+T\+T-\/\+S\+N. 
+
+Percorra a lista encadeada de tarefas para verificar se está vazia
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em T\+R\+U\+E} & Fila vazia \\
+\hline
+{\em F\+A\+L\+S\+E} & Há tarefas a serem processadas \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+325                               \{
+326   \textcolor{keywordflow}{if} (list\_length(mqtt\_sn\_list) == 0)
+327     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+328   \textcolor{keywordflow}{else}
+329     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+330 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a71004d5b7e8b1add14024102d8d62042}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+check\+\_\+queue@{mqtt\+\_\+sn\+\_\+check\+\_\+queue}}
+\index{mqtt\+\_\+sn\+\_\+check\+\_\+queue@{mqtt\+\_\+sn\+\_\+check\+\_\+queue}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+check\+\_\+queue}]{\setlength{\rightskip}{0pt plus 5cm}void mqtt\+\_\+sn\+\_\+check\+\_\+queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a71004d5b7e8b1add14024102d8d62042}
+
+
+Lista as tarefas da fila. 
+
+Percorre os links dos ponteiros listando os elementos a serem processados pela A\+S\+M do M\+Q\+T\+T-\/\+S\+N
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+258                           \{
+259   \textcolor{keywordtype}{int} cnt = 0;
+260   \textcolor{keyword}{struct }\hyperlink{structnode}{node} *temp;
+261 
+262   temp = mqtt\_queue\_first;
+263 
+264   \textcolor{keywordflow}{if} (mqtt\_queue\_first  ==  NULL) \{
+265       debug\_mqtt(\textcolor{stringliteral}{"A fila de tarefas esta vazia"});
+266   \}
+267 
+268   \textcolor{keywordflow}{while} (temp) \{
+269       printf(\textcolor{stringliteral}{"[%p]  "}, temp->data.\hyperlink{structmqtt__sn__task__t_a1dba79ab8685a56d3ae57d84aca21ce8}{id\_task});
+270       temp = temp->link;
+271       cnt++;
+272   \}
+273   debug\_mqtt(\textcolor{stringliteral}{"Tamanho da fila:[%d]\(\backslash\)n"}, cnt);
+274 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a172afa34fe10ad1ee4ffc0d226b35b4d}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+check\+\_\+rc@{mqtt\+\_\+sn\+\_\+check\+\_\+rc}}
+\index{mqtt\+\_\+sn\+\_\+check\+\_\+rc@{mqtt\+\_\+sn\+\_\+check\+\_\+rc}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+check\+\_\+rc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+check\+\_\+rc (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{rc}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a172afa34fe10ad1ee4ffc0d226b35b4d}
+
+
+Envia requisição de conexão ao broker M\+Q\+T\+T-\/\+S\+N. 
+
+Realiza o envio de mensagens do tipo C\+O\+N\+N\+E\+C\+T ao broker M\+Q\+T\+T-\/\+S\+N
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em rc} & Código de retorno da requisição M\+Q\+T\+T (Return Code)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha por algum motivo no código de retorno \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso no recebimento do código de retorno\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000013}{Tarefa}]Expandir o tipo de falha para tornar mais precisa a depuração futura \end{DoxyRefDesc}
+
+
+Realiza o envio de mensagens do tipo C\+O\+N\+N\+E\+C\+T ao broker M\+Q\+T\+T-\/\+S\+N
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em rc} & Código de retorno da requisição M\+Q\+T\+T (Return Code)\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha por algum motivo no código de retorno \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso no recebimento do código de retorno\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000006}{Tarefa}]Expandir o tipo de falha para tornar mais precisa a depuração futura \end{DoxyRefDesc}
+
+\begin{DoxyCode}
+22                                        \{
+23   \textcolor{keywordflow}{switch} (rc) \{
+24     \textcolor{keywordflow}{case} ACCEPTED:
+25       \textcolor{keywordflow}{return} SUCCESS\_CON;
+26     \textcolor{keywordflow}{break};
+27     \textcolor{keywordflow}{case} REJECTED\_CONGESTION:
+28       \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+29     \textcolor{keywordflow}{break};
+30     \textcolor{keywordflow}{case} REJECTED\_INVALID\_TOPIC\_ID:
+31       \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+32     \textcolor{keywordflow}{break};
+33     \textcolor{keywordflow}{case} REJECTED\_NOT\_SUPPORTED:
+34       \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+35     \textcolor{keywordflow}{break};
+36     \textcolor{keywordflow}{default}:
+37       \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+38     \textcolor{keywordflow}{break};
+39   \}
+40 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a200e89a8fd400c652431bd505de6f827}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+check\+\_\+status@{mqtt\+\_\+sn\+\_\+check\+\_\+status}}
+\index{mqtt\+\_\+sn\+\_\+check\+\_\+status@{mqtt\+\_\+sn\+\_\+check\+\_\+status}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+check\+\_\+status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mqtt\+\_\+sn\+\_\+status\+\_\+t} mqtt\+\_\+sn\+\_\+check\+\_\+status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a200e89a8fd400c652431bd505de6f827}
+
+
+Checa o status da conexão M\+Q\+T\+T-\/\+S\+N. 
+
+Retorna o status da conexão M\+Q\+T\+T-\/\+S\+N baseado na estrutura mqtt\+\_\+sn\+\_\+status\+\_\+t
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em mqtt\+\_\+sn\+\_\+status\+\_\+t} & Estado da conexão\\
+\hline
+\end{DoxyRetVals}
+Checa o status da conexão M\+Q\+T\+T-\/\+S\+N.
+
+Realiza o envio de mensagens do tipo C\+O\+N\+N\+E\+C\+T ao broker M\+Q\+T\+T-\/\+S\+N
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha ao enviar o pacote C\+O\+N\+N\+E\+C\+T \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso ao enviar o pacote C\+O\+N\+N\+E\+C\+T \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+69                                            \{
+70   \textcolor{keywordflow}{return} mqtt\_status;
+71 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a9bd6d4e9304d00d28861751c22b146e4}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+check\+\_\+status\+\_\+string@{mqtt\+\_\+sn\+\_\+check\+\_\+status\+\_\+string}}
+\index{mqtt\+\_\+sn\+\_\+check\+\_\+status\+\_\+string@{mqtt\+\_\+sn\+\_\+check\+\_\+status\+\_\+string}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+check\+\_\+status\+\_\+string}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ mqtt\+\_\+sn\+\_\+check\+\_\+status\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a9bd6d4e9304d00d28861751c22b146e4}
+
+
+Checa o status da conexãoe em String. 
+
+Verifica o status da conexão M\+Q\+T\+T-\/\+S\+N e retorna uma string com o estado
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em Não} & recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em S\+T\+R\+I\+N\+G} & String do estado atual da conexão M\+Q\+T\+T-\/\+S\+N \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+136                                        \{
+137   \textcolor{keywordflow}{switch} (mqtt\_status) \{
+138     \textcolor{keywordflow}{case} MQTTSN\_DISCONNECTED:
+139       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"DESCONECTADO"};
+140     \textcolor{keywordflow}{break};
+141     \textcolor{keywordflow}{case} MQTTSN\_WAITING\_CONNACK:
+142       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"AGUARDANDO CONNACK"};
+143     \textcolor{keywordflow}{break};
+144     \textcolor{keywordflow}{case} MQTTSN\_WAITING\_REGACK:
+145       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"AGUARDANDO REGACK"};
+146     \textcolor{keywordflow}{break};
+147     \textcolor{keywordflow}{case} MQTTSN\_CONNECTED:
+148       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"#### CONECTADO ####"};
+149     \textcolor{keywordflow}{break};
+150     \textcolor{keywordflow}{case} MQTTSN\_TOPIC\_REGISTERED:
+151       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"TOPICOS REGISTRADOS"};
+152     \textcolor{keywordflow}{break};
+153     \textcolor{keywordflow}{case} MQTTSN\_WAITING\_WILLTOPICREQ:
+154       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"AGUARDANDO WILL TOPIC"};
+155     \textcolor{keywordflow}{break};
+156     \textcolor{keywordflow}{case} MQTTSN\_WAITING\_WILLMSGREQ:
+157       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"AGUARDANDO WILL MESSAGE"};
+158     \textcolor{keywordflow}{break};
+159     \textcolor{keywordflow}{default}:
+160       \textcolor{keywordflow}{return} \textcolor{stringliteral}{"ESTADO NAO DESCRITO"};
+161     \textcolor{keywordflow}{break};
+162   \}
+163 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a1b8eb51076a2923f2c036f1ff925c168}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+con\+\_\+send@{mqtt\+\_\+sn\+\_\+con\+\_\+send}}
+\index{mqtt\+\_\+sn\+\_\+con\+\_\+send@{mqtt\+\_\+sn\+\_\+con\+\_\+send}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+con\+\_\+send}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+con\+\_\+send (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a1b8eb51076a2923f2c036f1ff925c168}
+
+
+Envia requisição de conexão ao broker M\+Q\+T\+T-\/\+S\+N. 
+
+Realiza o envio de mensagens do tipo C\+O\+N\+N\+E\+C\+T ao broker M\+Q\+T\+T-\/\+S\+N
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha ao enviar o pacote C\+O\+N\+N\+E\+C\+T \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso ao enviar o pacote C\+O\+N\+N\+E\+C\+T \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+133                                  \{
+134 
+135   mqtt\_queue\_first = list\_head(mqtt\_sn\_list);
+136   \hyperlink{structconnect__packet__t}{connect\_packet\_t} packet;
+137 
+138   \textcolor{comment}{// Criação do pacote CONNECT}
+139   packet.\hyperlink{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}{type} = MQTT\_SN\_TYPE\_CONNECT;
+140   packet.\hyperlink{group__Pacotes_gab6b306ef981f5e21bb41ea2c2dbe8cd9}{flags} = MQTT\_SN\_FLAG\_CLEAN;
+141   packet.\hyperlink{group__Pacotes_gac600161f386567cf3ab274f4afbd5981}{protocol\_id} = MQTT\_SN\_PROTOCOL\_ID;
+142   packet.\hyperlink{group__Pacotes_ga71f530f1f32dbca56a6af8a5fbbfbe49}{duration} = uip\_htons(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_a3750af18bf5708bce3c563c0c160e712}{keep\_alive}); \textcolor{comment}{//Realiza a conversão para
+       network byte order}
+143 
+144   strncpy(packet.client\_id, g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_af4ab62a1766a87b4cd8acf2448552909}{client\_id}, strlen(g\_mqtt\_sn\_con.
+      \hyperlink{structmqtt__sn__con__t_af4ab62a1766a87b4cd8acf2448552909}{client\_id}));
+145   packet.client\_id[strlen(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_af4ab62a1766a87b4cd8acf2448552909}{client\_id})] = \textcolor{charliteral}{'\(\backslash\)0'};
+146   packet.\hyperlink{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{length} = 0x06 + strlen(packet.client\_id);
+147 
+148   \textcolor{comment}{// debug\_mqtt("CLIENT\_ID:%s, Tamanho:%d",packet.client\_id,strlen(packet.client\_id));}
+149   debug\_mqtt(\textcolor{stringliteral}{"Enviando o pacote @CONNECT "});
+150   simple\_udp\_send(&g\_mqtt\_sn\_con.udp\_con,&packet, packet.\hyperlink{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{length});
+151   \textcolor{comment}{// debug\_mqtt("enviado!");}
+152   \textcolor{keywordflow}{return} SUCCESS\_CON;
+153 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a8771e78d9d8d5379ff27fba1feefe37c}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+create\+\_\+sck@{mqtt\+\_\+sn\+\_\+create\+\_\+sck}}
+\index{mqtt\+\_\+sn\+\_\+create\+\_\+sck@{mqtt\+\_\+sn\+\_\+create\+\_\+sck}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+create\+\_\+sck}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+create\+\_\+sck (
+\begin{DoxyParamCaption}
+\item[{{\bf mqtt\+\_\+sn\+\_\+con\+\_\+t}}]{mqtt\+\_\+sn\+\_\+connection, }
+\item[{char $\ast$}]{topics\mbox{[}$\,$\mbox{]}, }
+\item[{size\+\_\+t}]{topic\+\_\+len, }
+\item[{{\bf mqtt\+\_\+sn\+\_\+cb\+\_\+f}}]{cb\+\_\+f}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a8771e78d9d8d5379ff27fba1feefe37c}
+
+
+Inicia conexão ao broker U\+D\+P. 
+
+Estabelece a conexão com um servidor M\+Q\+T\+T-\/\+S\+N, através da porta 1884 além de iniciar a fila de processos de conexão do protocolo.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em mqtt\+\_\+sn\+\_\+connection} & Estrutura padrão de comunicação M\+Q\+T\+T-\/\+S\+N \\
+\hline
+\mbox{\tt in}  & {\em topics} & Vetor de tópicos a serem registrados \\
+\hline
+\mbox{\tt in}  & {\em topic\+\_\+len} & Tamanho do vetor de tópicos a serem registrados \\
+\hline
+\mbox{\tt in}  & {\em mqtt\+\_\+sn\+\_\+cb\+\_\+f} & Ponteiro para função de callback para recebimento das mensagens M\+Q\+T\+T-\/\+S\+N\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha ao alocar conexão U\+D\+P \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso ao alocar conexão U\+D\+P \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+853                                                                                                            
+               \{
+854   callback\_mqtt = cb\_f;
+855   \textcolor{comment}{/************************************ RECONEXÃO******************************/}
+856   topics\_len = topic\_len;
+857   \textcolor{keywordtype}{size\_t} t = 0;
+858   \textcolor{keywordflow}{for} (t=0; t < topic\_len; t++)\{
+859     topics\_reconnect[t] = topics[t];
+860     \textcolor{comment}{// debug\_mqtt("Armazenando topico: %s",(char *)topics\_reconnect[t]);}
+861   \}
+862   \textcolor{comment}{/************************************ RECONEXÃO******************************/}
+863 
+864   \textcolor{keyword}{static} uip\_ipaddr\_t broker\_addr;
+865   \textcolor{keyword}{static} uint8\_t con\_udp\_status = 0;
+866 
+867   g\_mqtt\_sn\_con = mqtt\_sn\_connection;
+868   uip\_ip6addr(&broker\_addr, *g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker},
+869                             *(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker}+1),
+870                             *(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker}+2),
+871                             *(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker}+3),
+872                             *(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker}+4),
+873                             *(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker}+5),
+874                             *(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker}+6),
+875                             *(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_aedc2daa18c79a13bef1abb9f6a2a24f8}{ipv6\_broker}+7));
+876 
+877   \textcolor{keywordflow}{if} (strlen(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_af4ab62a1766a87b4cd8acf2448552909}{client\_id}) > 23)\{
+878     debug\_mqtt(\textcolor{stringliteral}{"Cli. ID SIZE:%d > 23!"},strlen(g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_af4ab62a1766a87b4cd8acf2448552909}{client\_id}));
+879     \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+880   \}
+881 
+882   debug\_mqtt(\textcolor{stringliteral}{"Endereco do broker IPv6: "});
+883   uip\_debug\_ipaddr\_print(&broker\_addr);
+884   debug\_mqtt(\textcolor{stringliteral}{"Endereco da porta:%d "},g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_a8d93540b1ceafa3f9425c72763b256d0}{udp\_port});
+885   debug\_mqtt(\textcolor{stringliteral}{"Client ID:%s/%d"},g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_af4ab62a1766a87b4cd8acf2448552909}{client\_id},strlen(g\_mqtt\_sn\_con.
+      \hyperlink{structmqtt__sn__con__t_af4ab62a1766a87b4cd8acf2448552909}{client\_id}));
+886 
+887 
+888   \textcolor{keywordflow}{if}(!g\_recon)\{
+889     con\_udp\_status = simple\_udp\_register(&g\_mqtt\_sn\_con.udp\_con,
+890                                           g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_a8d93540b1ceafa3f9425c72763b256d0}{udp\_port},
+891                                           &broker\_addr,
+892                                           g\_mqtt\_sn\_con.\hyperlink{structmqtt__sn__con__t_a8d93540b1ceafa3f9425c72763b256d0}{udp\_port},
+893                                           mqtt\_sn\_udp\_rec\_cb);
+894     \textcolor{keywordflow}{if}(!con\_udp\_status)
+895       \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+896   \}
+897 
+898   \textcolor{keywordflow}{if} (g\_mqtt\_sn\_con.will\_topic && g\_mqtt\_sn\_con.will\_message)
+899     g\_will = \textcolor{keyword}{true};
+900 
+901   \textcolor{comment}{/****************************************************************************/}
+902   \textcolor{comment}{// Criando tarefa de [CONNECT]}
+903   \textcolor{comment}{//}
+904   \textcolor{comment}{// Inicialmente precisamos enviar a requisição de CONNECT ao broker MQTT-SN pa}
+905   \textcolor{comment}{// ra que seja possível qualquer outra operação.}
+906   \hyperlink{structmqtt__sn__task__t}{mqtt\_sn\_task\_t} connect\_task;
+907 
+908   \textcolor{comment}{// debug\_mqtt("Criando tarefa de CONNECT");}
+909   connect\_task.\hyperlink{structmqtt__sn__task__t_a6b9a925f3adb717097ee92e90a19a5c8}{msg\_type\_q} = MQTT\_SN\_TYPE\_CONNECT;
+910   \hyperlink{sabado__list__old_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}{mqtt\_sn\_insert\_queue}(connect\_task);
+911   \textcolor{comment}{/****************************************************************************/}
+912 
+913   \textcolor{comment}{/****************************************************************************/}
+914   \textcolor{comment}{// Implementação do recurso de [LWT]}
+915   \textcolor{comment}{// Verificando se o usuário quer utilizar will topic e will message}
+916   \textcolor{keywordflow}{if} (g\_mqtt\_sn\_con.will\_topic && g\_mqtt\_sn\_con.will\_message)\{
+917     \hyperlink{structmqtt__sn__task__t}{mqtt\_sn\_task\_t} will\_topic\_task;
+918     will\_topic\_task.\hyperlink{structmqtt__sn__task__t_a6b9a925f3adb717097ee92e90a19a5c8}{msg\_type\_q} = MQTT\_SN\_TYPE\_WILLTOPIC;
+919     \hyperlink{sabado__list__old_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}{mqtt\_sn\_insert\_queue}(will\_topic\_task);
+920 
+921     \hyperlink{structmqtt__sn__task__t}{mqtt\_sn\_task\_t} will\_message\_task;
+922     will\_message\_task.\hyperlink{structmqtt__sn__task__t_a6b9a925f3adb717097ee92e90a19a5c8}{msg\_type\_q} = MQTT\_SN\_TYPE\_WILLMSG;
+923     \hyperlink{sabado__list__old_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}{mqtt\_sn\_insert\_queue}(will\_message\_task);
+924   \}
+925 
+926   \textcolor{comment}{/****************************************************************************/}
+927   \textcolor{comment}{// Criando tarefas de [REGISTER]}
+928   \textcolor{comment}{//}
+929   \textcolor{comment}{// Para cada tópico definido pelo usuário no código principal.Inicia-se o pro}
+930   \textcolor{comment}{// cesso de preenchimento de tarefas na fila de serviços MQT-SN.}
+931   \textcolor{comment}{// Primeiro antes de qualquer processo MQTT-SN registra-se todos os tópicos in}
+932   \textcolor{comment}{// formados pelo usuário, otimizando as funções de inscrição e publicação, o}
+933   \textcolor{comment}{// broker irá então responder com os respectivos SHORT TOPIC para utilizarmos.}
+934   \hyperlink{structmqtt__sn__task__t}{mqtt\_sn\_task\_t} topic\_reg;
+935 
+936   \textcolor{comment}{// debug\_mqtt("Criando tarefa de REGISTER");}
+937   \textcolor{keywordtype}{size\_t} i;
+938   \textcolor{keywordflow}{for}(i = 0; i < topic\_len; i++)\{
+939     \textcolor{keywordflow}{if} (g\_mqtt\_sn\_con.will\_topic && g\_mqtt\_sn\_con.will\_message)
+940       g\_topic\_bind[g\_task\_id-2].topic\_name = topics\_reconnect[i]; \textcolor{comment}{// Antecipa-se 2 no indíce em função das
+       2 tasks já alocadas para WILL do LWT}
+941     \textcolor{keywordflow}{else}
+942       g\_topic\_bind[g\_task\_id].topic\_name = topics\_reconnect[i];
+943     topic\_reg.\hyperlink{structmqtt__sn__task__t_a6b9a925f3adb717097ee92e90a19a5c8}{msg\_type\_q} = MQTT\_SN\_TYPE\_REGISTER;
+944     \textcolor{keywordflow}{if} (!\hyperlink{sabado__list__old_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}{mqtt\_sn\_insert\_queue}(topic\_reg)) \textcolor{keywordflow}{break};
+945   \}
+946   \textcolor{comment}{/****************************************************************************/}
+947 
+948   process\_post(&mqtt\_sn\_main, mqtt\_event\_run\_task, NULL);
+949 
+950   \textcolor{keywordflow}{return} SUCCESS\_CON;
+951 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_ad0a729c99366dad086be6be954e71f2c}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+delete\+\_\+queue@{mqtt\+\_\+sn\+\_\+delete\+\_\+queue}}
+\index{mqtt\+\_\+sn\+\_\+delete\+\_\+queue@{mqtt\+\_\+sn\+\_\+delete\+\_\+queue}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+delete\+\_\+queue}]{\setlength{\rightskip}{0pt plus 5cm}void mqtt\+\_\+sn\+\_\+delete\+\_\+queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_ad0a729c99366dad086be6be954e71f2c}
+
+
+Remove o elemento mais próximo de ser processado. 
+
+Realiza a remoção do elemento mais próximo de ser processado, no caso o mais antigo inserido na fila
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000012}{Tarefa}]Adicionar opção de exclusão intermediária \end{DoxyRefDesc}
+
+
+Realiza a remoção do elemento mais próximo de ser processado, no caso o mais antigo inserido na fila
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000005}{Tarefa}]Adicionar opção de exclusão intermediária \end{DoxyRefDesc}
+
+\begin{DoxyCode}
+243                            \{
+244   \textcolor{keyword}{struct }\hyperlink{structnode}{node} *temp;
+245 
+246   temp = mqtt\_queue\_first;
+247   \textcolor{keywordflow}{if} (mqtt\_queue\_first == NULL) \{
+248       debug\_mqtt(\textcolor{stringliteral}{"A fila de tarefas esta vazia"});
+249       mqtt\_queue\_first = mqtt\_queue\_last = NULL;
+250   \}
+251   \textcolor{keywordflow}{else} \{
+252       debug\_mqtt(\textcolor{stringliteral}{"Tarefa:[%p] deletada"}, mqtt\_queue\_first->data.\hyperlink{structmqtt__sn__task__t_a1dba79ab8685a56d3ae57d84aca21ce8}{id\_task});
+253       mqtt\_queue\_first = mqtt\_queue\_first->link;
+254       free(temp);
+255   \}
+256 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_adba0283cc8fadf24f2f04246c76e8cde}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+get\+\_\+qos\+\_\+flag@{mqtt\+\_\+sn\+\_\+get\+\_\+qos\+\_\+flag}}
+\index{mqtt\+\_\+sn\+\_\+get\+\_\+qos\+\_\+flag@{mqtt\+\_\+sn\+\_\+get\+\_\+qos\+\_\+flag}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+get\+\_\+qos\+\_\+flag}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t mqtt\+\_\+sn\+\_\+get\+\_\+qos\+\_\+flag (
+\begin{DoxyParamCaption}
+\item[{int8\+\_\+t}]{qos}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_adba0283cc8fadf24f2f04246c76e8cde}
+
+
+Gera a flag de nível Qo\+S. 
+
+Retorna o estado da flag correspondente ao nível Qo\+S enviado
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em qos} & Nível Qo\+S desejado\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em Qo\+S} & Retorna a flag do nível Qo\+S desejado \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+93                                         \{
+94     \textcolor{keywordflow}{switch} (qos) \{
+95         \textcolor{keywordflow}{case} -1:
+96           \textcolor{keywordflow}{return} MQTT\_SN\_FLAG\_QOS\_N1;
+97         \textcolor{keywordflow}{case} 0:
+98           \textcolor{keywordflow}{return} MQTT\_SN\_FLAG\_QOS\_0;
+99         \textcolor{keywordflow}{case} 1:
+100           \textcolor{keywordflow}{return} MQTT\_SN\_FLAG\_QOS\_1;
+101         \textcolor{keywordflow}{case} 2:
+102           \textcolor{keywordflow}{return} MQTT\_SN\_FLAG\_QOS\_2;
+103         \textcolor{keywordflow}{default}:
+104           \textcolor{keywordflow}{return} 0;
+105     \}
+106 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a46fe607d1db728d41ed6aec6fee3fc77}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+init@{mqtt\+\_\+sn\+\_\+init}}
+\index{mqtt\+\_\+sn\+\_\+init@{mqtt\+\_\+sn\+\_\+init}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void mqtt\+\_\+sn\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a46fe607d1db728d41ed6aec6fee3fc77}
+
+
+Inicializa P\+R\+O\+C\+E\+S\+S\+\_\+\+T\+H\+R\+E\+A\+D M\+Q\+T\+T-\/\+S\+N. 
+
+Inicializa a P\+R\+O\+C\+E\+S\+S\+\_\+\+T\+H\+R\+E\+A\+D de M\+Q\+T\+T-\/\+S\+N bem como as variáveis utilizadas e a alocaçãod e eventos
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+421                    \{
+422   process\_start(&mqtt\_sn\_main, NULL);
+423 
+424   \textcolor{comment}{// Alocação de número de evento disponível para os eventos do MQTT-SN}
+425   mqtt\_connect\_req = process\_alloc\_event();
+426 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+insert\+\_\+queue@{mqtt\+\_\+sn\+\_\+insert\+\_\+queue}}
+\index{mqtt\+\_\+sn\+\_\+insert\+\_\+queue@{mqtt\+\_\+sn\+\_\+insert\+\_\+queue}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+insert\+\_\+queue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+insert\+\_\+queue (
+\begin{DoxyParamCaption}
+\item[{{\bf mqtt\+\_\+sn\+\_\+task\+\_\+t}}]{new}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}
+
+
+Insere uma tarefa na fila. 
+
+Insere uma nova tarefa na fila de requisições a serem processadas.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em new} & Nova tarefa a ser processada pela A\+S\+M do M\+Q\+T\+T-\/\+S\+N\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Não foi possível alocar uma nova tarefa a fila \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Foi possível alocar uma nova tarefa a fila\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000011}{Tarefa}]Melhorar alocação dinâmica de memória \end{DoxyRefDesc}
+
+
+Insere uma nova tarefa na fila de requisições a serem processadas.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em new} & Nova tarefa a ser processada pela A\+S\+M do M\+Q\+T\+T-\/\+S\+N\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Não foi possível alocar uma nova tarefa a fila \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Foi possível alocar uma nova tarefa a fila\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000004}{Tarefa}]Melhorar alocação dinâmica de memória \end{DoxyRefDesc}
+
+\begin{DoxyCode}
+210                                                    \{
+211   \textcolor{keyword}{struct }\hyperlink{structnode}{node} *temp,*temp2;
+212 
+213   temp2 = mqtt\_queue\_first;
+214   \textcolor{keywordtype}{int} cnt = 0;
+215   \textcolor{keywordflow}{while} (temp2) \{
+216       temp2 = temp2->link;
+217       cnt++;
+218   \}
+219 
+220   \textcolor{comment}{//Limita o número máximo de tarefas alocadas na fila}
+221   \textcolor{keywordflow}{if} (cnt > \hyperlink{group__MQTT__SN__CONTROL_ga45ab5881e190d570f3784e50be2cce65}{MAX\_QUEUE\_MQTT\_SN})
+222     \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+223 
+224   temp = (\textcolor{keyword}{struct }\hyperlink{structnode}{node}*)malloc(\textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} \hyperlink{structnode}{node}));
+225   temp->data.\hyperlink{structmqtt__sn__task__t_a6b9a925f3adb717097ee92e90a19a5c8}{msg\_type\_q}  = \textcolor{keyword}{new}.msg\_type\_q;
+226   temp->data.\hyperlink{structmqtt__sn__task__t_a3d9e943523a4987c87d38c91a8284f6a}{short\_topic} = \textcolor{keyword}{new}.short\_topic;
+227   temp->data.\hyperlink{structmqtt__sn__task__t_a64393dc28e568ae455af9bcd28eaeeac}{long\_topic}  = \textcolor{keyword}{new}.long\_topic;
+228   temp->data.\hyperlink{structmqtt__sn__task__t_ab8140947611504abcb64a4c277effcf5}{message}     = \textcolor{keyword}{new}.message;
+229   temp->data.\hyperlink{structmqtt__sn__task__t_a1dba79ab8685a56d3ae57d84aca21ce8}{id\_task}     = (uint16\_t *)gTaskID++;
+230 
+231   temp->link = NULL;
+232   \textcolor{keywordflow}{if} (mqtt\_queue\_last  ==  NULL) \{
+233       mqtt\_queue\_first = mqtt\_queue\_last = temp;
+234   \}
+235   \textcolor{keywordflow}{else} \{
+236       mqtt\_queue\_last->link = temp;
+237       mqtt\_queue\_last = temp;
+238   \}
+239 
+240   \textcolor{keywordflow}{return} SUCCESS\_CON;
+241 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a8e059290e1f7ce5f5bb17409767fe36d}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+pub@{mqtt\+\_\+sn\+\_\+pub}}
+\index{mqtt\+\_\+sn\+\_\+pub@{mqtt\+\_\+sn\+\_\+pub}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+pub}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+pub (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{topic, }
+\item[{char $\ast$}]{message, }
+\item[{bool}]{retain\+\_\+flag, }
+\item[{uint8\+\_\+t}]{qos\+\_\+level}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a8e059290e1f7ce5f5bb17409767fe36d}
+
+
+Prepara requisição de inscrição ao broker M\+Q\+T\+T-\/\+S\+N. 
+
+Formata e gera a tarefa na fila para inscrição no tópico pré-\/registrado
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha ao gerar a tarefa S\+U\+B\+S\+C\+R\+I\+B\+E \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso ao gerar a tarefa S\+U\+B\+S\+C\+R\+I\+B\+E \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+108                                                                           \{
+109   \hyperlink{structmqtt__sn__task__t}{mqtt\_sn\_task\_t} publish\_task;
+110 
+111   \textcolor{keywordtype}{size\_t} i = 0;
+112   \textcolor{keywordflow}{for} (i=0; i < g\_task\_id; i++)
+113     \textcolor{keywordflow}{if} (strcmp(g\_topic\_bind[i].topic\_name,topic) == 0) \{
+114       publish\_task.\hyperlink{structmqtt__sn__task__t_a3d9e943523a4987c87d38c91a8284f6a}{short\_topic} = g\_topic\_bind[i].short\_topic\_id;
+115       \textcolor{keywordflow}{break};
+116     \}
+117 
+118   publish\_task.\hyperlink{structmqtt__sn__task__t_a6b9a925f3adb717097ee92e90a19a5c8}{msg\_type\_q} = MQTT\_SN\_TYPE\_PUBLISH;
+119   publish\_task.\hyperlink{structmqtt__sn__task__t_a64393dc28e568ae455af9bcd28eaeeac}{long\_topic} = topic;
+120   publish\_task.\hyperlink{structmqtt__sn__task__t_ab8140947611504abcb64a4c277effcf5}{message}    = message;
+121   publish\_task.\hyperlink{structmqtt__sn__task__t_a9d819901d7d0f5139ca4d3100af5ef11}{qos\_level}  = qos;
+122   publish\_task.retain     = retain\_flag;
+123 
+124   \textcolor{comment}{// Os campos não preenchidos na estrutura (mqtt\_sn\_task\_t) serão preenchidos}
+125   \textcolor{comment}{// pela própria função de adição na fila}
+126   \textcolor{keywordflow}{if} (!\hyperlink{sabado__list__old_8h_a575514d0f0fd3b6c5c4a2c75e604bf79}{mqtt\_sn\_insert\_queue}(publish\_task))
+127     debug\_mqtt(\textcolor{stringliteral}{"ERRO AO ADICIONAR NA FILA"});
+128 
+129   process\_post(&mqtt\_sn\_main, mqtt\_event\_run\_task, NULL);
+130 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_a550856b818c23fce9e4d5b253c3e7547}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+pub\+\_\+send@{mqtt\+\_\+sn\+\_\+pub\+\_\+send}}
+\index{mqtt\+\_\+sn\+\_\+pub\+\_\+send@{mqtt\+\_\+sn\+\_\+pub\+\_\+send}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+pub\+\_\+send}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+pub\+\_\+send (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{topic, }
+\item[{char $\ast$}]{message, }
+\item[{bool}]{retain\+\_\+flag, }
+\item[{uint8\+\_\+t}]{qos}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_a550856b818c23fce9e4d5b253c3e7547}
+
+
+Envia pacote P\+U\+B\+L\+I\+S\+H ao broker M\+Q\+T\+T-\/\+S\+N. 
+
+Monta o pacote e envia ao broker a mensagem de publicação
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em topic} & Tópico a ser publicado \\
+\hline
+\mbox{\tt in}  & {\em message} & Mensagem a ser publicada \\
+\hline
+\mbox{\tt in}  & {\em qos} & Nível de Qo\+S da publicação\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha ao enviar a publicação \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso ao enviar a publicação \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+478                                                                                      \{
+479   \hyperlink{structpublish__packet__t}{publish\_packet\_t} packet;
+480   uint16\_t stopic = 0x0000;
+481   uint8\_t data\_len = strlen(message);
+482 
+483   \textcolor{comment}{// if (mqtt\_queue\_first->data.msg\_type\_q != MQTT\_SN\_TYPE\_PUBLISH) \{}
+484   \textcolor{comment}{//   debug\_mqtt("Erro: Pacote a processar nao e do tipo PUBLISH");}
+485   \textcolor{comment}{//   return FAIL\_CON;}
+486   \textcolor{comment}{// \}}
+487   \textcolor{keywordtype}{size\_t} i = 0;
+488   \textcolor{keywordflow}{for} (i=0; i < \hyperlink{group__MQTT__SN__CONTROL_ga5ed98e8fc00194886ebc14d25540f81b}{MAX\_TOPIC\_USED}; i++)
+489     \textcolor{keywordflow}{if} (strcmp(g\_topic\_bind[i].topic\_name,topic) == 0) \{
+490       stopic = g\_topic\_bind[i].short\_topic\_id;
+491       \textcolor{keywordflow}{break};
+492     \}
+493 
+494   \textcolor{keywordflow}{if} (data\_len > \textcolor{keyword}{sizeof}(packet.data)) \{
+495       printf(\textcolor{stringliteral}{"Erro: Payload e muito grande!\(\backslash\)n"});
+496       \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+497   \}
+498 
+499   packet.type  = MQTT\_SN\_TYPE\_PUBLISH;
+500   packet.flags = 0x00;
+501 
+502   \textcolor{keywordflow}{if} (retain\_flag)
+503     packet.flags += MQTT\_SN\_FLAG\_RETAIN;
+504 
+505   packet.flags += \hyperlink{mqtt__sn_8h_adba0283cc8fadf24f2f04246c76e8cde}{mqtt\_sn\_get\_qos\_flag}(qos);
+506 
+507   \textcolor{comment}{// Segundo a especificação:}
+508   \textcolor{comment}{// TopicIdType: indicates whether the field TopicId or TopicName included in this message contains a
+       normal}
+509   \textcolor{comment}{// topic id (set to “0b00”), a pre-defined topic id (set to “0b01”), or a short topic name (set to
+       “0b10”). The}
+510   \textcolor{comment}{// value “0b11” is reserved. Refer to sections 3 and 6.7 for the definition of the various types of topic
+       ids.}
+511   packet.flags += MQTT\_SN\_TOPIC\_TYPE\_NORMAL; \textcolor{comment}{//Utiliza-se o topic id já registrado}
+512 
+513   packet.topic\_id = uip\_htons(stopic);
+514   packet.message\_id = uip\_htons(0x00); \textcolor{comment}{//Relevante somente se QoS > 0}
+515   strncpy(packet.data, message, data\_len+1);
+516   \textcolor{comment}{//}
+517   \textcolor{comment}{//  Pacote PUBLISH}
+518   \textcolor{comment}{//  \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_\_\_\_ \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+519   \textcolor{comment}{// | Comprimento - 0 | Tipo de mensagem - 1 | Flags - 2 | Topic ID - 3,4 | Msg ID - 5,6 | Dado - 7,n
+       ....|}
+520   \textcolor{comment}{// |\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\_\_\_\_\_\_\_\_\_\_\_
+       \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\_\_\_\_\_\_\_\_\_\_\_\_\_\_|\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_|}
+521   \textcolor{comment}{//}
+522   packet.length = 0x07 + (data\_len+1);
+523 
+524   debug\_mqtt(\textcolor{stringliteral}{"Enviando o pacote @PUBLISH"});
+525   \textcolor{comment}{// debug\_mqtt("Enviando o pacote @PUBLISH - Task:[%d]",(int)mqtt\_queue\_first->data.id\_task);}
+526   simple\_udp\_send(&g\_mqtt\_sn\_con.udp\_con,&packet, packet.length);
+527   \textcolor{keywordflow}{return} SUCCESS\_CON;
+528 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_af9146fa082fe2bc6612fb13dbb20ed36}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+recv\+\_\+parser@{mqtt\+\_\+sn\+\_\+recv\+\_\+parser}}
+\index{mqtt\+\_\+sn\+\_\+recv\+\_\+parser@{mqtt\+\_\+sn\+\_\+recv\+\_\+parser}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+recv\+\_\+parser}]{\setlength{\rightskip}{0pt plus 5cm}void mqtt\+\_\+sn\+\_\+recv\+\_\+parser (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_af9146fa082fe2bc6612fb13dbb20ed36}
+
+
+Realiza o parsing das mensagens U\+D\+P recebidas. 
+
+Realiza o parsing das mensagens U\+D\+P recebidas de acordo com o protocolo M\+Q\+T\+T-\/\+S\+N, alterando o status da conexão geral com o broker.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em data} & Ponteiro para o conteúdo U\+D\+P recebido\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada\\
+\hline
+\end{DoxyRetVals}
+Realiza o parsing das mensagens U\+D\+P recebidas.
+
+A partir do status de conexão M\+Q\+T\+T-\/\+S\+N gerencia as requisições atribuindo temporizadores de envio de mensagens conforme a estrutura alocada na fila.
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada\+Realiza o parsing das mensagens U\+D\+P recebidas \begin{DoxyVerb}Realiza o parsing das mensagens UDP recebidas de acordo com
+\end{DoxyVerb}
+ o protocolo M\+Q\+T\+T-\/\+S\+N, alterando o status da conexão geral com o broker.\\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em data} & Ponteiro para o conteúdo U\+D\+P recebido\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000001}{Tarefa}]Rever o short topic para adequar bytes \mbox{[}2\mbox{]}\mbox{[}3\mbox{]} juntos \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000002}{Tarefa}]Rever o short topic para adequar bytes \mbox{[}2\mbox{]}\mbox{[}3\mbox{]} juntos \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000008}{Tarefa}]Rever o short topic para adequar bytes \mbox{[}2\mbox{]}\mbox{[}3\mbox{]} juntos.. \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Tarefa}
+\item[\hyperlink{todo__todo000009}{Tarefa}]Rever o short topic para adequar bytes \mbox{[}2\mbox{]}\mbox{[}3\mbox{]} juntos... \end{DoxyRefDesc}
+
+\begin{DoxyCode}
+42                                              \{
+43     uint8\_t msg\_type = data[1],
+44             return\_code = 0xFF;
+45 
+46     \textcolor{comment}{// Como o MsgType não se altera de posição, testamos primeiro ele antes do}
+47     \textcolor{comment}{// returning code, já que este pode variar}
+48       \textcolor{keywordflow}{switch} (msg\_type) \{
+49         \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_CONNACK:
+50           return\_code = data[2]; \textcolor{comment}{//No caso do CONNACK - RC[2]}
+51           \textcolor{keywordflow}{if} (\hyperlink{sabado__list__old_8h_a172afa34fe10ad1ee4ffc0d226b35b4d}{mqtt\_sn\_check\_rc}(return\_code))\{
+52             mqtt\_status = MQTTSN\_CONNECTED;
+53             debug\_mqtt(\textcolor{stringliteral}{"Conectado ao broker MQTT-SN"});
+54             debug\_mqtt(\textcolor{stringliteral}{"Iniciando fila de servicos MQTT "});
+55             ctimer\_set(&mqtt\_stack\_call,TIME\_MQTT\_POLL, mqtt\_sn\_state\_ctrl, NULL);
+56           \}
+57         \textcolor{keywordflow}{break};
+58         \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_REGACK:
+59         \textcolor{keywordflow}{break};
+60         \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_PUBACK:
+61         \textcolor{keywordflow}{break};
+62         \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_SUBACK:
+63         \textcolor{keywordflow}{break};
+64         \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_UNSUBACK:
+65         \textcolor{keywordflow}{break};
+66         \textcolor{keywordflow}{default}:
+67         \textcolor{keywordflow}{break};
+68       \}
+69 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_ae17664af7f894e29743fafdf8bf98f89}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!mqtt\+\_\+sn\+\_\+reg\+\_\+send@{mqtt\+\_\+sn\+\_\+reg\+\_\+send}}
+\index{mqtt\+\_\+sn\+\_\+reg\+\_\+send@{mqtt\+\_\+sn\+\_\+reg\+\_\+send}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{mqtt\+\_\+sn\+\_\+reg\+\_\+send}]{\setlength{\rightskip}{0pt plus 5cm}{\bf resp\+\_\+con\+\_\+t} mqtt\+\_\+sn\+\_\+reg\+\_\+send (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_ae17664af7f894e29743fafdf8bf98f89}
+
+
+Envio de mensagens ao broker do tipo R\+E\+G\+I\+S\+T\+E\+R. 
+
+Envia ao broker mensagens do tipo R\+E\+G\+I\+S\+T\+E\+R com o topic name informado conforme a tarefa primeira na fila
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em 0} & Não recebe parâmetro\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em F\+A\+I\+L\+\_\+\+C\+O\+N} & Falha ao enviar o pacote R\+E\+G\+I\+S\+T\+E\+R \\
+\hline
+{\em S\+U\+C\+C\+E\+S\+S\+\_\+\+C\+O\+N} & Sucesso ao enviar o pacote R\+E\+G\+I\+S\+T\+E\+R \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+163                              \{
+164   \hyperlink{structregister__packet__t}{register\_packet\_t} packet;
+165 
+166   \textcolor{comment}{/****************************************************************************/}
+167   \textcolor{comment}{// REGISTRO DE TÓPICOS DEFINIDOS}
+168   \textcolor{comment}{// Verifica-se se a fila está vazia,}
+169   \textcolor{comment}{// caso contrário, ainda precisamos}
+170   \textcolor{comment}{// registrar tópicos MQTT\_SN}
+171 
+172   \textcolor{keyword}{struct }\hyperlink{structnode}{node} *verEMpty;
+173   \textcolor{keywordtype}{int} counter = 0;
+174 
+175   verEMpty = mqtt\_queue\_first;
+176 
+177   \textcolor{keywordflow}{while} (verEMpty) \{
+178       verEMpty = verEMpty->link;
+179       counter++;
+180   \}
+181 
+182   \textcolor{comment}{// Se vazio significa que registramos todos os tópicos}
+183   \textcolor{keywordflow}{if} (!counter) \{
+184       gTopicRegistered = 1;
+185       \textcolor{keywordflow}{return} SUCCESS\_CON;
+186   \}
+187 
+188   \textcolor{comment}{/****************************************************************************/}
+189 
+190   \textcolor{keywordtype}{size\_t} topic\_name\_len = strlen(mqtt\_queue\_first->data.\hyperlink{structmqtt__sn__task__t_a64393dc28e568ae455af9bcd28eaeeac}{long\_topic}); \textcolor{comment}{//Pega o primeiro da fila
+       aguardando}
+191 
+192   \textcolor{keywordflow}{if} (topic\_name\_len > MQTT\_SN\_MAX\_TOPIC\_LENGTH) \{
+193       debug\_mqtt(\textcolor{stringliteral}{"Erro: Nome do topico excede o limite maximo"});
+194       \textcolor{keywordflow}{return} \hyperlink{sabado__list__old_8h_a754c1055b4431040415cf01b39caaa98ac6ae922662cbaf7958eb387bfd6fe4da}{FAIL\_CON};
+195   \}
+196 
+197   packet.\hyperlink{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}{type} = MQTT\_SN\_TYPE\_REGISTER;
+198   packet.\hyperlink{group__Pacotes_gab0380a82be366f48263095460986c3c7}{topic\_id} = 0x0000;
+199   \textcolor{comment}{// Quando o broker responder com o short topic ID,}
+200   \textcolor{comment}{// ele utilizará como message id, o identificador único da task na}
+201   \textcolor{comment}{// queue de serviços do MQTT-SN, logo se torna fácil saber como montar}
+202   \textcolor{comment}{// a relação (short\_topic/long\_topic) no vetor global mqtt\_sn\_topics[]}
+203   packet.\hyperlink{group__Pacotes_ga5f2be45182f0cc39afb7cc3a8d55a1f1}{message\_id} = uip\_htons((\textcolor{keywordtype}{int})mqtt\_queue\_first->data.\hyperlink{structmqtt__sn__task__t_a1dba79ab8685a56d3ae57d84aca21ce8}{id\_task});
+204 
+205   strncpy(packet.\hyperlink{group__Pacotes_ga4928dc5635290abe481ce340f6d47865}{topic\_name}, mqtt\_queue\_first->data.\hyperlink{structmqtt__sn__task__t_a64393dc28e568ae455af9bcd28eaeeac}{long\_topic}, topic\_name\_len);
+206   packet.\hyperlink{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{length} = 0x06 + topic\_name\_len;
+207   packet.\hyperlink{group__Pacotes_ga4928dc5635290abe481ce340f6d47865}{topic\_name}[topic\_name\_len] = \textcolor{charliteral}{'\(\backslash\)0'};
+208 
+209   debug\_mqtt(\textcolor{stringliteral}{"Topico a registrar:%s [%d][%d]"},packet.\hyperlink{group__Pacotes_ga4928dc5635290abe481ce340f6d47865}{topic\_name},strlen(packet.
+      \hyperlink{group__Pacotes_ga4928dc5635290abe481ce340f6d47865}{topic\_name}),packet.\hyperlink{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{length});
+210 
+211   debug\_logic(\textcolor{stringliteral}{"Enviando o pacote @REGISTER..."});
+212   simple\_udp\_send(&gMQTTSN\_con.udp\_con,&packet, packet.\hyperlink{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{length});
+213 
+214   mqtt\_message\_status = MQTTSN\_WAITING\_REGACK;
+215   \textcolor{keywordflow}{return} SUCCESS\_CON;
+216 \}
+\end{DoxyCode}
+\hypertarget{mqtt__sn_8h_ac598f98e844bfd5bbdb577099ddf06d1}{\index{mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}!parse\+\_\+mqtt\+\_\+type\+\_\+string@{parse\+\_\+mqtt\+\_\+type\+\_\+string}}
+\index{parse\+\_\+mqtt\+\_\+type\+\_\+string@{parse\+\_\+mqtt\+\_\+type\+\_\+string}!mqtt\+\_\+sn.\+h@{mqtt\+\_\+sn.\+h}}
+\subsubsection[{parse\+\_\+mqtt\+\_\+type\+\_\+string}]{\setlength{\rightskip}{0pt plus 5cm}void parse\+\_\+mqtt\+\_\+type\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{type, }
+\item[{char $\ast$$\ast$}]{type\+\_\+string}
+\end{DoxyParamCaption}
+)}}\label{mqtt__sn_8h_ac598f98e844bfd5bbdb577099ddf06d1}
+
+
+Retorna a string de status correspondente. 
+
+Realiza o parsing do estado da conexão M\+Q\+T\+T-\/\+S\+N traduzindo de typedef enum para estado em string
+
+
+\begin{DoxyParams}[1]{Parâmetros}
+\mbox{\tt in}  & {\em type} & Não recebe argumento \\
+\hline
+\mbox{\tt in}  & {\em type\+\_\+string} & Não recebe argumento\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Valores retornados}
+{\em 0} & Não retorna nada \\
+\hline
+\end{DoxyRetVals}
+
+\begin{DoxyCode}
+323                                                              \{
+324   \textcolor{keywordflow}{switch} (type) \{
+325     \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_CONNECT:
+326       *type\_string = \textcolor{stringliteral}{"CONNECT"};
+327     \textcolor{keywordflow}{break};
+328     \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_REGISTER:
+329       *type\_string = \textcolor{stringliteral}{"REGISTER"};
+330     \textcolor{keywordflow}{break};
+331     \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_PUBLISH:
+332       *type\_string = \textcolor{stringliteral}{"PUBLISH"};
+333     \textcolor{keywordflow}{break};
+334     \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_SUBSCRIBE:
+335       *type\_string = \textcolor{stringliteral}{"SUBSCRIBE"};
+336     \textcolor{keywordflow}{break};
+337     \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_PINGREQ:
+338       *type\_string = \textcolor{stringliteral}{"PINGREQ"};
+339     \textcolor{keywordflow}{break};
+340     \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_PINGRESP:
+341       *type\_string = \textcolor{stringliteral}{"PINGRESP"};
+342     \textcolor{keywordflow}{break};
+343     \textcolor{keywordflow}{case} MQTT\_SN\_TYPE\_DISCONNECT:
+344       *type\_string = \textcolor{stringliteral}{"DISCONNECT"};
+345     \textcolor{keywordflow}{break};
+346   \}
+347 \}
+\end{DoxyCode}

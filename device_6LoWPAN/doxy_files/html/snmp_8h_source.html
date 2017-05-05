@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>HomeStark_6LoWPAN_Device: Código-Fonte de snmpd/snmp.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_symbol.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HomeStark_6LoWPAN_Device
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Código fonte do dispositivo 6LoWPAN da rede HomeStark</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tudo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estruturas de dados</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Ficheiros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerações</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valores da enumeração</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bc83ca815ba75edffbc2ec0c3eb5f066.html">snmpd</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">snmp.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="snmp_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef __SNMP_H__</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define __SNMP_H__</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;simple-udp.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;clock.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;etimer.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;ctimer.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;list.h&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;net/ip/uip-debug.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;sys/ctimer.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="homestark_8h.html">homestark.h</a>&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="snmp_8h.html#abb9d473894655ab94b1dca8f0ef5fa1d">   44</a></span>&#160;<span class="preprocessor">#define DEFAULT_SNMP_PORT       161</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="snmp_8h.html#abe670cc5ceed3fad3be682fc0c1bb62e">   49</a></span>&#160;<span class="preprocessor">#define ERROR_NONE              0x00 </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define ERROR_RESP_TOO_LARGE    0x01 </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define ERROR_REQ_OID_NOT_FOUND 0x02 </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define ERROR_DATA_TYPE_MATCH   0x03 </span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define ERROR_MAN_READ_ONLY     0x04 </span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define ERROR_GENERAL           0x05 </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="snmp_8h.html#a45fec4a033960bca8c60e2f40d1d0e04">   59</a></span>&#160;<span class="preprocessor">#define ASN1_PRIM_INTEGER       0x02</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define ASN1_PRIM_OCT_STR       0x04</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define ASN1_PRIM_NULL          0x05</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define ASN1_PRIM_OID           0x06</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define ASN1_PRIM_IP_ADDRESS    0x40</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define ASN1_PRIM_TIMESTAMP     0x43</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// #define MAX_COMMUNITY_STRING 0x80 // 128 bytes</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="snmp_8h.html#a23bdc4d15d908a80e4bc06be55463ffc">   70</a></span>&#160;<span class="preprocessor">#define MAX_OCTET_STRING        0xFA // 250 bytes</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define MAX_OID_STRING          20   // 20 bytes - 20 levels in tree</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define MAX_UDP_SNMP            300</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="snmp_8h.html#aa4d923102cb2314e31cbf833482e9090">   77</a></span>&#160;<span class="preprocessor">#define ASN1_CPX_SEQUENCE       0x30</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#define ASN1_CPX_GET_REQ        0xA0</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define ASN1_CPX_NEXT_REQ       0xA1</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define ASN1_CPX_GET_RESP       0xA2</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define ASN1_CPX_SET_REQ        0xA3</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#define ASN1_CPX_TRAP           0xA4</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define MAX_OIDS                14             </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#define MAX_STRINGS_LENGTH      100            </span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#define TIME_UPDATE_SNMP        2*CLOCK_SECOND </span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#define TIME_TRAP_HEARTBEAT     10*CLOCK_SECOND </span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#define TRAP_COLD_START         0</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#define TRAP_WARM_START         1</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#define TRAP_LINK_DOWN          2</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#define TRAP_LINK_UP            3</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#define TRAP_AUTH_FAILURE       4</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#define TRAP_NEIGHBOR_LOSS      5</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#define TRAP_ENTERPRISE_SPEC    6</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#define TRAP_SNMP_PORT          162</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="snmp_8h.html#a1f1b7fadcf29f1de5bb406bf356c1d71">   99</a></span>&#160;<span class="preprocessor">#define SNMP_VERSION_1                  0</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="snmp_8h.html#a0599530b4b198b2c7fa49a274f3f3878">  101</a></span>&#160;<span class="preprocessor">#define SNMP_VERSION_2C                 1</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="snmp_8h.html#aa0b283beac3c7da5c28058f52a817c0c">  103</a></span>&#160;<span class="preprocessor">#define SNMP_VERSION_3                  3</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="snmp_8h.html#a388ebedb8b344492bded4ba233fab27d">  105</a></span>&#160;<span class="preprocessor">#define check_seq(x) (x == ASN1_CPX_SEQUENCE ? 1 : 0)</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#define DEBUG_SNMP_DECODING </span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#define DEBUG_SNMP          </span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#ifdef DEBUG_SNMP</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#define debug_snmp(fmt, args...) printf(&quot;\n[SNMP] &quot;fmt, ##args)</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#define debug_snmp(fmt, ...)</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">// typedef struct {</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">//   struct simple_udp_connection udp_con;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">//   uint16_t udp_port;</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">//   uint16_t *ipv6_nms;</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">//   uint16_t keep_alive;</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">// } snmp_con_t;</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">  142</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">  143</a></span>&#160;   <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a>,</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">  144</a></span>&#160;   <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a>,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;} <a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="structsnmp__t.html">  164</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;   uint32_t        snmp_version;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;   uint8_t         request_type;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;   uint8_t         response_type;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;   uint8_t         request_id_c[10];</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;   uint8_t         community[<a class="code" href="snmp_8h.html#a23bdc4d15d908a80e4bc06be55463ffc">MAX_OCTET_STRING</a>];</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;   uint8_t         oid_encoded[MAX_OID_STRING];</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;   uint8_t         value[<a class="code" href="snmp_8h.html#a23bdc4d15d908a80e4bc06be55463ffc">MAX_OCTET_STRING</a>];</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;} <a class="code" href="structsnmp__t.html">snmp_t</a>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="structrequest.html">  181</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structrequest.html">request</a> {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="structsnmp__t.html">snmp_t</a> pdu_request;</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="structrequest.html#acd3424c52c115fc00144c6679816c819">  183</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structrequest.html">request</a> *<a class="code" href="structrequest.html#acd3424c52c115fc00144c6679816c819">link</a>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}*request_first, *request_last;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="snmp_8h.html#a0c7f91118bbe8cf32398c753ead2b7f2">decode_asn1_oct_str</a>(uint8_t *data_encoded, uint8_t *oct_str);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="snmp_8h.html#acb3a9652e9b960748692caef7f443384">decode_asn1_integer</a>(uint8_t *data_encoded, uint32_t *integer_value);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="snmp_8h.html#aca484712bcdb0bbc0f065061c4a0ed20">snmp_decode_message</a>(<span class="keywordtype">char</span> *snmp_packet, <a class="code" href="structsnmp__t.html">snmp_t</a> *v);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;uint16_t <a class="code" href="snmp_8h.html#a63d8ffecf9aa0af9824de046643c140f">snmp_encode_message</a>(<a class="code" href="structsnmp__t.html">snmp_t</a> *snmp_handle, <span class="keywordtype">char</span> *data_encoded);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keywordtype">int</span> <a class="code" href="snmp_8h.html#a523ab718dec1a794b3f8c8752f1e2ae3">ipaddr_sprintf</a>(<span class="keywordtype">char</span> *buf, uint8_t buf_len, <span class="keyword">const</span> uip_ipaddr_t *addr);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keywordtype">void</span> <a class="code" href="snmp_8h.html#a05848f4eb62dd417b99e461854870bf9">snmp_cb_data</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keywordtype">void</span> <a class="code" href="snmp_8h.html#a4d88f2fc7655280384131d543e0d83e5">snmp_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#if !CONTIKI_TARGET_Z1</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keywordtype">void</span> <a class="code" href="snmp_8h.html#a732192a9e72d3182d395c47e2cd9c79e">update_snmp_mib</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;uint16_t <a class="code" href="snmp_8h.html#af72c0873252d8160ff31eae19d05a5a1">snmp_encode_trap</a>(uint8_t *trap_pdu, uint8_t type_trap, uint8_t heartbeat);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="snmp_8h_html_a4d88f2fc7655280384131d543e0d83e5"><div class="ttname"><a href="snmp_8h.html#a4d88f2fc7655280384131d543e0d83e5">snmp_init</a></div><div class="ttdeci">void snmp_init(void)</div><div class="ttdoc">SNMP Init function. </div><div class="ttdef"><b>Definition:</b> snmp.c:139</div></div>
+<div class="ttc" id="snmp_8h_html_a523ab718dec1a794b3f8c8752f1e2ae3"><div class="ttname"><a href="snmp_8h.html#a523ab718dec1a794b3f8c8752f1e2ae3">ipaddr_sprintf</a></div><div class="ttdeci">int ipaddr_sprintf(char *buf, uint8_t buf_len, const uip_ipaddr_t *addr)</div><div class="ttdoc">Convert IPv6 address in char format. </div><div class="ttdef"><b>Definition:</b> snmp.c:143</div></div>
+<div class="ttc" id="snmp_8h_html_a23bdc4d15d908a80e4bc06be55463ffc"><div class="ttname"><a href="snmp_8h.html#a23bdc4d15d908a80e4bc06be55463ffc">MAX_OCTET_STRING</a></div><div class="ttdeci">#define MAX_OCTET_STRING</div><div class="ttdoc">Max data types in each kind of variable. </div><div class="ttdef"><b>Definition:</b> snmp.h:70</div></div>
+<div class="ttc" id="homestark_8h_html"><div class="ttname"><a href="homestark_8h.html">homestark.h</a></div><div class="ttdoc">Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements...</div></div>
+<div class="ttc" id="snmp_8h_html_acb3a9652e9b960748692caef7f443384"><div class="ttname"><a href="snmp_8h.html#acb3a9652e9b960748692caef7f443384">decode_asn1_integer</a></div><div class="ttdeci">resp_con_t decode_asn1_integer(uint8_t *data_encoded, uint32_t *integer_value)</div><div class="ttdoc">SNMP Decode Integer. </div><div class="ttdef"><b>Definition:</b> snmp_asn1.c:91</div></div>
+<div class="ttc" id="snmp_8h_html_a732192a9e72d3182d395c47e2cd9c79e"><div class="ttname"><a href="snmp_8h.html#a732192a9e72d3182d395c47e2cd9c79e">update_snmp_mib</a></div><div class="ttdeci">void update_snmp_mib(void)</div><div class="ttdoc">Update SNMP OIDs. </div><div class="ttdef"><b>Definition:</b> snmp.c:175</div></div>
+<div class="ttc" id="structsnmp__t_html"><div class="ttname"><a href="structsnmp__t.html">snmp_t</a></div><div class="ttdoc">Struct for the SNMP Message. </div><div class="ttdef"><b>Definition:</b> snmp.h:164</div></div>
+<div class="ttc" id="snmp_8h_html_a63d8ffecf9aa0af9824de046643c140f"><div class="ttname"><a href="snmp_8h.html#a63d8ffecf9aa0af9824de046643c140f">snmp_encode_message</a></div><div class="ttdeci">uint16_t snmp_encode_message(snmp_t *snmp_handle, char *data_encoded)</div><div class="ttdoc">Encode SNMP message. </div><div class="ttdef"><b>Definition:</b> snmp_asn1.c:332</div></div>
+<div class="ttc" id="snmp_8h_html_a05848f4eb62dd417b99e461854870bf9"><div class="ttname"><a href="snmp_8h.html#a05848f4eb62dd417b99e461854870bf9">snmp_cb_data</a></div><div class="ttdeci">void snmp_cb_data(void)</div><div class="ttdoc">SNMP Callback receive. </div><div class="ttdef"><b>Definition:</b> snmp.c:109</div></div>
+<div class="ttc" id="snmp_8h_html_a0c7f91118bbe8cf32398c753ead2b7f2"><div class="ttname"><a href="snmp_8h.html#a0c7f91118bbe8cf32398c753ead2b7f2">decode_asn1_oct_str</a></div><div class="ttdeci">resp_con_t decode_asn1_oct_str(uint8_t *data_encoded, uint8_t *oct_str)</div><div class="ttdoc">SNMP Decode Octet String. </div><div class="ttdef"><b>Definition:</b> snmp_asn1.c:72</div></div>
+<div class="ttc" id="structrequest_html_acd3424c52c115fc00144c6679816c819"><div class="ttname"><a href="structrequest.html#acd3424c52c115fc00144c6679816c819">request::link</a></div><div class="ttdeci">struct request * link</div><div class="ttdoc">Link to the next request. </div><div class="ttdef"><b>Definition:</b> snmp.h:183</div></div>
+<div class="ttc" id="snmp_8h_html_aca484712bcdb0bbc0f065061c4a0ed20"><div class="ttname"><a href="snmp_8h.html#aca484712bcdb0bbc0f065061c4a0ed20">snmp_decode_message</a></div><div class="ttdeci">resp_con_t snmp_decode_message(char *snmp_packet, snmp_t *v)</div><div class="ttdoc">Decode SNMP message. </div><div class="ttdef"><b>Definition:</b> snmp_asn1.c:111</div></div>
+<div class="ttc" id="snmp_8h_html_af72c0873252d8160ff31eae19d05a5a1"><div class="ttname"><a href="snmp_8h.html#af72c0873252d8160ff31eae19d05a5a1">snmp_encode_trap</a></div><div class="ttdeci">uint16_t snmp_encode_trap(uint8_t *trap_pdu, uint8_t type_trap, uint8_t heartbeat)</div><div class="ttdoc">Encode a SNMPv1 Trap message. </div><div class="ttdef"><b>Definition:</b> snmp_asn1.c:483</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ac6ae922662cbaf7958eb387bfd6fe4da">FAIL_CON</a></div><div class="ttdoc">Error to to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:143</div></div>
+<div class="ttc" id="structrequest_html"><div class="ttname"><a href="structrequest.html">request</a></div><div class="ttdoc">Struct for request of SNMP Packets. </div><div class="ttdef"><b>Definition:</b> snmp.h:181</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a></div><div class="ttdeci">resp_con_t</div><div class="ttdoc">Type of errors in SNMP functions. </div><div class="ttdef"><b>Definition:</b> snmp.h:142</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6ae7b7a388c90c2c5428cced225760885f">SUCCESS_CON</a></div><div class="ttdoc">Sucess to process function. </div><div class="ttdef"><b>Definition:</b> snmp.h:144</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Quinta, 29 de Setembro de 2016 00:56:28 para HomeStark_6LoWPAN_Device por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

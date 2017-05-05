@@ -1,0 +1,1169 @@
+.TH "snmpd/snmp.h" 3 "Quinta, 29 de Setembro de 2016" "Version 1.0" "HomeStark_6LoWPAN_Device" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+snmpd/snmp.h \- 
+.PP
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdbool\&.h>\fP
+.br
+\fC#include 'simple-udp\&.h'\fP
+.br
+\fC#include 'clock\&.h'\fP
+.br
+\fC#include 'etimer\&.h'\fP
+.br
+\fC#include 'ctimer\&.h'\fP
+.br
+\fC#include 'list\&.h'\fP
+.br
+\fC#include 'net/ip/uip-debug\&.h'\fP
+.br
+\fC#include 'sys/ctimer\&.h'\fP
+.br
+\fC#include 'homestark\&.h'\fP
+.br
+
+.SS "Estruturas de Dados"
+
+.in +1c
+.ti -1c
+.RI "struct \fBsnmp_t\fP"
+.br
+.RI "\fIStruct for the SNMP Message\&. \fP"
+.ti -1c
+.RI "struct \fBrequest\fP"
+.br
+.RI "\fIStruct for request of SNMP Packets\&. \fP"
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBDEFAULT_SNMP_PORT\fP   161"
+.br
+.RI "\fIDefault SNMP Agent port\&. \fP"
+.ti -1c
+.RI "#define \fBERROR_NONE\fP   0x00 /**  @brief No error occurred */"
+.br
+.RI "\fITypes of errors in SNMP PDU\&. \fP"
+.ti -1c
+.RI "#define \fBERROR_RESP_TOO_LARGE\fP   0x01 /**  @brief Response message too large to transpor */"
+.br
+.ti -1c
+.RI "#define \fBERROR_REQ_OID_NOT_FOUND\fP   0x02 /**  @brief The name of the requested object was not found */"
+.br
+.ti -1c
+.RI "#define \fBERROR_DATA_TYPE_MATCH\fP   0x03 /**  @brief A data type in the request did not match the data type in the SNMP agent */"
+.br
+.ti -1c
+.RI "#define \fBERROR_MAN_READ_ONLY\fP   0x04 /**  @brief The SNMP manager attempted to set a read-only parameter */"
+.br
+.ti -1c
+.RI "#define \fBERROR_GENERAL\fP   0x05 /**  @brief General Error (some error other than the ones listed above) */"
+.br
+.ti -1c
+.RI "#define \fBASN1_PRIM_INTEGER\fP   0x02"
+.br
+.RI "\fIPrimitives data types of ANS\&.1 encoding\&. \fP"
+.ti -1c
+.RI "#define \fBASN1_PRIM_OCT_STR\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBASN1_PRIM_NULL\fP   0x05"
+.br
+.ti -1c
+.RI "#define \fBASN1_PRIM_OID\fP   0x06"
+.br
+.ti -1c
+.RI "#define \fBASN1_PRIM_IP_ADDRESS\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBASN1_PRIM_TIMESTAMP\fP   0x43"
+.br
+.ti -1c
+.RI "#define \fBMAX_OCTET_STRING\fP   0xFA"
+.br
+.RI "\fIMax data types in each kind of variable\&. \fP"
+.ti -1c
+.RI "#define \fBMAX_OID_STRING\fP   20"
+.br
+.ti -1c
+.RI "#define \fBMAX_UDP_SNMP\fP   300"
+.br
+.ti -1c
+.RI "#define \fBASN1_CPX_SEQUENCE\fP   0x30"
+.br
+.RI "\fIComplex data types of ANS\&.1 encoding\&. \fP"
+.ti -1c
+.RI "#define \fBASN1_CPX_GET_REQ\fP   0xA0"
+.br
+.ti -1c
+.RI "#define \fBASN1_CPX_NEXT_REQ\fP   0xA1"
+.br
+.ti -1c
+.RI "#define \fBASN1_CPX_GET_RESP\fP   0xA2"
+.br
+.ti -1c
+.RI "#define \fBASN1_CPX_SET_REQ\fP   0xA3"
+.br
+.ti -1c
+.RI "#define \fBASN1_CPX_TRAP\fP   0xA4"
+.br
+.ti -1c
+.RI "#define \fBMAX_OIDS\fP   14             /** @brief Number max\&. of address that the device will answer about MIB Implementation */"
+.br
+.ti -1c
+.RI "#define \fBMAX_STRINGS_LENGTH\fP   100            /** @brief Max length of string in the OID Implementation */"
+.br
+.ti -1c
+.RI "#define \fBTIME_UPDATE_SNMP\fP   2*CLOCK_SECOND /** @brief Time to update the OIDs of MIB implementation */"
+.br
+.ti -1c
+.RI "#define \fBTIME_TRAP_HEARTBEAT\fP   10*CLOCK_SECOND /** @brief Define the time to send trap callback heartbeat message */"
+.br
+.ti -1c
+.RI "#define \fBTRAP_COLD_START\fP   0"
+.br
+.ti -1c
+.RI "#define \fBTRAP_WARM_START\fP   1"
+.br
+.ti -1c
+.RI "#define \fBTRAP_LINK_DOWN\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTRAP_LINK_UP\fP   3"
+.br
+.ti -1c
+.RI "#define \fBTRAP_AUTH_FAILURE\fP   4"
+.br
+.ti -1c
+.RI "#define \fBTRAP_NEIGHBOR_LOSS\fP   5"
+.br
+.ti -1c
+.RI "#define \fBTRAP_ENTERPRISE_SPEC\fP   6"
+.br
+.ti -1c
+.RI "#define \fBTRAP_SNMP_PORT\fP   162"
+.br
+.ti -1c
+.RI "#define \fBSNMP_VERSION_1\fP   0"
+.br
+.RI "\fIvalue of the version field for the SNMPv1 \fP"
+.ti -1c
+.RI "#define \fBSNMP_VERSION_2C\fP   1"
+.br
+.RI "\fIvalue of the version field for the SNMPv2c \fP"
+.ti -1c
+.RI "#define \fBSNMP_VERSION_3\fP   3"
+.br
+.RI "\fIvalue of the version field for the SNMPv3 \fP"
+.ti -1c
+.RI "#define \fBcheck_seq\fP(x)   (x == \fBASN1_CPX_SEQUENCE\fP ? 1 : 0)"
+.br
+.RI "\fIDecode the initial sequence type\&. \fP"
+.ti -1c
+.RI "#define \fBDEBUG_SNMP_DECODING\fP   /** @brief If defined, show decode SNMP messages */"
+.br
+.ti -1c
+.RI "#define \fBDEBUG_SNMP\fP   /** @brief Enable SNMP Debug message */"
+.br
+.ti -1c
+.RI "#define \fBdebug_snmp\fP(fmt, args\&.\&.\&.)   printf('\\n[SNMP] 'fmt, ##args)"
+.br
+.in -1c
+.SS "Enumerações"
+
+.in +1c
+.ti -1c
+.RI "enum \fBresp_con_t\fP { \fBFAIL_CON\fP, \fBSUCCESS_CON\fP }"
+.br
+.RI "\fIType of errors in SNMP functions\&. \fP"
+.in -1c
+.SS "Funções"
+
+.in +1c
+.ti -1c
+.RI "\fBresp_con_t\fP \fBdecode_asn1_oct_str\fP (uint8_t *data_encoded, uint8_t *oct_str)"
+.br
+.RI "\fISNMP Decode Octet String\&. \fP"
+.ti -1c
+.RI "\fBresp_con_t\fP \fBdecode_asn1_integer\fP (uint8_t *data_encoded, uint32_t *integer_value)"
+.br
+.RI "\fISNMP Decode Integer\&. \fP"
+.ti -1c
+.RI "\fBresp_con_t\fP \fBsnmp_decode_message\fP (char *snmp_packet, \fBsnmp_t\fP *v)"
+.br
+.RI "\fIDecode SNMP message\&. \fP"
+.ti -1c
+.RI "uint16_t \fBsnmp_encode_message\fP (\fBsnmp_t\fP *snmp_handle, char *data_encoded)"
+.br
+.RI "\fIEncode SNMP message\&. \fP"
+.ti -1c
+.RI "int \fBipaddr_sprintf\fP (char *buf, uint8_t buf_len, const uip_ipaddr_t *addr)"
+.br
+.RI "\fIConvert IPv6 address in char format\&. \fP"
+.ti -1c
+.RI "void \fBsnmp_cb_data\fP (void)"
+.br
+.RI "\fISNMP Callback receive\&. \fP"
+.ti -1c
+.RI "void \fBsnmp_init\fP (void)"
+.br
+.RI "\fISNMP Init function\&. \fP"
+.ti -1c
+.RI "void \fBupdate_snmp_mib\fP (void)"
+.br
+.RI "\fIUpdate SNMP OIDs\&. \fP"
+.ti -1c
+.RI "uint16_t \fBsnmp_encode_trap\fP (uint8_t *trap_pdu, uint8_t type_trap, uint8_t heartbeat)"
+.br
+.RI "\fIEncode a SNMPv1 Trap message\&. \fP"
+.in -1c
+.SS "Variáveis"
+
+.in +1c
+.ti -1c
+.RI "struct \fBrequest\fP * \fBrequest_first\fP"
+.br
+.ti -1c
+.RI "struct \fBrequest\fP * \fBrequest_last\fP"
+.br
+.in -1c
+.SH "Descrição detalhada"
+.PP 
+Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements\&. 
+
+See the NOTICE file distributed with this work for additional information regarding copyright ownership\&. The ASF licenses this file to you under the Apache License, Version 2\&.0 (the 'License'); you may not use this file except in compliance with the License\&. You may obtain a copy of the License at
+.PP
+http://www.apache.org/licenses/LICENSE-2.0
+.PP
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 'AS IS' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\&. See the License for the specific language governing permissions and limitations under the License\&.
+.PP
+This project is delivered under Apache 2\&.0 license\&.
+.PP
+Header functions about SNMP implementation 
+.PP
+\fBAutor:\fP
+.RS 4
+Ânderson Ignácio da Silva 
+.RE
+.PP
+\fBData:\fP
+.RS 4
+12 Sept 2016 
+.RE
+.PP
+\fBVeja também:\fP
+.RS 4
+http://www.aignacio.com 
+.RE
+.PP
+
+.SH "Documentação dos valores da enumeração"
+.PP 
+.SS "enum \fBresp_con_t\fP"
+
+.PP
+Type of errors in SNMP functions\&. 
+.PP
+\fBValores da enumeração\fP
+.in +1c
+.TP
+\fB\fIFAIL_CON \fP\fP
+Error to to process function\&. 
+.TP
+\fB\fISUCCESS_CON \fP\fP
+Sucess to process function\&. 
+.PP
+\fBTarefa\fP
+.RS 4
+Implement more kind of errors 
+.RE
+.PP
+
+.PP
+.nf
+142              {
+143    FAIL_CON,
+144    SUCCESS_CON,
+145 } resp_con_t;
+.fi
+.SH "Documentação das funções"
+.PP 
+.SS "\fBresp_con_t\fP decode_asn1_integer (uint8_t *data_encoded, uint32_t *integer_value)"
+
+.PP
+SNMP Decode Integer\&. Decode ASN\&.1 integer(32 bit value)\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIdata_encoded\fP Data do decode 
+.br
+\fIinteger_value\fP Variable the will receive the integer 32-bit
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success to decode integer 
+.br
+\fIFAIL_CON\fP Fail to decode integer 
+.RE
+.PP
+
+.PP
+.nf
+91                                                                               {
+92   uint8_t length = (intptr_t)*(data_encoded+1);
+93   // uint32_t integer_value;
+94   size_t i = 0;
+95   uint32_t aux;
+96 
+97   // Test if it's an integer value to be decoded
+98   if (*data_encoded != ASN1_PRIM_INTEGER){
+99     debug_snmp("The value is not integer!");
+100     return FAIL_CON;
+101   }
+102 
+103   for (i=1, *integer_value = 0; i <= length; i++){
+104     aux = *(data_encoded+1+i);
+105     *integer_value += aux*(pow(256,(length-i)));
+106     // debug_snmp("%lu * 256^%d = %lu",aux,(length-i),*integer_value);
+107   }
+108   return SUCCESS_CON;
+109 }
+.fi
+.SS "\fBresp_con_t\fP decode_asn1_oct_str (uint8_t *data_encoded, uint8_t *oct_str)"
+
+.PP
+SNMP Decode Octet String\&. Decode Octet String in ASN\&.1 format\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIdata_encoded\fP Data do decode 
+.br
+\fIoct_str\fP Variable the will receive the octet string
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success to decode string octet 
+.br
+\fIFAIL_CON\fP Fail to decode octet string 
+.RE
+.PP
+
+.PP
+.nf
+72                                                                        {
+73   if (*data_encoded !=  (intptr_t)ASN1_PRIM_OCT_STR) {
+74     debug_snmp("The type of value passed is not an octet string!");
+75     return FAIL_CON;
+76   }
+77 
+78   uint8_t length = (intptr_t)*(data_encoded+1),
+79           index = 0;
+80   while (length) {
+81     *(oct_str+index) = (intptr_t)*(data_encoded+2+index);
+82     length--;
+83     index++;
+84   }
+85 
+86   *(oct_str+index) = '\0';
+87   // printf("\nEndereco----:> %d\n",oct_str);
+88   return SUCCESS_CON;
+89 }
+.fi
+.SS "int ipaddr_sprintf (char *buf, uint8_tbuf_len, const uip_ipaddr_t *addr)"
+
+.PP
+Convert IPv6 address in char format\&. Format IPv6 address in string char variable\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIbuf\fP Variable that'll receive the ipv6 address decoded 
+.br
+\fIbuf_len\fP Len of buf variable 
+.br
+\fIaddr\fP Address IPv6 in uip_ipaddr_t format
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIlen\fP Length of buf variable formated 
+.RE
+.PP
+
+.PP
+.nf
+143                                                                          {
+144   uint16_t a;
+145   uint8_t len = 0;
+146   int i, f;
+147   for(i = 0, f = 0; i < sizeof(uip_ipaddr_t); i += 2) {
+148     a = (addr->u8[i] << 8) + addr->u8[i + 1];
+149     if(a == 0 && f >= 0) {
+150       if(f++ == 0) {
+151         len += snprintf(&buf[len], buf_len - len, "::");
+152       }
+153     } else {
+154       if(f > 0) {
+155         f = -1;
+156       } else if(i > 0) {
+157         len += snprintf(&buf[len], buf_len - len, ":");
+158       }
+159       len += snprintf(&buf[len], buf_len - len, "%x", a);
+160     }
+161   }
+162 
+163   return len;
+164 }
+.fi
+.SS "void snmp_cb_data (void)"
+
+.PP
+SNMP Callback receive\&. Receive in callback mode, any data from NMS of SNMP protocol\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIvoid\fP No argument to pass
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIvoid\fP Doesn't return anything 
+.RE
+.PP
+
+.PP
+.nf
+109                        {
+110   static uint16_t len;
+111   static char buf[MAX_UDP_SNMP];
+112   memset(buf, 0, MAX_UDP_SNMP);
+113 
+114   if(uip_newdata()) {
+115     len = uip_datalen();
+116     memcpy(buf, uip_appdata, len);
+117     #ifdef DEBUG_SNMP_DECODING
+118     debug_snmp("%u bytes from [", len);
+119     #endif
+120     uip_debug_ipaddr_print(&UIP_IP_BUF->srcipaddr);
+121     printf("]:%u", UIP_HTONS(UIP_UDP_BUF->srcport));
+122     uip_ipaddr_copy(&server_conn->ripaddr, &UIP_IP_BUF->srcipaddr);
+123     server_conn->rport = UIP_UDP_BUF->srcport;
+124     snmp_t snmp_handle;
+125     if (snmp_decode_message(buf, &snmp_handle)){
+126       #ifdef DEBUG_SNMP_DECODING
+127       debug_snmp("New SNMP Request received!");
+128       #endif
+129       len = snmp_encode_message(&snmp_handle, buf);
+130       uip_udp_packet_send(server_conn, buf, len);
+131       uip_create_unspecified(&server_conn->ripaddr);
+132       server_conn->rport = 0;
+133     }
+134     else
+135       debug_snmp("Problem on SNMP Request received!");
+136   }
+137 }
+.fi
+.SS "\fBresp_con_t\fP snmp_decode_message (char *snmp_packet, \fBsnmp_t\fP *v)"
+
+.PP
+Decode SNMP message\&. Decode a SNMP message v1 and format to answer request\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIsnmp_packet\fP Data UDP - SNMP to decode 
+.br
+\fIsnmp_handle\fP Struct that will receive the SNMP request messsage
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fISUCCESS_CON\fP Success to decode SNMP Message 
+.br
+\fIFAIL_CON\fP Fail to decode SNMP Message 
+.RE
+.PP
+
+.PP
+.nf
+111                                                                       {
+112   uint8_t buffer[50], aux;
+113   size_t i;
+114 
+115   #ifdef DEBUG_SNMP_DECODING
+116   // debug_snmp("Encoded SNMP packet:\n\t");
+117   // for (i=0, j=0; i < *(snmp_packet+1)+1; j++, i++){
+118   //   if (j > 7){
+119   //     j = 0;
+120   //     printf("\n\t");
+121   //   }
+122   //   printf("[%02x] ",*(snmp_packet+i));
+123   // }
+124   #endif
+125 
+126   if (!check_seq(*snmp_packet)){
+127     debug_snmp("Sequence initial of SNMP message error:%x",*snmp_packet);
+128     return FAIL_CON;
+129   }
+130 
+131   /************************ Check the SNMP version ****************************/
+132   for (i=0;i < *(snmp_packet+3)+2; i++)
+133     buffer[i] = *(snmp_packet+2+i);
+134   uint32_t SNMPv = 0;
+135   if (!decode_asn1_integer(buffer,&SNMPv)) return FAIL_CON;
+136   #ifdef DEBUG_SNMP_DECODING
+137   debug_snmp("Version SNMP:[1] OK");
+138   #endif
+139   if (SNMPv != SNMP_VERSION_1) {
+140     debug_snmp("SNMP version is different from v1:%lu",SNMPv);
+141     return FAIL_CON;
+142   }
+143   snmp_handle->snmp_version = SNMPv;
+144 
+145   /********************** Get the community string ****************************/
+146   for (i=0;i < *(snmp_packet+6)+2; i++)
+147   snmp_handle->community[i] = *(snmp_packet+5+i);
+148   snmp_handle->community[i] = '\0';
+149   aux = i;
+150   #ifdef DEBUG_SNMP_DECODING
+151   debug_snmp("Community String: ");
+152   for (i=0; i < aux; i++){
+153     if (i<2)
+154       printf("[%d]",snmp_handle->community[i]);
+155     else
+156       printf("[%c]",snmp_handle->community[i]);
+157   }
+158   #endif
+159 
+160   /************************** Get the request ID ******************************/
+161   aux = 5+snmp_handle->community[1]+2+2;
+162   for (i=0;i < *(snmp_packet+aux+1)+2; i++)
+163     snmp_handle->request_id_c[i] = *(snmp_packet+aux+i);
+164   snmp_handle->request_id_c[i] = '\0';
+165   aux = i;
+166   #ifdef DEBUG_SNMP_DECODING
+167   debug_snmp("Request ID: ");
+168   for (i=0; i < aux; i++){
+169     if (i<2)
+170       printf("[%d]",snmp_handle->request_id_c[i]);
+171     else
+172     printf("[%x]",snmp_handle->request_id_c[i]);
+173   }
+174   #endif
+175 
+176   /************************** Check for errors ********************************/
+177   aux = 5+(snmp_handle->community[1]+2)+2+(snmp_handle->request_id_c[1]+2);
+178   for (i=0;i < 6; i++)
+179     buffer[i] = *(snmp_packet+aux+i);
+180   buffer[i] = '\0';
+181   error_check_snmp(buffer);
+182 
+183   /**************************** Get the OID ***********************************/
+184   aux = 5+(snmp_handle->community[1]+2);
+185   aux += 2+(snmp_handle->request_id_c[1]+2)+10;
+186   for (i=0;i < *(snmp_packet+aux+1)+2; i++)
+187     snmp_handle->oid_encoded[i] = *(snmp_packet+aux+i);
+188   snmp_handle->oid_encoded[i] = '\0';
+189   aux = i;
+190   #ifdef DEBUG_SNMP_DECODING
+191   debug_snmp("OID: ");
+192   for (i=0; i < aux; i++){
+193     if (i <= 1)
+194       printf("[%d]",snmp_handle->oid_encoded[i]);
+195     else if (i == 2)
+196       printf("[%d\&.",snmp_handle->oid_encoded[i]);
+197     else
+198     printf("%d\&.",snmp_handle->oid_encoded[i]);
+199   }
+200   printf("]");
+201   #endif
+202 
+203   /************************** Get the PDU type ********************************/
+204   aux = 5+(snmp_handle->community[1]+2);
+205   snmp_handle->request_type  = *(snmp_packet+aux);
+206   snmp_handle->response_type = ASN1_CPX_GET_RESP;
+207 
+208   uint8_t string_value[MAX_OCTET_STRING];
+209   uint8_t status_mib2 = mib_ii_get_oid(snmp_handle->oid_encoded,&string_value[0]);
+210 
+211   switch (snmp_handle->request_type) {
+212     case ASN1_CPX_SEQUENCE:
+213     break;
+214     case ASN1_CPX_GET_REQ:
+215       aux = snmp_handle->oid_encoded[1]+1;
+216       if (snmp_handle->oid_encoded[aux] != 0   ||
+217           snmp_handle->oid_encoded[aux-3] != 1 ||
+218           snmp_handle->oid_encoded[aux-4] != 2 ||
+219           snmp_handle->oid_encoded[aux-5] != 1 ||
+220           snmp_handle->oid_encoded[aux-6] != 6 ||
+221           snmp_handle->oid_encoded[aux-7] != 0x2b){
+222         snmp_handle->oid_encoded[aux] = 1;
+223         status_mib2 = mib_ii_get_oid(snmp_handle->oid_encoded,&string_value[0]);
+224       }
+225       #ifdef DEBUG_SNMP_DECODING
+226       debug_snmp("GET Request PDU Type");
+227       #endif
+228       if (!status_mib2){
+229         #ifdef DEBUG_SNMP_DECODING
+230         debug_snmp("There isn't an value for that OID!");
+231         #endif
+232         snmp_handle->value[0] = 0x05;
+233         snmp_handle->value[1] = 0x00;
+234       }
+235       else {
+236         aux = strlen((const char*)string_value);
+237         snmp_handle->value[0] = ASN1_PRIM_OCT_STR;
+238         snmp_handle->value[1] = aux;
+239 
+240         for (i = 0; i < aux; i++)
+241           snmp_handle->value[2+i] = string_value[i];
+242         #ifdef DEBUG_SNMP_DECODING
+243         debug_snmp("String for OID: ");
+244         for (i=0; i < aux+2; i++){
+245           if (i == 0)
+246             printf("[%x]",snmp_handle->value[i]);
+247           else if (i == 1)
+248             printf("[%d][",snmp_handle->value[i]);
+249           else
+250             printf("%c",snmp_handle->value[i]);
+251         }
+252         printf("]");
+253         #endif
+254       }
+255     break;
+256     case ASN1_CPX_NEXT_REQ:
+257       // Let's check the last byte
+258       aux = snmp_handle->oid_encoded[1]+1;
+259       if (snmp_handle->oid_encoded[aux] == 0) {
+260         // We need to increment the OID for the snmpwalk\&.\&.\&. requisition
+261         if (snmp_handle->oid_encoded[aux-1] < 9) {
+262           snmp_handle->oid_encoded[aux-1] = snmp_handle->oid_encoded[aux-1]+1;
+263         }
+264         else
+265           snmp_handle->oid_encoded[aux] = 1; // Let's force not unknow value in the mib tree
+266         status_mib2 = mib_ii_get_oid(snmp_handle->oid_encoded,&string_value[0]);
+267       }
+268       else{
+269         if (snmp_handle->oid_encoded[aux-1] == 1 &&
+270             snmp_handle->oid_encoded[aux-2] == 2 &&
+271             snmp_handle->oid_encoded[aux-3] == 1 &&
+272             snmp_handle->oid_encoded[aux-4] == 6 &&
+273             snmp_handle->oid_encoded[aux-5] == 0x2b) {
+274           snmp_handle->oid_encoded[1] += 2;
+275           snmp_handle->oid_encoded[aux+1] = 1;
+276           snmp_handle->oid_encoded[aux+2] = 0;
+277           snmp_handle->oid_encoded[aux+3] = '\0';
+278         }
+279         // We need to set to the nearest OID for the snmpwalk\&.\&.\&. requisition, in this case \&.1\&.0
+280         status_mib2 = mib_ii_get_oid(snmp_handle->oid_encoded,&string_value[0]);
+281       }
+282 
+283       #ifdef DEBUG_SNMP_DECODING
+284       debug_snmp("GET NEXT Request PDU Type");
+285       #endif
+286       if (!status_mib2){
+287         #ifdef DEBUG_SNMP_DECODING
+288         debug_snmp("There isn't an value for that OID!");
+289         #endif
+290         snmp_handle->value[0] = 0x05;
+291         snmp_handle->value[1] = 0x00;
+292       }
+293       else {
+294         aux = strlen((const char*)string_value);
+295         snmp_handle->value[0] = ASN1_PRIM_OCT_STR;
+296         snmp_handle->value[1] = aux;
+297 
+298         for (i = 0; i < aux; i++)
+299           snmp_handle->value[2+i] = string_value[i];
+300         #ifdef DEBUG_SNMP_DECODING
+301         debug_snmp("String for OID: ");
+302         for (i=0; i < aux+2; i++){
+303           if (i == 0)
+304             printf("[%x]",snmp_handle->value[i]);
+305           else if (i == 1)
+306             printf("[%d][",snmp_handle->value[i]);
+307           else
+308             printf("%c",snmp_handle->value[i]);
+309         }
+310         printf("]");
+311         #endif
+312       }
+313     break;
+314     case ASN1_CPX_GET_RESP:
+315     break;
+316     case ASN1_CPX_SET_REQ:
+317     break;
+318     default:
+319       #ifdef DEBUG_SNMP_DECODING
+320       debug_snmp("The PDU type is not know");
+321       #endif
+322       return FAIL_CON;
+323     break;
+324   }
+325 
+326   #ifdef DEBUG_SNMP_DECODING
+327   printf("\n");
+328   #endif
+329   return SUCCESS_CON;
+330 }
+.fi
+.SS "uint16_t snmp_encode_message (\fBsnmp_t\fP *snmp_handle, char *data_encoded)"
+
+.PP
+Encode SNMP message\&. Encode a SNMP message and format to send the answer\&.
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIsnmp_handle\fP Struct that will be encoded in the SNMP message format 
+.br
+\fIdata_encoded\fP Variable that'll receive the encoded SNMP Message
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIlength\fP Length of UDP packet encoded 
+.RE
+.PP
+
+.PP
+.nf
+332                                                                      {
+333   uint8_t i, aux = 0, aux2 = 0;
+334   *data_encoded = ASN1_CPX_SEQUENCE;
+335 
+336   aux2 = 0;
+337   aux2 += 3+(snmp_handle->community[1]+2)+12;
+338   aux2 += (snmp_handle->request_id_c[1]+2);
+339   aux2 += (snmp_handle->oid_encoded[1]+2);
+340   aux2 += (snmp_handle->value[1]+2);
+341   *(data_encoded+1) = aux2;
+342 
+343   *(data_encoded+2) = ASN1_PRIM_INTEGER;
+344   *(data_encoded+3) = 0x01;
+345   switch (snmp_handle->snmp_version) {
+346     case SNMP_VERSION_1:
+347       *(data_encoded+4) = SNMP_VERSION_1;
+348     break;
+349     case SNMP_VERSION_2C:
+350       *(data_encoded+4) = SNMP_VERSION_2C;
+351     break;
+352     case SNMP_VERSION_3:
+353       *(data_encoded+4) = SNMP_VERSION_3;
+354     break;
+355     default:
+356       debug_snmp("Version SNMP not supported");
+357       return FAIL_CON;
+358     break;
+359   }
+360 
+361   for ( i = 0; i < snmp_handle->community[1]+2; i++)
+362     *(data_encoded+5+i) = snmp_handle->community[i];
+363 
+364   aux = 5+snmp_handle->community[1]+2;
+365   *(data_encoded+aux) = ASN1_CPX_GET_RESP;
+366 
+367   aux2 = 0;
+368   aux2 += (snmp_handle->request_id_c[1]+2)+10;
+369   aux2 += (snmp_handle->oid_encoded[1]+2);
+370   aux2 += (snmp_handle->value[1]+2);
+371   *(data_encoded+aux+1) = aux2;
+372 
+373   aux += 2;
+374   for ( i = 0; i < snmp_handle->request_id_c[1]+2; i++)
+375     *(data_encoded+aux+i) = snmp_handle->request_id_c[i];
+376 
+377   aux += snmp_handle->request_id_c[1]+2;
+378 
+379   if (snmp_handle->value[0] == ASN1_PRIM_NULL) {
+380     *(data_encoded+aux) = ASN1_PRIM_INTEGER;
+381     aux++;
+382     *(data_encoded+aux) = 0x01;
+383     aux++;
+384     *(data_encoded+aux) = ERROR_REQ_OID_NOT_FOUND;
+385     aux++;
+386     *(data_encoded+aux) = ASN1_PRIM_INTEGER;
+387     aux++;
+388     *(data_encoded+aux) = 0x01;
+389     aux++;
+390     *(data_encoded+aux) = ERROR_RESP_TOO_LARGE;
+391     aux++;
+392     *(data_encoded+aux) = ASN1_CPX_SEQUENCE;
+393     aux++;
+394     aux2 = 2;
+395     aux2 += (snmp_handle->oid_encoded[1]+2);
+396     aux2 += (snmp_handle->value[1]+2);
+397     *(data_encoded+aux) = aux2;
+398     aux++;
+399     *(data_encoded+aux) = ASN1_CPX_SEQUENCE;
+400     aux++;
+401     aux2 = 0;
+402     aux2 += (snmp_handle->oid_encoded[1]+2);
+403     aux2 += (snmp_handle->value[1]+2);
+404     *(data_encoded+aux) = aux2;
+405     aux++;
+406     for ( i = 0; i < snmp_handle->oid_encoded[1]+2; i++)
+407       *(data_encoded+aux+i) = snmp_handle->oid_encoded[i];
+408     aux += snmp_handle->oid_encoded[1]+2;
+409     *(data_encoded+aux) = ASN1_PRIM_NULL;
+410     aux++;
+411     *(data_encoded+aux) = 0x00;
+412   }
+413   else{
+414     *(data_encoded+aux) = ASN1_PRIM_INTEGER;
+415     aux++;
+416     *(data_encoded+aux) = 0x01;
+417     aux++;
+418     *(data_encoded+aux) = ERROR_NONE;
+419     aux++;
+420     *(data_encoded+aux) = ASN1_PRIM_INTEGER;
+421     aux++;
+422     *(data_encoded+aux) = 0x01;
+423     aux++;
+424     *(data_encoded+aux) = ERROR_NONE;
+425     aux++;
+426     *(data_encoded+aux) = ASN1_CPX_SEQUENCE;
+427     aux++;
+428     aux2 = 2;
+429     aux2 += (snmp_handle->oid_encoded[1]+2);
+430     aux2 += (snmp_handle->value[1]+2);
+431     *(data_encoded+aux) = aux2;
+432     aux++;
+433     *(data_encoded+aux) = ASN1_CPX_SEQUENCE;
+434     aux++;
+435     aux2 = 0;
+436     aux2 += (snmp_handle->oid_encoded[1]+2);
+437     aux2 += (snmp_handle->value[1]+2);
+438     *(data_encoded+aux) = aux2;
+439     aux++;
+440     for ( i = 0; i < snmp_handle->oid_encoded[1]+2; i++)
+441       *(data_encoded+aux+i) = snmp_handle->oid_encoded[i];
+442     aux += snmp_handle->oid_encoded[1]+2;
+443     for ( i = 0; i < snmp_handle->value[1]+2; i++)
+444       *(data_encoded+aux+i) = snmp_handle->value[i];
+445   }
+446   #ifdef DEBUG_SNMP_DECODING
+447   debug_snmp("Len of encoded packet: %d",*(data_encoded+1)+1);
+448   #endif
+449   return *(data_encoded+1)+2;
+450 }
+.fi
+.SS "uint16_t snmp_encode_trap (uint8_t *trap_pdu, uint8_ttype_trap, uint8_theartbeat)"
+
+.PP
+Encode a SNMPv1 Trap message\&. Encode a SNMPv1 Trap type message with AWGES PEN and heartbeat value
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fItrap_pdu\fP Variable that'll receive the packet encoded 
+.br
+\fItype_trap\fP Type of trap that'll send ('coldStart','WarmStart'\&.\&.\&.) 
+.br
+\fIheartbeat\fP Heartbeat value of the node
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIlen\fP Length of encoded packet 
+.RE
+.PP
+
+.PP
+.nf
+483                                                                                   {
+484   // uint8_t i;//, aux = 0, aux2 = 0;
+485   uint16_t length_trap = 0, aux = 0;
+486 
+487   *trap_pdu = ASN1_CPX_SEQUENCE;
+488   *(trap_pdu+1) = 52+4;
+489 
+490   // SNMP Version
+491   *(trap_pdu+2) = ASN1_PRIM_INTEGER;
+492   *(trap_pdu+3) = 0x01;
+493   *(trap_pdu+4) = SNMP_VERSION_1;
+494 
+495   // Comunity String - always "public"
+496   *(trap_pdu+5) = ASN1_PRIM_OCT_STR;
+497   *(trap_pdu+6) = 0x06;
+498   *(trap_pdu+7) = 0x70;
+499   *(trap_pdu+8) = 0x75;
+500   *(trap_pdu+9) = 0x62;
+501   *(trap_pdu+10) = 0x6c;
+502   *(trap_pdu+11) = 0x69;
+503   *(trap_pdu+12) = 0x63;
+504 
+505   // Type of PDU - Trap(0xa4)
+506   *(trap_pdu+13) = ASN1_CPX_TRAP;
+507   aux = 14;
+508   *(trap_pdu+aux) = 39+4;
+509 
+510   // Enterprise OID - 0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x04, 0x01, 0x02, 0x15
+511   aux++;
+512   *(trap_pdu+aux) = ASN1_PRIM_OID;
+513   aux++;
+514   *(trap_pdu+aux) = 0x09;
+515   aux++;
+516   *(trap_pdu+aux) = 0x2b;
+517   aux++;
+518   *(trap_pdu+aux) = 0x06;
+519   aux++;
+520   *(trap_pdu+aux) = 0x01;
+521   aux++;
+522   *(trap_pdu+aux) = 0x04;
+523   aux++;
+524   *(trap_pdu+aux) = 0x01;
+525   aux++;
+526   *(trap_pdu+aux) = 0x04;
+527   aux++;
+528   *(trap_pdu+aux) = 0x01;
+529   aux++;
+530   *(trap_pdu+aux) = 0x02;
+531   aux++;
+532   *(trap_pdu+aux) = 0x15;
+533 
+534   // IP Address of the agent, always 0\&.0\&.0\&.0 if we cannot send IPv6 in SNMPv1, in SNMPv2 the trap calls inform
+535   aux++;
+536   *(trap_pdu+aux) = ASN1_PRIM_IP_ADDRESS;
+537   aux++;
+538   *(trap_pdu+aux) = 4;
+539   aux++;
+540   *(trap_pdu+aux) = 0;
+541   aux++;
+542   *(trap_pdu+aux) = 0;
+543   aux++;
+544   *(trap_pdu+aux) = 0;
+545   aux++;
+546   *(trap_pdu+aux) = 0;
+547 
+548   // Generic Trap type
+549   aux++;
+550   *(trap_pdu+aux) = ASN1_PRIM_INTEGER;
+551   aux++;
+552   *(trap_pdu+aux) = 0x01;
+553   aux++;
+554   *(trap_pdu+aux) = type_trap;
+555 
+556   // Specific Trap Number - we don't use this
+557   aux++;
+558   *(trap_pdu+aux) = ASN1_PRIM_INTEGER;
+559   aux++;
+560   *(trap_pdu+aux) = 0x01;
+561   aux++;
+562   *(trap_pdu+aux) = 0x00;
+563 
+564   // Timestamp - we don't use this - default(0)
+565   aux++;
+566   *(trap_pdu+aux) = ASN1_PRIM_TIMESTAMP;
+567   aux++;
+568   *(trap_pdu+aux) = 0x01;
+569   aux++;
+570   *(trap_pdu+aux) = 0x00;
+571 
+572   // VarBind List - we don't use this - default(0)
+573   aux++;
+574   *(trap_pdu+aux) = ASN1_CPX_SEQUENCE;
+575   aux++;
+576   *(trap_pdu+aux) = 3+8+2+2;
+577 
+578   // VarBind List - we don't use this - default(0)
+579   aux++;
+580   *(trap_pdu+aux) = ASN1_CPX_SEQUENCE;
+581   aux++;
+582   *(trap_pdu+aux) = 3+8+2;
+583 
+584   // OID
+585   aux++;
+586   *(trap_pdu+aux) = ASN1_PRIM_OID;
+587   aux++;
+588   *(trap_pdu+aux) = 0x08;
+589   aux++;
+590   *(trap_pdu+aux) = 0x2b;
+591   aux++;
+592   *(trap_pdu+aux) = 0x06;
+593   aux++;
+594   *(trap_pdu+aux) = 0x01;
+595   aux++;
+596   *(trap_pdu+aux) = 0x02;
+597   aux++;
+598   *(trap_pdu+aux) = 0x01;
+599   aux++;
+600   *(trap_pdu+aux) = 0x02;
+601   aux++;
+602   *(trap_pdu+aux) = 0x01;
+603   aux++;
+604   *(trap_pdu+aux) = 0x00;
+605 
+606   // Value - Heartbeat
+607   aux++;
+608   *(trap_pdu+aux) = ASN1_PRIM_INTEGER;
+609   aux++;
+610   *(trap_pdu+aux) = 0x01;
+611   aux++;
+612   *(trap_pdu+aux) = heartbeat;
+613 
+614   length_trap = 54+4;
+615   return length_trap;
+616 }
+.fi
+.SS "void snmp_init (void)"
+
+.PP
+SNMP Init function\&. Init SNMP AGENT connection
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIvoid\fP No argument to pass
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIvoid\fP Not return argument 
+.RE
+.PP
+
+.PP
+.nf
+139                     {
+140   process_start(&snmp_main, NULL);
+141 }
+.fi
+.SS "void update_snmp_mib (void)"
+
+.PP
+Update SNMP OIDs\&. Update the OIDs of values from network
+.PP
+\fBParâmetros:\fP
+.RS 4
+\fIvoid\fP No argument to pass
+.RE
+.PP
+\fBValores retornados:\fP
+.RS 4
+\fIvoid\fP Not return argument 
+.RE
+.PP
+
+.PP
+.nf
+175                           {
+176   heartbeat_value++;
+177 
+178   uint8_t oid_tree[2];
+179   char dado[MAX_STRINGS_LENGTH];
+180 
+181   /******************************* Hearbeat ***********************************/
+182   oid_tree[0] = 4;
+183   oid_tree[1] = 2;
+184   sprintf(dado,"heartbeat_%d",heartbeat_value);
+185   debug_os("Dado de update: %s",dado);
+186   mib_ii_update_list(oid_tree,dado);
+187 
+188   /******************************** RSSI **************************************/
+189   oid_tree[0] = 4;
+190   oid_tree[1] = 3;
+191   int  def_rt_rssi = sicslowpan_get_last_rssi();
+192   sprintf(dado,"RSSI:%d",def_rt_rssi);
+193   mib_ii_update_list(oid_tree,dado);
+194 
+195   /*************************** Prefered IPv6 **********************************/
+196   char def_rt_str[64];
+197   oid_tree[0] = 4;
+198   oid_tree[1] = 4;
+199   memset(def_rt_str, 0, sizeof(def_rt_str));
+200   ipaddr_sprintf(def_rt_str, sizeof(def_rt_str), uip_ds6_defrt_choose());
+201   sprintf(dado,"Pref\&. route:[%s]",def_rt_str);
+202   mib_ii_update_list(oid_tree,dado);
+203 
+204   /********************* Rank RPL e Parent Link Metric ************************/
+205   uint16_t rank_rpl = 0, link_metric_rpl = 0;
+206   rpl_parent_t *p = nbr_table_head(rpl_parents);
+207   rpl_instance_t *default_instance;
+208   default_instance = rpl_get_default_instance();
+209   while(p != NULL){
+210     if (p == default_instance->current_dag->preferred_parent) {
+211       rank_rpl = p->rank;
+212       link_metric_rpl = rpl_get_parent_link_metric(p);
+213       break;
+214     }
+215     else
+216     p = nbr_table_next(rpl_parents, p);
+217   }
+218   oid_tree[0] = 4;
+219   oid_tree[1] = 5;
+220   sprintf(dado,"Rank RPL:%5u",rank_rpl);
+221   mib_ii_update_list(oid_tree,dado);
+222 
+223   oid_tree[0] = 4;
+224   oid_tree[1] = 6;
+225   sprintf(dado,"Parent Link Metric:%5u",link_metric_rpl);
+226   mib_ii_update_list(oid_tree,dado);
+227 
+228   /*********************** Global and Local IPv6 Address **********************/
+229   int i;
+230   uint8_t state;
+231   uip_ipaddr_t global_ipv6_address_node,
+232                local_ipv6_address_node;
+233   #ifdef DEBUG_SNMP_DECODING
+234   debug_snmp("Client IPv6 addresses: ");
+235   #endif
+236   for(i = 0; i < UIP_DS6_ADDR_NB; i++) {
+237     state = uip_ds6_if\&.addr_list[i]\&.state;
+238     if(uip_ds6_if\&.addr_list[i]\&.isused &&
+239       (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {
+240       local_ipv6_address_node = uip_ds6_if\&.addr_list[i]\&.ipaddr;
+241       if (i == 1)
+242         global_ipv6_address_node = uip_ds6_if\&.addr_list[i]\&.ipaddr;
+243       else
+244         local_ipv6_address_node = uip_ds6_if\&.addr_list[i]\&.ipaddr;
+245       #ifdef DEBUG_SNMP_DECODING
+246       printf6addr(&uip_ds6_if\&.addr_list[i]\&.ipaddr);
+247       #endif
+248       /* hack to make address "final" */
+249       if (state == ADDR_TENTATIVE)
+250         uip_ds6_if\&.addr_list[i]\&.state = ADDR_PREFERRED;
+251     }
+252   }
+253 
+254   print_ipv6_addr(&global_ipv6_address_node,&global_ipv6_char[0]);
+255   print_ipv6_addr(&local_ipv6_address_node,&local_ipv6_char[0]);
+256 
+257   oid_tree[0] = 4;
+258   oid_tree[1] = 7;
+259   sprintf(dado,"Local:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"
+260                ,local_ipv6_char[0]
+261                ,local_ipv6_char[1]
+262                ,local_ipv6_char[8]
+263                ,local_ipv6_char[9]
+264                ,local_ipv6_char[10]
+265                ,local_ipv6_char[11]
+266                ,local_ipv6_char[12]
+267                ,local_ipv6_char[13]
+268                ,local_ipv6_char[14]
+269                ,local_ipv6_char[15]);
+270   mib_ii_update_list(oid_tree,dado);
+271   oid_tree[0] = 4;
+272   oid_tree[1] = 8;
+273   sprintf(dado,"Global:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]"
+274                ,global_ipv6_char[0]
+275                ,global_ipv6_char[1]
+276                ,global_ipv6_char[8]
+277                ,global_ipv6_char[9]
+278                ,global_ipv6_char[10]
+279                ,global_ipv6_char[11]
+280                ,global_ipv6_char[12]
+281                ,global_ipv6_char[13]
+282                ,global_ipv6_char[14]
+283                ,global_ipv6_char[15]);
+284   mib_ii_update_list(oid_tree,dado);
+285 
+286 }
+.fi
+.SH "Autor"
+.PP 
+Gerado automaticamente por Doxygen para HomeStark_6LoWPAN_Device a partir do código fonte\&.

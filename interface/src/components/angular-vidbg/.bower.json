@@ -1,0 +1,44 @@
+{
+  "name": "angular-vidbg",
+  "version": "0.0.12",
+  "authors": [
+    "2013gangli@gmail.com"
+  ],
+  "description": "Video background",
+  "keywords": [
+    "angular",
+    "video",
+    "background"
+  ],
+  "dependencies": {
+    "angular": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "*"
+  },
+  "license": "MIT",
+  "main": [
+    "dist/vidBg.css",
+    "dist/vidBg.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "src",
+    "Gruntfile.coffee",
+    "gulpfile.coffee"
+  ],
+  "homepage": "https://github.com/2013gang/angular-video-background",
+  "_release": "0.0.12",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.12",
+    "commit": "8dbf83084fa03b35e9fcb643b475f6876511869a"
+  },
+  "_source": "https://github.com/2013gang/angular-video-background.git",
+  "_target": "^0.0.12",
+  "_originalSource": "angular-video-background",
+  "_direct": true
+}

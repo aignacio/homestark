@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>HomeStark_6LoWPAN_Device: Referência ao ficheiro snmpd/snmp.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_symbol.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HomeStark_6LoWPAN_Device
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Código fonte do dispositivo 6LoWPAN da rede HomeStark</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tudo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estruturas de dados</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Ficheiros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerações</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valores da enumeração</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bc83ca815ba75edffbc2ec0c3eb5f066.html">snmpd</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro snmp.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;ctype.h&gt;</code><br />
+<code>#include &quot;contiki.h&quot;</code><br />
+<code>#include &quot;contiki-lib.h&quot;</code><br />
+<code>#include &quot;contiki-net.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="snmp_8h_source.html">snmp.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mibii_8h_source.html">mibii.h</a>&quot;</code><br />
+<code>#include &quot;net/rpl/rpl.h&quot;</code><br />
+<code>#include &quot;net/ip/uip.h&quot;</code><br />
+<code>#include &quot;net/ipv6/uip-ds6.h&quot;</code><br />
+<code>#include &quot;simple-udp.h&quot;</code><br />
+<code>#include &quot;list.h&quot;</code><br />
+<code>#include &quot;sys/ctimer.h&quot;</code><br />
+<code>#include &quot;sys/etimer.h&quot;</code><br />
+<code>#include &quot;net/ip/uip-debug.h&quot;</code><br />
+<code>#include &quot;net/rpl/rpl-private.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Diagrama de dependências de inclusão para snmp.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="snmp_8c__incl.png" border="0" usemap="#snmpd_2snmp_8c" alt=""/></div>
+<map name="snmpd_2snmp_8c" id="snmpd_2snmp_8c">
+<area shape="rect" id="node11" href="snmp_8h.html" title="Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements..." alt="" coords="533,80,598,107"/><area shape="rect" id="node20" href="mibii_8h.html" title="Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements..." alt="" coords="95,80,155,107"/><area shape="rect" id="node19" href="homestark_8h.html" title="Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements..." alt="" coords="763,155,858,181"/></map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a746e71ce3acb168ac03c8e7140e87b89"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a746e71ce3acb168ac03c8e7140e87b89"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>printf6addr</b>(addr)&#160;&#160;&#160;debug_snmp(&quot;[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]&quot;, ((uint8_t *)addr)[0], ((uint8_t *)addr)[1], ((uint8_t *)addr)[2], ((uint8_t *)addr)[3], ((uint8_t *)addr)[4], ((uint8_t *)addr)[5], ((uint8_t *)addr)[6], ((uint8_t *)addr)[7], ((uint8_t *)addr)[8], ((uint8_t *)addr)[9], ((uint8_t *)addr)[10], ((uint8_t *)addr)[11], ((uint8_t *)addr)[12], ((uint8_t *)addr)[13], ((uint8_t *)addr)[14], ((uint8_t *)addr)[15])</td></tr>
+<tr class="separator:a746e71ce3acb168ac03c8e7140e87b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af966537cf73ee5973da59bba6b21b731"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af966537cf73ee5973da59bba6b21b731"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>UIP_IP_BUF</b>&#160;&#160;&#160;((struct uip_ip_hdr *)&amp;uip_buf[UIP_LLH_LEN])</td></tr>
+<tr class="separator:af966537cf73ee5973da59bba6b21b731"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaed757731852d359419ae5270a02e7a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaed757731852d359419ae5270a02e7a4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>UIP_UDP_BUF</b>&#160;&#160;&#160;((struct uip_udp_hdr *)&amp;uip_buf[uip_l2_l3_hdr_len])</td></tr>
+<tr class="separator:aaed757731852d359419ae5270a02e7a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a017be87c3d2f34ed9931125f00331652"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a017be87c3d2f34ed9931125f00331652"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PROCESS</b> (snmp_main,&quot;[SNMP] SNMPD - Agent V1&quot;)</td></tr>
+<tr class="separator:a017be87c3d2f34ed9931125f00331652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac872c6219ebe7191f9b637b2f7ab4540"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac872c6219ebe7191f9b637b2f7ab4540"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>cb_timer_trap_heartbeat</b> (void *ptr)</td></tr>
+<tr class="separator:ac872c6219ebe7191f9b637b2f7ab4540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05848f4eb62dd417b99e461854870bf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snmp_8c.html#a05848f4eb62dd417b99e461854870bf9">snmp_cb_data</a> (void)</td></tr>
+<tr class="memdesc:a05848f4eb62dd417b99e461854870bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">SNMP Callback receive.  <a href="#a05848f4eb62dd417b99e461854870bf9">Mais...</a><br /></td></tr>
+<tr class="separator:a05848f4eb62dd417b99e461854870bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d88f2fc7655280384131d543e0d83e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snmp_8c.html#a4d88f2fc7655280384131d543e0d83e5">snmp_init</a> (void)</td></tr>
+<tr class="memdesc:a4d88f2fc7655280384131d543e0d83e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">SNMP Init function.  <a href="#a4d88f2fc7655280384131d543e0d83e5">Mais...</a><br /></td></tr>
+<tr class="separator:a4d88f2fc7655280384131d543e0d83e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a523ab718dec1a794b3f8c8752f1e2ae3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snmp_8c.html#a523ab718dec1a794b3f8c8752f1e2ae3">ipaddr_sprintf</a> (char *buf, uint8_t buf_len, const uip_ipaddr_t *addr)</td></tr>
+<tr class="memdesc:a523ab718dec1a794b3f8c8752f1e2ae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert IPv6 address in char format.  <a href="#a523ab718dec1a794b3f8c8752f1e2ae3">Mais...</a><br /></td></tr>
+<tr class="separator:a523ab718dec1a794b3f8c8752f1e2ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a732192a9e72d3182d395c47e2cd9c79e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="snmp_8c.html#a732192a9e72d3182d395c47e2cd9c79e">update_snmp_mib</a> (void)</td></tr>
+<tr class="memdesc:a732192a9e72d3182d395c47e2cd9c79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update SNMP OIDs.  <a href="#a732192a9e72d3182d395c47e2cd9c79e">Mais...</a><br /></td></tr>
+<tr class="separator:a732192a9e72d3182d395c47e2cd9c79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06248b2be6d0f915906f3ac2a553a2c4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06248b2be6d0f915906f3ac2a553a2c4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PROCESS_THREAD</b> (snmp_main, ev, data)</td></tr>
+<tr class="separator:a06248b2be6d0f915906f3ac2a553a2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:a6055f56cef0bd9fe682cd277cb07ed6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6055f56cef0bd9fe682cd277cb07ed6d"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>heartbeat_value</b> = 0</td></tr>
+<tr class="separator:a6055f56cef0bd9fe682cd277cb07ed6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee895689dd33d9428a16235a1de06bb0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee895689dd33d9428a16235a1de06bb0"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>global_ipv6_char</b> [16]</td></tr>
+<tr class="separator:aee895689dd33d9428a16235a1de06bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9a37ad626aaa7064544988241b7a2a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9a37ad626aaa7064544988241b7a2a6"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>local_ipv6_char</b> [16]</td></tr>
+<tr class="separator:aa9a37ad626aaa7064544988241b7a2a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. </p>
+<p>See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to you under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p>This project is delivered under Apache 2.0 license.</p>
+<p>Main functions of SNMP port </p><dl class="section author"><dt>Autor</dt><dd>Ânderson Ignácio da Silva </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>12 Sept 2016 </dd></dl>
+<dl class="section see"><dt>Veja também</dt><dd><a href="http://www.aignacio.com">http://www.aignacio.com</a> </dd></dl>
+</div><h2 class="groupheader">Documentação das funções</h2>
+<a class="anchor" id="a523ab718dec1a794b3f8c8752f1e2ae3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ipaddr_sprintf </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>buf_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uip_ipaddr_t *&#160;</td>
+          <td class="paramname"><em>addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert IPv6 address in char format. </p>
+<p>Format IPv6 address in string char variable.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">buf</td><td>Variable that'll receive the ipv6 address decoded </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">buf_len</td><td>Len of buf variable </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr</td><td>Address IPv6 in uip_ipaddr_t format</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">len</td><td>Length of buf variable formated </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                                                         {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  uint16_t a;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  uint8_t len = 0;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">int</span> i, f;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordflow">for</span>(i = 0, f = 0; i &lt; <span class="keyword">sizeof</span>(uip_ipaddr_t); i += 2) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    a = (addr-&gt;u8[i] &lt;&lt; 8) + addr-&gt;u8[i + 1];</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keywordflow">if</span>(a == 0 &amp;&amp; f &gt;= 0) {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="keywordflow">if</span>(f++ == 0) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        len += snprintf(&amp;buf[len], buf_len - len, <span class="stringliteral">&quot;::&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      <span class="keywordflow">if</span>(f &gt; 0) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        f = -1;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(i &gt; 0) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        len += snprintf(&amp;buf[len], buf_len - len, <span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      len += snprintf(&amp;buf[len], buf_len - len, <span class="stringliteral">&quot;%x&quot;</span>, a);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a05848f4eb62dd417b99e461854870bf9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void snmp_cb_data </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SNMP Callback receive. </p>
+<p>Receive in callback mode, any data from NMS of SNMP protocol.</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">void</td><td>No argument to pass</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">void</td><td>Doesn't return anything </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                       {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">static</span> uint16_t len;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">char</span> buf[MAX_UDP_SNMP];</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  memset(buf, 0, MAX_UDP_SNMP);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">if</span>(uip_newdata()) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    len = uip_datalen();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    memcpy(buf, uip_appdata, len);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">    #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    debug_snmp(<span class="stringliteral">&quot;%u bytes from [&quot;</span>, len);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    uip_debug_ipaddr_print(&amp;UIP_IP_BUF-&gt;srcipaddr);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    printf(<span class="stringliteral">&quot;]:%u&quot;</span>, UIP_HTONS(UIP_UDP_BUF-&gt;srcport));</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    uip_ipaddr_copy(&amp;server_conn-&gt;ripaddr, &amp;UIP_IP_BUF-&gt;srcipaddr);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    server_conn-&gt;rport = UIP_UDP_BUF-&gt;srcport;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="structsnmp__t.html">snmp_t</a> snmp_handle;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="snmp_8h.html#aca484712bcdb0bbc0f065061c4a0ed20">snmp_decode_message</a>(buf, &amp;snmp_handle)){</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">      #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      debug_snmp(<span class="stringliteral">&quot;New SNMP Request received!&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor">      #endif</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      len = <a class="code" href="snmp_8h.html#a63d8ffecf9aa0af9824de046643c140f">snmp_encode_message</a>(&amp;snmp_handle, buf);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;      uip_udp_packet_send(server_conn, buf, len);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      uip_create_unspecified(&amp;server_conn-&gt;ripaddr);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      server_conn-&gt;rport = 0;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;      debug_snmp(<span class="stringliteral">&quot;Problem on SNMP Request received!&quot;</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="ttc" id="structsnmp__t_html"><div class="ttname"><a href="structsnmp__t.html">snmp_t</a></div><div class="ttdoc">Struct for the SNMP Message. </div><div class="ttdef"><b>Definition:</b> snmp.h:164</div></div>
+<div class="ttc" id="snmp_8h_html_a63d8ffecf9aa0af9824de046643c140f"><div class="ttname"><a href="snmp_8h.html#a63d8ffecf9aa0af9824de046643c140f">snmp_encode_message</a></div><div class="ttdeci">uint16_t snmp_encode_message(snmp_t *snmp_handle, char *data_encoded)</div><div class="ttdoc">Encode SNMP message. </div><div class="ttdef"><b>Definition:</b> snmp_asn1.c:332</div></div>
+<div class="ttc" id="snmp_8h_html_aca484712bcdb0bbc0f065061c4a0ed20"><div class="ttname"><a href="snmp_8h.html#aca484712bcdb0bbc0f065061c4a0ed20">snmp_decode_message</a></div><div class="ttdeci">resp_con_t snmp_decode_message(char *snmp_packet, snmp_t *v)</div><div class="ttdoc">Decode SNMP message. </div><div class="ttdef"><b>Definition:</b> snmp_asn1.c:111</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4d88f2fc7655280384131d543e0d83e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void snmp_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SNMP Init function. </p>
+<p>Init SNMP AGENT connection</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">void</td><td>No argument to pass</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">void</td><td>Not return argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  process_start(&amp;snmp_main, NULL);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a732192a9e72d3182d395c47e2cd9c79e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_snmp_mib </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update SNMP OIDs. </p>
+<p>Update the OIDs of values from network</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">void</td><td>No argument to pass</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="retval"><dt>Valores retornados</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">void</td><td>Not return argument </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                          {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  heartbeat_value++;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  uint8_t oid_tree[2];</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordtype">char</span> dado[MAX_STRINGS_LENGTH];</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <span class="comment">/******************************* Hearbeat ***********************************/</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  oid_tree[0] = 4;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  oid_tree[1] = 2;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  sprintf(dado,<span class="stringliteral">&quot;heartbeat_%d&quot;</span>,heartbeat_value);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  debug_os(<span class="stringliteral">&quot;Dado de update: %s&quot;</span>,dado);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <a class="code" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(oid_tree,dado);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="comment">/******************************** RSSI **************************************/</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  oid_tree[0] = 4;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  oid_tree[1] = 3;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keywordtype">int</span>  def_rt_rssi = sicslowpan_get_last_rssi();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  sprintf(dado,<span class="stringliteral">&quot;RSSI:%d&quot;</span>,def_rt_rssi);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <a class="code" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(oid_tree,dado);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="comment">/*************************** Prefered IPv6 **********************************/</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordtype">char</span> def_rt_str[64];</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  oid_tree[0] = 4;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  oid_tree[1] = 4;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  memset(def_rt_str, 0, <span class="keyword">sizeof</span>(def_rt_str));</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <a class="code" href="snmp_8c.html#a523ab718dec1a794b3f8c8752f1e2ae3">ipaddr_sprintf</a>(def_rt_str, <span class="keyword">sizeof</span>(def_rt_str), uip_ds6_defrt_choose());</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  sprintf(dado,<span class="stringliteral">&quot;Pref. route:[%s]&quot;</span>,def_rt_str);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <a class="code" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(oid_tree,dado);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="comment">/********************* Rank RPL e Parent Link Metric ************************/</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  uint16_t rank_rpl = 0, link_metric_rpl = 0;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  rpl_parent_t *p = nbr_table_head(rpl_parents);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  rpl_instance_t *default_instance;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  default_instance = rpl_get_default_instance();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <span class="keywordflow">while</span>(p != NULL){</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">if</span> (p == default_instance-&gt;current_dag-&gt;preferred_parent) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      rank_rpl = p-&gt;rank;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;      link_metric_rpl = rpl_get_parent_link_metric(p);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    p = nbr_table_next(rpl_parents, p);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  oid_tree[0] = 4;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  oid_tree[1] = 5;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  sprintf(dado,<span class="stringliteral">&quot;Rank RPL:%5u&quot;</span>,rank_rpl);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <a class="code" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(oid_tree,dado);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  oid_tree[0] = 4;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  oid_tree[1] = 6;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  sprintf(dado,<span class="stringliteral">&quot;Parent Link Metric:%5u&quot;</span>,link_metric_rpl);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <a class="code" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(oid_tree,dado);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="comment">/*********************** Global and Local IPv6 Address **********************/</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  uint8_t state;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  uip_ipaddr_t global_ipv6_address_node,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;               local_ipv6_address_node;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">  #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  debug_snmp(<span class="stringliteral">&quot;Client IPv6 addresses: &quot;</span>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordflow">for</span>(i = 0; i &lt; UIP_DS6_ADDR_NB; i++) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    state = uip_ds6_if.addr_list[i].state;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">if</span>(uip_ds6_if.addr_list[i].isused &amp;&amp;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      (state == ADDR_TENTATIVE || state == ADDR_PREFERRED)) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      local_ipv6_address_node = uip_ds6_if.addr_list[i].ipaddr;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      <span class="keywordflow">if</span> (i == 1)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        global_ipv6_address_node = uip_ds6_if.addr_list[i].ipaddr;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        local_ipv6_address_node = uip_ds6_if.addr_list[i].ipaddr;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor">      #ifdef DEBUG_SNMP_DECODING</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;      printf6addr(&amp;uip_ds6_if.addr_list[i].ipaddr);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">      #endif</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      <span class="comment">/* hack to make address &quot;final&quot; */</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      <span class="keywordflow">if</span> (state == ADDR_TENTATIVE)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        uip_ds6_if.addr_list[i].state = ADDR_PREFERRED;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  print_ipv6_addr(&amp;global_ipv6_address_node,&amp;global_ipv6_char[0]);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  print_ipv6_addr(&amp;local_ipv6_address_node,&amp;local_ipv6_char[0]);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  oid_tree[0] = 4;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  oid_tree[1] = 7;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  sprintf(dado,<span class="stringliteral">&quot;Local:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]&quot;</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;               ,local_ipv6_char[0]</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;               ,local_ipv6_char[1]</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;               ,local_ipv6_char[8]</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;               ,local_ipv6_char[9]</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;               ,local_ipv6_char[10]</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;               ,local_ipv6_char[11]</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;               ,local_ipv6_char[12]</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;               ,local_ipv6_char[13]</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;               ,local_ipv6_char[14]</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;               ,local_ipv6_char[15]);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <a class="code" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(oid_tree,dado);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  oid_tree[0] = 4;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  oid_tree[1] = 8;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  sprintf(dado,<span class="stringliteral">&quot;Global:[%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x]&quot;</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;               ,global_ipv6_char[0]</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;               ,global_ipv6_char[1]</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;               ,global_ipv6_char[8]</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;               ,global_ipv6_char[9]</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;               ,global_ipv6_char[10]</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;               ,global_ipv6_char[11]</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;               ,global_ipv6_char[12]</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;               ,global_ipv6_char[13]</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;               ,global_ipv6_char[14]</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;               ,global_ipv6_char[15]);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <a class="code" href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(oid_tree,dado);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="ttc" id="snmp_8c_html_a523ab718dec1a794b3f8c8752f1e2ae3"><div class="ttname"><a href="snmp_8c.html#a523ab718dec1a794b3f8c8752f1e2ae3">ipaddr_sprintf</a></div><div class="ttdeci">int ipaddr_sprintf(char *buf, uint8_t buf_len, const uip_ipaddr_t *addr)</div><div class="ttdoc">Convert IPv6 address in char format. </div><div class="ttdef"><b>Definition:</b> snmp.c:143</div></div>
+<div class="ttc" id="mibii_8c_html_af534ed1c73b20f10d822d43da1ccc78e"><div class="ttname"><a href="mibii_8c.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a></div><div class="ttdeci">resp_con_t mib_ii_update_list(uint8_t *tree, char *value)</div><div class="ttdoc">Update the MIB OID Tree. </div><div class="ttdef"><b>Definition:</b> mibii.c:101</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Quinta, 29 de Setembro de 2016 00:56:28 para HomeStark_6LoWPAN_Device por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,44 @@
+.TH "register_packet_t" 3 "Sábado, 3 de Setembro de 2016" "Version 1.0" "MQTT-SNContiki" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+register_packet_t \- 
+.PP
+Estrutura de pacotes MQTT-SN do tipo REGISTER\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sabado_list_old\&.h>\fP
+.SS "Campos de Dados"
+
+.in +1c
+.ti -1c
+.RI "uint8_t \fBlength\fP"
+.br
+.RI "\fIComprimento total do pacote MQTT-SN\&. \fP"
+.ti -1c
+.RI "uint8_t \fBtype\fP"
+.br
+.RI "\fIDescreve o tipo de mensagem que será enviado ao broker\&. \fP"
+.ti -1c
+.RI "uint16_t \fBtopic_id\fP"
+.br
+.RI "\fIShort Topic que será utilizado para envio do REGISTER - Quando enviado pelo nó, usa-se 0x0000\&. \fP"
+.ti -1c
+.RI "uint16_t \fBmessage_id\fP"
+.br
+.RI "\fIIdentificador único do REGACK correspondente enviado pelo broker normalmente\&. \fP"
+.ti -1c
+.RI "char \fBtopic_name\fP [MQTT_SN_MAX_TOPIC_LENGTH]"
+.br
+.RI "\fINome do tópico a ser registrado\&. \fP"
+.in -1c
+.SH "Descrição detalhada"
+.PP 
+Estrutura de pacotes MQTT-SN do tipo REGISTER\&. 
+
+.SH "Autor"
+.PP 
+Gerado automaticamente por Doxygen para MQTT-SNContiki a partir do código fonte\&.

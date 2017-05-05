@@ -1,0 +1,53 @@
+{
+  "name": "homestark",
+  "authors": [
+    "Ânderson Ignácio da Silva <anderson@aignacio.com>"
+  ],
+  "description": "Interface to manage and control 6LoWPAN devices",
+  "main": "server.js",
+  "keywords": [
+    "IoT",
+    "6LoWPAN"
+  ],
+  "dependencies": {
+    "angular-ui-switch": "latest",
+    "spinkit": "latest",
+    "angular-bootstrap-grid-tree": "latest",
+    "angular-tree-dnd": "latest",
+    "epoch": "latest",
+    "jquery-domchange": "latest",
+    "moment": "latest",
+    "highcharts-release": "latest",
+    "google-chart": "latest",
+    "angular-kk-timepicker": "latest",
+    "angular-resource": "latest",
+    "angular-bootstrap-slider": "https://github.com/seiyria/angular-bootstrap-slider.git",
+    "seiyria-bootstrap-slider": "latest",
+    "js-marker-clusterer": "latest",
+    "nouislider": "latest",
+    "angular-bootstrap": "~0.14.3",
+    "angular-csv-import": "latest",
+    "angular-google-maps": "~2.2.0",
+    "angular-location-update": "latest",
+    "bootstrap": "~3.2.0",
+    "angular-video-bg": "~0.2",
+    "font-awesome": "~4.5.0",
+    "angular-knob": "latest",
+    "parsleyjs": "latest",
+    "ng-csv": "latest",
+    "angular-sanitize": "latest",
+    "angular": "~1.4.7",
+    "angular-animate": "~1.4.7",
+    "angular-route": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "angular-smart-table": "latest",
+    "Font-Montserrat": "http://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYFQlYEbsez9cZjKsNMjLOwM.eot",
+    "Font-Montserrat2": "http://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYBsxEYwM7FgeyaSgU71cLG0.woff",
+    "ng-knob": "^0.1.3"
+  },
+  "license": "MIT",
+  "homepage": "",
+  "resolutions": {
+    "angular": "~1.4.7"
+  }
+}

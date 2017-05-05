@@ -1,0 +1,5 @@
+ng-class="{
+'color-blue': row.rssi_value >= -67 && row.rssi_value <= -30,
+'color-green': row.rssi_value >= -70 && row.rssi_value <= -67,
+'color-orange': row.rssi_value >= -80 && row.rssi_value <= -70,
+'color-red': row.rssi_value >= -100 && row.rssi_value <= -80}"

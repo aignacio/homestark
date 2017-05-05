@@ -1,0 +1,3 @@
+<map id="mqtt_sn.h" name="mqtt_sn.h">
+<area shape="rect" id="node2" href="$main__core_8c.html" title="Arquivo principal do código fonte da rede mesh 6LoWPAN &#160;&#160;Para compilar este código, execute o makefile com o target desejado, por exemplo: &#160;&#160;&quot;make TARGET=srf06&#45;cc26xx&quot; &#160;&#160;Caso não reconheça qual o TARGET correto, utiliza o comando &#160;&#160;&quot;make targets&quot; &#160;&#160;para listar os tags disponíveis. " alt="" coords="5,80,99,107"/>
+</map>

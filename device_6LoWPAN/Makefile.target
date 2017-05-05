@@ -1,0 +1,3 @@
+TARGET = z1
+TARGET = srf06-cc26xx
+BOARD=launchpad/cc2650

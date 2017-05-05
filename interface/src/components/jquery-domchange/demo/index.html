@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery DOMChange Demo</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../dist/jquery.domchange.js"></script>
+	</head>
+	<body>
+		<script>
+			$(function() {
+				$("#mutator").on("click", function() {
+					$("#observed").append($("<li>Change</li>"));
+				});
+				$("#observed").on("domchange", function(event, changes){
+					console.log(changes);
+				});
+				$("#unhook").on("click", function() {
+					$("#observed").off("domchange");
+				});
+			});
+		</script>
+
+		<p><a href="#" id="mutator">Change Something!</a></p>
+		<p><small><a href="#" id="unhook">unhook</a></small></p>
+		<h1>Changes:</h1>
+		<ul id="observed"></ul>
+	</body>
+</html>

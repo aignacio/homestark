@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.8"/>
+<title>HomeStark_6LoWPAN_Device: Código-Fonte de snmpd/mibii.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_symbol.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">HomeStark_6LoWPAN_Device
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Código fonte do dispositivo 6LoWPAN da rede HomeStark</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.8 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="modules.html"><span>Módulos</span></a></li>
+      <li><a href="annotated.html"><span>Estruturas&#160;de&#160;dados</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Globais</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tudo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Estruturas de dados</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Ficheiros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variáveis</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerações</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valores da enumeração</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Grupos</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Páginas</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_bc83ca815ba75edffbc2ec0c3eb5f066.html">snmpd</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mibii.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mibii_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifndef __MIBII_H__</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define __MIBII_H__</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structoid__data.html">   42</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structoid__data.html#a2675b7bf5cd84760d8e230b3f689d57d">   43</a></span>&#160;    uint8_t oid_tree[2];</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structoid__data.html#a52f4f4b7f346c9d0a125c0cf2d934a73">   44</a></span>&#160;    <span class="keywordtype">char</span> oid_value[MAX_STRINGS_LENGTH];</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}<a class="code" href="structoid__data.html">oid_data</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="mibii_8h.html#aeae05bfda8520c157c4436bc5cf8648b">mib_ii_check_oid</a>(uint8_t *mib_oid, uint8_t *index);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="mibii_8h.html#aa0bb802c0b80aaab6218e5a7753f8e28">mib_ii_get_oid</a>(uint8_t *oid, uint8_t *oid_string);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="mibii_8h.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a>(uint8_t *tree, <span class="keywordtype">char</span> *value);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="mibii_8h.html#a87f7eaae8f191a87c287fc4896e3524e">mib_ii_fill_list</a>(uint8_t *oid_tree_var, <span class="keyword">const</span> <span class="keywordtype">char</span> *value);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<a class="code" href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a> <a class="code" href="mibii_8h.html#a40c075666913ad4f73559ef972049d16">mib_ii_show</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="mibii_8h_html_a40c075666913ad4f73559ef972049d16"><div class="ttname"><a href="mibii_8h.html#a40c075666913ad4f73559ef972049d16">mib_ii_show</a></div><div class="ttdeci">resp_con_t mib_ii_show(void)</div><div class="ttdoc">List MIB OID values. </div><div class="ttdef"><b>Definition:</b> mibii.c:137</div></div>
+<div class="ttc" id="mibii_8h_html_aa0bb802c0b80aaab6218e5a7753f8e28"><div class="ttname"><a href="mibii_8h.html#aa0bb802c0b80aaab6218e5a7753f8e28">mib_ii_get_oid</a></div><div class="ttdeci">resp_con_t mib_ii_get_oid(uint8_t *oid, uint8_t *oid_string)</div><div class="ttdoc">Get OID Value in the MIB tree. </div><div class="ttdef"><b>Definition:</b> mibii.c:65</div></div>
+<div class="ttc" id="mibii_8h_html_a87f7eaae8f191a87c287fc4896e3524e"><div class="ttname"><a href="mibii_8h.html#a87f7eaae8f191a87c287fc4896e3524e">mib_ii_fill_list</a></div><div class="ttdeci">resp_con_t mib_ii_fill_list(uint8_t *oid_tree_var, const char *value)</div><div class="ttdoc">Init the MIB OID implementation. </div><div class="ttdef"><b>Definition:</b> mibii.c:125</div></div>
+<div class="ttc" id="structoid__data_html"><div class="ttname"><a href="structoid__data.html">oid_data</a></div><div class="ttdoc">Struct of OID data in MIB Implementation. </div><div class="ttdef"><b>Definition:</b> mibii.h:42</div></div>
+<div class="ttc" id="mibii_8h_html_aeae05bfda8520c157c4436bc5cf8648b"><div class="ttname"><a href="mibii_8h.html#aeae05bfda8520c157c4436bc5cf8648b">mib_ii_check_oid</a></div><div class="ttdeci">resp_con_t mib_ii_check_oid(uint8_t *mib_oid, uint8_t *index)</div><div class="ttdoc">Check if exist OID. </div><div class="ttdef"><b>Definition:</b> mibii.c:36</div></div>
+<div class="ttc" id="mibii_8h_html_af534ed1c73b20f10d822d43da1ccc78e"><div class="ttname"><a href="mibii_8h.html#af534ed1c73b20f10d822d43da1ccc78e">mib_ii_update_list</a></div><div class="ttdeci">resp_con_t mib_ii_update_list(uint8_t *tree, char *value)</div><div class="ttdoc">Update the MIB OID Tree. </div><div class="ttdef"><b>Definition:</b> mibii.c:101</div></div>
+<div class="ttc" id="snmp_8h_html_add91ba4199db8665b9b9fc56fc6783a6"><div class="ttname"><a href="snmp_8h.html#add91ba4199db8665b9b9fc56fc6783a6">resp_con_t</a></div><div class="ttdeci">resp_con_t</div><div class="ttdoc">Type of errors in SNMP functions. </div><div class="ttdef"><b>Definition:</b> snmp.h:142</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Quinta, 29 de Setembro de 2016 00:56:28 para HomeStark_6LoWPAN_Device por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.8
+</small></address>
+</body>
+</html>

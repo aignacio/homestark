@@ -1,0 +1,31 @@
+{
+  "name": "angular-kk-timepicker",
+  "version": "0.1.1",
+  "description": "Angular timepicker widget, bootstrap compatible",
+  "main": "gulpfile.js",
+  "authors": [
+    "Alexey Zolotyh (aazolotyh@gmail.com)"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Angular",
+    "timepicker",
+    "bootstrap"
+  ],
+  "homepage": "https://github.com/zolotyh/angular-timepicker",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.1.4"
+  }
+}

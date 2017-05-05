@@ -1,0 +1,34 @@
+{
+  "name": "canvas-js",
+  "homepage": "https://github.com/IAmAnubhavSaini/canvas-js",
+  "authors": [
+    "Anubhav Saini <iamanubhavsaini@gmail.com>"
+  ],
+  "description": "Library for HTML 5 Canvas",
+  "main": "src/canvas-js-lib.js",
+  "keywords": [
+    "html5",
+    "canvas",
+    "javascript",
+    "library"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "2.3.0",
+  "_release": "2.3.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.3.0",
+    "commit": "22097c372767cd1d38983217c53e99a432ece99a"
+  },
+  "_source": "https://github.com/IAmAnubhavSaini/canvas-js.git",
+  "_target": "^2.3.0",
+  "_originalSource": "canvas-js",
+  "_direct": true
+}

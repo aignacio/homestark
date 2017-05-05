@@ -1,0 +1,39 @@
+\hypertarget{structregister__packet__t}{\section{Referência à estrutura register\+\_\+packet\+\_\+t}
+\label{structregister__packet__t}\index{register\+\_\+packet\+\_\+t@{register\+\_\+packet\+\_\+t}}
+}
+
+
+Estrutura de pacotes M\+Q\+T\+T-\/\+S\+N do tipo R\+E\+G\+I\+S\+T\+E\+R.  
+
+
+
+
+{\ttfamily \#include $<$sabado\+\_\+list\+\_\+old.\+h$>$}
+
+\subsection*{Campos de Dados}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{uint8\+\_\+t \hyperlink{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}{length}}\label{group__Pacotes_gaf9d495c1655d813d553030485d00fea7}
+
+\begin{DoxyCompactList}\small\item\em Comprimento total do pacote M\+Q\+T\+T-\/\+S\+N. \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}{uint8\+\_\+t \hyperlink{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}{type}}\label{group__Pacotes_ga7aead736a07eaf25623ad7bfa1f0ee2d}
+
+\begin{DoxyCompactList}\small\item\em Descreve o tipo de mensagem que será enviado ao broker. \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_gab0380a82be366f48263095460986c3c7}{uint16\+\_\+t \hyperlink{group__Pacotes_gab0380a82be366f48263095460986c3c7}{topic\+\_\+id}}\label{group__Pacotes_gab0380a82be366f48263095460986c3c7}
+
+\begin{DoxyCompactList}\small\item\em Short Topic que será utilizado para envio do R\+E\+G\+I\+S\+T\+E\+R -\/ Quando enviado pelo nó, usa-\/se 0x0000. \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_ga5f2be45182f0cc39afb7cc3a8d55a1f1}{uint16\+\_\+t \hyperlink{group__Pacotes_ga5f2be45182f0cc39afb7cc3a8d55a1f1}{message\+\_\+id}}\label{group__Pacotes_ga5f2be45182f0cc39afb7cc3a8d55a1f1}
+
+\begin{DoxyCompactList}\small\item\em Identificador único do R\+E\+G\+A\+C\+K correspondente enviado pelo broker normalmente. \end{DoxyCompactList}\item 
+\hypertarget{group__Pacotes_ga4928dc5635290abe481ce340f6d47865}{char \hyperlink{group__Pacotes_ga4928dc5635290abe481ce340f6d47865}{topic\+\_\+name} \mbox{[}M\+Q\+T\+T\+\_\+\+S\+N\+\_\+\+M\+A\+X\+\_\+\+T\+O\+P\+I\+C\+\_\+\+L\+E\+N\+G\+T\+H\mbox{]}}\label{group__Pacotes_ga4928dc5635290abe481ce340f6d47865}
+
+\begin{DoxyCompactList}\small\item\em Nome do tópico a ser registrado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Estrutura de pacotes M\+Q\+T\+T-\/\+S\+N do tipo R\+E\+G\+I\+S\+T\+E\+R. 
+
+A documentação para esta estrutura foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+aux\+\_\+tools/\hyperlink{sabado__list__old_8h}{sabado\+\_\+list\+\_\+old.\+h}\item 
+\hyperlink{mqtt__sn_8h}{mqtt\+\_\+sn.\+h}\end{DoxyCompactItemize}

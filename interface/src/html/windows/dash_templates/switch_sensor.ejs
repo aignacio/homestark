@@ -1,0 +1,67 @@
+<script type="text/ng-template" id="modal.html">
+		<div class="modal-header">
+				<h3 class="modal-title"><a href="#" style="font-style: normal; color: black;" editable-text="dash_sensor.name">{{dash_sensor.name}}</a></h3>
+		</div>
+		<div class="modal-body">
+      <div class="row">
+        <h3> Informações do sensor:</h3>
+        <div class="row"><b>Valor:</b> {{dash_sensor.value}}</div>
+        <div class="row"><b>Tipo:</b> {{dash_sensor.type}}</div>
+        <div class="row"><b>Última atualização:</b> {{dash_sensor.updated | date: "dd/MM/yyyy H:mm:ss a"}}</div>
+        <br>
+        <div class="row">
+          <div class="col-xs-3">
+            <div class="row">
+              <img src="/img/bee_mote.png" alt="Sensor 6LoWPAN" style="max-width:100%;  height:auto;"/>
+            </div>
+          </div>
+          <div class="col-xs-9">
+            <h3> Informações do nó associado:</h3>
+            <div class="row"><b>Hardware:</b> {{sensor.hw_address}}</div>
+            <div class="row"><b>Endereço IPv6:</b> {{sensor.ipv6_global}}</div>
+            <div class="row"><b>Endereço IPv6:</b> {{sensor.rota_pref}}</div>
+            <div class="row"><b>RSSI(dBm):</b> <span ng-class="{'color-blue': sensor.rssi_value*(-1) < 30,'color-green': sensor.rssi_value*(-1) >= 30 && sensor.rssi_value*(-1) < 67,'color-orange': sensor.rssi_value*(-1) >= 67 && sensor.rssi_value*(-1) < 70,'color-red': row.rssi_value*(-1) >= 70 && row.rssi_value*(-1) <= 100}">{{sensor.rssi_value}}</span></div>
+            <div class="row"><b>Rank RPL:</b> {{sensor.rank_rpl}}</div>
+            <div class="row"><b>Status:</b> <span ng-class="{'color-green': sensor.active === 'Ativo','color-red': sensor.active === 'Inativo'}">{{sensor.active}}</span></div>
+          </div>
+        </div>
+      </div>
+		</div>
+		<div class="modal-footer">
+      <button class="btn btn-success" type="button" ng-click="saveCfg()">Salvar alterações</button>
+			<button class="btn btn-primary" type="button" ng-click="cancel()">OK</button>
+		</div>
+</script>
+<div class="row">
+  <style media="screen">
+  .switch.checked {
+    background: black;
+    border-color: black;
+  }
+  </style>
+  <div style="text-align:center; font-size: larger;" class="row">
+    <div class="row">
+      Nome: <b  ng-click="editDash(dash.hw,dash.type,dash.name,dash.value,dash.status,dash.updated)"><a ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" style="text-decoration: none; border-bottom: 1px dotted #000; cursor:pointer; color:black;">{{dash.name}}</a></b>
+    </div>
+    <div class="row">
+      Tipo: <b><i class="fa fa-toggle-on" aria-hidden="true"></i> {{dash.type}}</b>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <!-- <div style="text-align:center;" class="row">
+    <span style="font-size: larger;">Valor:<b>{{dash.value}}</b></span>
+  </div> -->
+  <div style="text-align:center;  height: 133px;" class="row">
+    <form>
+      <switch id="enabled" name="enabled" ng-model="dash.value" class="black" ng-change="toggleSwitch(dash.value,dash.hw,dash.type)"></switch>
+      <br>
+    </form>
+  </div>
+
+  <div class="row">
+    <span><i alt="Toggle Sensor" ng-click="toggleSensor(dash.value,dash.hw,dash.type)" class="fa fa-bell" aria-hidden="true"></i> {{dash.status}}</span>
+  </div>
+</div>
