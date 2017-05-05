@@ -1,4 +1,4 @@
-#HomeStark - Rede de sensores 6LoWPAN para IoT
+# HomeStark - Rede de sensores 6LoWPAN para IoT</br>
 ![logo do projeto](device_6LoWPAN/doxy_files/logo_symbol.png)
 
 __Desenvolvedor:__ Ânderson Ignacio da Silva
