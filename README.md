@@ -1,8 +1,7 @@
 # HomeStark - Rede de sensores 6LoWPAN para IoT</br>
 ![logo do projeto](device_6LoWPAN/doxy_files/logo_symbol.png)
 
-__Desenvolvedor:__ Ânderson Ignacio da Silva
-TCC_HomeStark_Ânderson_Ignacio_da_Silva_REV4.pdf
+__Desenvolvedor:__ Ânderson Ignacio da Silva</br>
 Este projeto é composto de duas partes distintas:
 * interface / Interface de controle de sensores via web;
 * device_6LoWPAN / Firmware dedicado para os sensores 6LoWPAN que comunicam com
